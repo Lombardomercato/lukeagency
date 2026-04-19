@@ -89,13 +89,23 @@
     }
 
     .hero {
-      padding: 0 0 64px;
+      padding: 0;
       border-top: 0;
-      min-height: calc(100vh - 52px);
+      min-height: calc(90vh - 52px);
       display: grid;
       align-items: center;
     }
-    .hero-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: stretch; border: 1px solid var(--c-line); border-top: 0; }
+    .hero-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      align-items: stretch;
+      border: 1px solid var(--c-line);
+      border-top: 0;
+      position: relative;
+      overflow: hidden;
+      min-height: calc(90vh - 52px);
+    }
     .hero-copy {
       padding: clamp(28px, 4vw, 48px);
       background: linear-gradient(180deg, rgba(10, 15, 28, .97) 0%, rgba(15, 23, 36, .95) 100%);
@@ -180,41 +190,25 @@
     .hero-media {
       position: relative;
       min-height: 640px;
-      background:
-        radial-gradient(circle at 14% 18%, rgba(0, 224, 164, .1), transparent 42%),
-        linear-gradient(160deg, #0a121f 0%, #0d1b2d 60%, #0c1726 100%);
+      background-image: url('/assets/hero/heroluke.webp');
+      background-size: cover;
+      background-position: right center;
+      background-repeat: no-repeat;
       overflow: hidden;
     }
     .hero-media::before {
       content: "";
       position: absolute;
       inset: 0;
-      opacity: .2;
-      background:
-        linear-gradient(rgba(0, 224, 164, .08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 224, 164, .06) 1px, transparent 1px);
-      background-size: 56px 56px;
-    }
-    .hero-media::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 72% 20%, rgba(0, 224, 164, .16), transparent 44%);
+      background: linear-gradient(
+        90deg,
+        rgba(10,15,28,0.95) 0%,
+        rgba(10,15,28,0.85) 35%,
+        rgba(10,15,28,0.4) 65%,
+        rgba(10,15,28,0) 100%
+      );
       pointer-events: none;
     }
-    .placeholder-block {
-      border: 1px dashed rgba(0, 224, 164, .35);
-      border-radius: 0;
-      background: linear-gradient(155deg, rgba(15, 23, 36, .9), rgba(10, 15, 28, .74));
-      color: #d6fff1;
-      display: grid;
-      place-items: center;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      font-size: .85rem;
-      font-weight: 700;
-    }
-    .hero-photo { position: absolute; inset: 0; }
 
     .kpi { color: var(--c-accent); font-size: 1.9rem; font-weight: 800; margin-bottom: 6px; }
 
@@ -256,11 +250,23 @@
     .footer { padding: 44px 0 86px; font-size: .9rem; color: #8d99aa; text-align: center; }
 
     @media (max-width: 960px) {
-      .hero { min-height: initial; padding-top: 12px; }
+      .hero { min-height: initial; padding-top: 0; }
       .hero-wrap, .g3, .g2, .offer-wrap { grid-template-columns: 1fr; }
       .hero-wrap { gap: 0; }
       .hero-copy { border-right: 0; border-bottom: 1px solid rgba(27, 43, 67, .8); }
-      .hero-media { min-height: 360px; }
+      .hero-media {
+        min-height: 320px;
+        background-position: center right;
+      }
+      .hero-media::before {
+        background: linear-gradient(
+          90deg,
+          rgba(10,15,28,0.98) 0%,
+          rgba(10,15,28,0.94) 45%,
+          rgba(10,15,28,0.7) 75%,
+          rgba(10,15,28,0.35) 100%
+        );
+      }
       .section { padding: 62px 0; }
     }
   </style>
@@ -289,10 +295,7 @@
         <p class="hero-note">100% online y sin costo. Comenzá el 2026 protegiendo tu dinero y tus ahorros.</p>
       </div>
 
-      <div class="hero-media">
-        <!-- PLACEHOLDER FOTO HERO -->
-        <div class="placeholder-block hero-photo">PLACEHOLDER FOTO PERSONA</div>
-      </div>
+      <div class="hero-media" aria-hidden="true"></div>
     </div>
   </section>
 
