@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>De Cero a Inversor | Registro</title>
+  <meta name="description" content="Aprende a invertir en el mercado financiero con un sistema probado. Regístrate ahora." />
+  <style>
+    :root {
+      --c-bg: #0A0F1C;
+      --c-bg-soft: #0F1724;
+      --c-text: #E6EAF2;
+      --c-accent: #00E0A4;
+      --c-muted: #6B7280;
+      --c-deep: #111827;
+      --c-line: #1b2b43;
+      --radius: 16px;
+      --container: 1160px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background:
+        radial-gradient(circle at 84% 6%, rgba(0, 224, 164, .1), transparent 30%),
+        linear-gradient(180deg, #070c17 0%, var(--c-bg) 44%, #08111f 100%);
+      color: var(--c-text);
+      font-family: Inter, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+    h1, h2, h3 { font-family: Sora, Inter, sans-serif; margin: 0 0 .55rem; line-height: 1.12; }
+    p { margin: .25rem 0 1rem; color: #c4cede; }
+    .container { width: min(var(--container), 92vw); margin-inline: auto; }
+
+    .section {
+      position: relative;
+      padding: 78px 0;
+      border-top: 1px solid rgba(230, 234, 242, .07);
+      overflow: hidden;
+    }
+    .section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .28;
+      background:
+        linear-gradient(rgba(0, 224, 164, .08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 224, 164, .06) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: linear-gradient(180deg, #000 0%, transparent 100%);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--c-accent);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .card {
+      position: relative;
+      background: linear-gradient(180deg, rgba(15,23,36,.88), rgba(12,19,31,.92));
+      border: 1px solid var(--c-line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 14px 30px rgba(3, 8, 14, .45), 0 0 0 1px rgba(0, 224, 164, .02) inset;
+    }
+
+    .grid { display: grid; gap: 20px; }
+    .g2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .g3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .hero {
+      padding: 22px 0 64px;
+      border-top: 0;
+      min-height: 96vh;
+      display: grid;
+      align-items: center;
+    }
+    .hero-wrap { display: grid; grid-template-columns: 1.08fr .92fr; gap: 22px; align-items: stretch; }
+    .hero-copy { padding: 30px; background: linear-gradient(180deg, rgba(15, 23, 36, .9), rgba(10, 15, 28, .88)); border: 1px solid var(--c-line); border-radius: 20px; }
+
+    .logo-box { width: min(380px, 100%); margin-bottom: 18px; }
+    .logo-box img { width: 100%; height: auto; display: block; }
+
+    .hero h1 { font-size: clamp(2rem, 4.2vw, 3.3rem); max-width: 16ch; }
+    .hero p { max-width: 54ch; }
+
+    .form-box form { display: grid; gap: 10px; margin-top: 18px; }
+    input, select, button {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid #2a3d57;
+      background: #0d1626;
+      color: var(--c-text);
+      padding: 12px 13px;
+      font: inherit;
+    }
+    button { background: var(--c-accent); color: #062017; border: 0; font-weight: 800; cursor: pointer; }
+
+    .hero-media {
+      position: relative;
+      border-radius: 20px;
+      min-height: 560px;
+      border: 1px solid var(--c-line);
+      background: linear-gradient(150deg, #0a111f, #0e1c30 65%, #0b1221);
+      overflow: hidden;
+    }
+    .hero-media::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 78% 15%, rgba(0, 224, 164, .28), transparent 40%);
+      pointer-events: none;
+    }
+    .placeholder-block {
+      border: 1px dashed rgba(0,224,164,.45);
+      border-radius: 14px;
+      background: rgba(0, 224, 164, .06);
+      color: #9deed6;
+      display: grid;
+      place-items: center;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: .72rem;
+      font-weight: 700;
+    }
+    .hero-photo { position: absolute; left: 6%; bottom: 6%; width: 47%; height: 70%; }
+    .hero-bg { position: absolute; right: -6%; top: -8%; width: 72%; height: 56%; }
+    .hero-mock { position: absolute; right: 8%; bottom: 7%; width: 46%; height: 40%; }
+
+    .kpi { color: var(--c-accent); font-size: 1.9rem; font-weight: 800; margin-bottom: 6px; }
+
+    ul { margin: 0; padding-left: 20px; }
+    li { margin: .42rem 0; color: #d0d8e5; }
+
+    .offer-wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: 20px; }
+    .strike { color: #8d98a8; text-decoration: line-through; }
+    .price { color: var(--c-accent); font-size: 2.3rem; font-weight: 900; margin: .3rem 0 0; }
+
+    details { border: 1px solid var(--c-line); border-radius: 12px; background: rgba(15, 23, 36, .8); padding: 14px; }
+    summary { cursor: pointer; font-weight: 700; }
+
+    .final-cta {
+      position: sticky;
+      bottom: 14px;
+      z-index: 12;
+      margin: 0 auto;
+      width: min(460px, 92vw);
+      border: 1px solid #264055;
+      border-radius: 999px;
+      background: rgba(8, 15, 27, .9);
+      display: flex;
+      gap: 8px;
+      padding: 8px;
+      backdrop-filter: blur(8px);
+    }
+    .final-cta a {
+      text-decoration: none;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      text-align: center;
+      flex: 1;
+    }
+    .final-cta .ghost { color: #d5e1ee; border: 1px solid #314c61; }
+    .final-cta .solid { background: var(--c-accent); color: #042117; }
+
+    .footer { padding: 44px 0 86px; font-size: .9rem; color: #8d99aa; text-align: center; }
+
+    @media (max-width: 960px) {
+      .hero { min-height: initial; padding-top: 12px; }
+      .hero-wrap, .g3, .g2, .offer-wrap { grid-template-columns: 1fr; }
+      .hero-media { min-height: 410px; }
+      .hero-photo { width: 52%; height: 64%; }
+      .hero-bg { width: 66%; height: 46%; }
+      .hero-mock { width: 52%; height: 35%; }
+      .section { padding: 62px 0; }
+    }
+  </style>
+</head>
+<body>
+  <section class="section hero" id="top">
+    <div class="container hero-wrap">
+      <div class="hero-copy card form-box">
+        <div class="logo-box">
+          <img src="assets/logo-de-cero-a-inversor.svg" alt="De Cero a Inversor" />
+        </div>
+        <h1>Construí un sistema serio para invertir con criterio y consistencia.</h1>
+        <p>Ruta intensiva para transformar tus decisiones financieras en un proceso claro, medible y ejecutable desde el día uno.</p>
+        <form>
+          <input type="text" placeholder="Nombre completo" required />
+          <input type="email" placeholder="Email" required />
+          <input type="tel" placeholder="WhatsApp" required />
+          <select required>
+            <option value="">Nivel actual de inversión</option>
+            <option>Principiante</option>
+            <option>Intermedio</option>
+            <option>Avanzado</option>
+          </select>
+          <button type="submit">QUIERO MI LUGAR AHORA</button>
+        </form>
+      </div>
+
+      <div class="hero-media">
+        <!-- PLACEHOLDER FONDO HERO -->
+        <div class="placeholder-block hero-bg">FONDO HERO</div>
+        <!-- PLACEHOLDER FOTO HERO -->
+        <div class="placeholder-block hero-photo">FOTO PRINCIPAL EXPERTO</div>
+        <!-- PLACEHOLDER MOCKUP -->
+        <div class="placeholder-block hero-mock">MOCKUP FINTECH</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="autoridad">
+    <div class="container">
+      <span class="eyebrow">Prueba / Autoridad</span>
+      <h2>Números que respaldan el método.</h2>
+      <div class="grid g3" style="margin-top:18px;">
+        <article class="card"><div class="kpi">+18.400</div><p>Alumnos registrados en entrenamientos de inversión.</p></article>
+        <article class="card"><div class="kpi">92%</div><p>De satisfacción en experiencia y claridad del sistema.</p></article>
+        <article class="card"><div class="kpi">+7 años</div><p>Aplicando estrategias sobre mercado financiero real.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="problema">
+    <div class="container">
+      <span class="eyebrow">Problema</span>
+      <h2>Si invertís sin sistema, operás a ciegas.</h2>
+      <div class="grid g2" style="margin-top:18px;">
+        <article class="card"><h3>Información aislada</h3><p>Consumís contenido suelto sin un proceso de decisión replicable.</p></article>
+        <article class="card"><h3>Errores por impulso</h3><p>Entradas tardías, salidas anticipadas y exposición sin gestión de riesgo.</p></article>
+      </div>
+      <!-- PLACEHOLDER FONDO SECCION -->
+    </div>
+  </section>
+
+  <section class="section" id="solucion">
+    <div class="container">
+      <span class="eyebrow">Solución</span>
+      <h2>Un sistema guiado para analizar, ejecutar y mejorar.</h2>
+      <div class="card" style="margin-top:18px;">
+        <p>De Cero a Inversor te da un marco operativo paso a paso: lectura de contexto, selección de activos, timing, gestión del capital y seguimiento. Todo en una secuencia aplicable para que tomes decisiones con criterio técnico.</p>
+      </div>
+      <!-- PLACEHOLDER IMAGEN APOYO -->
+    </div>
+  </section>
+
+  <section class="section" id="beneficios">
+    <div class="container">
+      <span class="eyebrow">Beneficios</span>
+      <h2>Qué conseguís al aplicar la metodología.</h2>
+      <div class="card" style="margin-top:18px;">
+        <ul>
+          <li>Estructura clara para decidir sin depender de “tips”.</li>
+          <li>Gestión de riesgo para proteger capital en escenarios volátiles.</li>
+          <li>Plantillas prácticas para seguimiento de operaciones.</li>
+          <li>Criterios objetivos para entrar, mantener o salir de posiciones.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contenido">
+    <div class="container">
+      <span class="eyebrow">Contenido del curso</span>
+      <h2>Módulos incluidos en la ruta.</h2>
+      <div class="grid g3" style="margin-top:18px;">
+        <article class="card"><h3>Módulo 1</h3><p>Fundamentos del mercado y mentalidad inversora.</p></article>
+        <article class="card"><h3>Módulo 2</h3><p>Lectura de contexto macro y selección de activos.</p></article>
+        <article class="card"><h3>Módulo 3</h3><p>Estrategias operativas y gestión del riesgo.</p></article>
+        <article class="card"><h3>Módulo 4</h3><p>Construcción de cartera y rebalanceo inteligente.</p></article>
+        <article class="card"><h3>Módulo 5</h3><p>Seguimiento, métricas y mejora continua.</p></article>
+        <article class="card"><h3>Módulo 6</h3><p>Plan de acción de 30 días para ejecución real.</p></article>
+      </div>
+      <!-- PLACEHOLDER MOCKUP -->
+    </div>
+  </section>
+
+  <section class="section" id="testimonios">
+    <div class="container">
+      <span class="eyebrow">Testimonios</span>
+      <h2>Experiencias de alumnos.</h2>
+      <div class="grid g3" style="margin-top:18px;">
+        <article class="card"><p>“Ahora sé exactamente por qué entro y por qué salgo. Dejé de improvisar.”</p><small>— Mariana G.</small></article>
+        <article class="card"><p>“Pasé de mirar gráficos sin entender a tener un plan semanal ejecutable.”</p><small>— Federico R.</small></article>
+        <article class="card"><p>“La diferencia fue la gestión del riesgo: menos ansiedad y mejores decisiones.”</p><small>— Lucía P.</small></article>
+      </div>
+      <!-- PLACEHOLDER FOTO PERSONA -->
+    </div>
+  </section>
+
+  <section class="section" id="resultados">
+    <div class="container">
+      <span class="eyebrow">Resultados</span>
+      <h2>Evolución medible en tus decisiones financieras.</h2>
+      <div class="grid g2" style="margin-top:18px;">
+        <article class="card"><div class="kpi">3x</div><p>Más consistencia en ejecución tras 8 semanas.</p></article>
+        <article class="card"><div class="kpi">-47%</div><p>Reducción promedio de errores por impulso.</p></article>
+      </div>
+      <!-- PLACEHOLDER IMAGEN APOYO -->
+    </div>
+  </section>
+
+  <section class="section" id="garantia">
+    <div class="container">
+      <span class="eyebrow">Garantía</span>
+      <h2>Tu inversión está respaldada.</h2>
+      <div class="card" style="margin-top:18px;">
+        <p>Tenés garantía de 7 días desde tu inscripción. Si el programa no es para vos, solicitás la devolución dentro del plazo y listo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="bonus">
+    <div class="container">
+      <span class="eyebrow">Bonus</span>
+      <h2>Extras para acelerar tus resultados.</h2>
+      <div class="grid g3" style="margin-top:18px;">
+        <article class="card"><h3>Checklist operativo</h3><p>Control previo para cada entrada al mercado.</p></article>
+        <article class="card"><h3>Plantilla de cartera</h3><p>Documento listo para seguimiento semanal.</p></article>
+        <article class="card"><h3>Clase de actualización</h3><p>Sesión especial con escenario de mercado vigente.</p></article>
+      </div>
+      <!-- PLACEHOLDER IMAGEN APOYO -->
+    </div>
+  </section>
+
+  <section class="section" id="oferta">
+    <div class="container offer-wrap">
+      <div class="card">
+        <span class="eyebrow">Oferta</span>
+        <h2>Acceso completo a De Cero a Inversor.</h2>
+        <p>Incluye todos los módulos, materiales de trabajo y soporte de implementación.</p>
+        <p><span class="strike">USD 397</span></p>
+        <div class="price">USD 147</div>
+        <p>Cupos limitados para esta cohorte.</p>
+        <button>RESERVAR MI LUGAR</button>
+      </div>
+      <div class="card placeholder-block" style="min-height:260px;">MATERIAL VISUAL OFERTA</div>
+      <!-- PLACEHOLDER MOCKUP -->
+    </div>
+  </section>
+
+  <section class="section" id="cta-final">
+    <div class="container">
+      <span class="eyebrow">CTA final</span>
+      <h2>Tomá control de tu forma de invertir desde hoy.</h2>
+      <p>Completá el registro y recibí acceso inmediato a la ruta.</p>
+      <button>QUIERO EMPEZAR AHORA</button>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="container">
+      <span class="eyebrow">FAQ</span>
+      <h2>Preguntas frecuentes.</h2>
+      <div class="grid" style="margin-top:18px; gap:12px;">
+        <details><summary>¿Necesito experiencia previa?</summary><p>No. El programa inicia desde fundamentos y escala a ejecución práctica.</p></details>
+        <details><summary>¿Cuánto tiempo necesito por semana?</summary><p>Con 3 a 5 horas semanales podés completar e implementar el sistema.</p></details>
+        <details><summary>¿Es en vivo o grabado?</summary><p>Incluye clases base grabadas y sesiones de actualización.</p></details>
+        <details><summary>¿Cómo accedo al contenido?</summary><p>Recibís acceso por correo al confirmar tu registro.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <div class="container footer">© 2026 De Cero a Inversor. Todos los derechos reservados.</div>
+
+  <div class="final-cta">
+    <a href="#top" class="ghost">Ver inicio</a>
+    <a href="#oferta" class="solid">Inscribirme</a>
+  </div>
+</body>
+</html>
