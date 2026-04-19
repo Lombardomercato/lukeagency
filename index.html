@@ -24,28 +24,38 @@
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
     body {
-      background: linear-gradient(180deg, var(--c-bg-deep) 0%, var(--c-bg) 45%, var(--c-bg-deep) 100%);
+      background: var(--c-bg);
       color: var(--c-text);
       font-family: Inter, "Segoe UI", sans-serif;
       line-height: 1.5;
     }
     h1, h2, h3 { font-family: Sora, Inter, sans-serif; margin: 0 0 .55rem; line-height: 1.12; }
+    h2 { color: var(--c-text); font-size: clamp(1.7rem, 2.6vw, 2.5rem); letter-spacing: -.01em; }
+    h3 { color: var(--c-text); font-size: clamp(1.1rem, 1.5vw, 1.3rem); }
     p { margin: .25rem 0 1rem; color: var(--c-text-secondary); }
     .container { width: min(var(--container), 92vw); margin-inline: auto; }
+    .highlight { color: var(--c-accent); }
 
     .section {
       position: relative;
-      padding: 78px 0;
+      padding: 80px 0;
       border-top: 1px solid rgba(230, 234, 242, .05);
       overflow: hidden;
-      background: linear-gradient(180deg, rgba(2, 6, 12, .92) 0%, rgba(3, 7, 13, .95) 100%);
+      background: var(--c-bg);
     }
+    .section:nth-of-type(odd) { background: var(--c-bg-deep); }
+    .section:nth-of-type(even) { background: var(--c-bg); }
+    .section-tight { padding: 72px 0; }
+    .section-wide { padding: 96px 0; }
+    .section-intro h2 { font-size: clamp(1.95rem, 2.9vw, 2.8rem); }
+    .section-tight h2 { font-size: clamp(1.65rem, 2.4vw, 2.25rem); }
+    .section-wide h2 { font-size: clamp(1.85rem, 2.8vw, 2.6rem); }
     .section::before {
       content: "";
       position: absolute;
       inset: 0;
       pointer-events: none;
-      opacity: .1;
+      opacity: .08;
       background:
         linear-gradient(rgba(230, 234, 242, .03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(230, 234, 242, .025) 1px, transparent 1px);
@@ -66,10 +76,10 @@
     .card {
       position: relative;
       background: rgba(255,255,255,0.02);
-      border: 1px solid var(--c-line);
+      border: 1px solid rgba(255,255,255,0.06);
       border-radius: var(--radius);
       padding: 24px;
-      box-shadow: 0 8px 20px rgba(2, 6, 12, .16);
+      box-shadow: none;
     }
 
     .grid { display: grid; gap: 20px; }
@@ -86,7 +96,7 @@
       font-size: clamp(.88rem, 1.5vw, 1.08rem);
       font-weight: 700;
       color: var(--c-text);
-      background: linear-gradient(90deg, #03070d 0%, #040b14 50%, #03070d 100%);
+      background: #07121C;
       border-bottom: 1px solid rgba(230, 234, 242, .06);
       letter-spacing: .01em;
     }
@@ -200,7 +210,8 @@
       border-color: rgba(24, 221, 166, .8);
       box-shadow: 0 0 0 3px rgba(24, 221, 166, .16);
     }
-    button {
+    button,
+    .btn-primary {
       background: var(--c-accent);
       color: #031018;
       border: 0;
@@ -209,7 +220,13 @@
       box-shadow: none;
       transition: background .2s ease;
     }
-    button:hover { background: var(--c-accent-hover); }
+    button:hover,
+    .btn-primary:hover { background: var(--c-accent-hover); }
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--c-accent);
+      color: var(--c-text);
+    }
 
     .hero-media { display: none; }
     .kpi { color: var(--c-accent); font-size: 1.9rem; font-weight: 800; margin-bottom: 6px; }
@@ -247,17 +264,35 @@
     }
     .final-cta .ghost {
       color: var(--c-text);
-      border: 1px solid rgba(230, 234, 242, .18);
-      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--c-accent);
+      background: transparent;
     }
     .final-cta .solid { background: var(--c-accent); color: #031018; }
+
+    .section-light {
+      background: #F5F7FA !important;
+      color: #0A0F1C;
+    }
+    .section-light::before { display: none; }
+    .section-light h2,
+    .section-light h3,
+    .section-light p,
+    .section-light li,
+    .section-light .eyebrow,
+    .section-light .kpi { color: #0A0F1C; }
+    .section-light .highlight,
+    .section-light .kpi { color: var(--c-accent); }
+    .section-light .card {
+      background: rgba(10, 15, 28, 0.03);
+      border: 1px solid rgba(10, 15, 28, 0.1);
+    }
 
     .footer { padding: 44px 0 86px; font-size: .9rem; color: #8d99aa; text-align: center; }
 
     @media (max-width: 960px) {
       .hero { min-height: auto; }
       .g3, .g2, .offer-wrap { grid-template-columns: 1fr; }
-      .section { padding: 62px 0; }
+      .section { padding: 68px 0; }
     }
     @media (max-width: 768px) {
       .hero {
@@ -305,10 +340,10 @@
     </div>
   </section>
 
-  <section class="section" id="autoridad">
+  <section class="section section-intro" id="autoridad">
     <div class="container">
       <span class="eyebrow">Prueba / Autoridad</span>
-      <h2>Números que respaldan el método.</h2>
+      <h2>Números que <span class="highlight">respaldan</span> el método.</h2>
       <div class="grid g3" style="margin-top:18px;">
         <article class="card"><div class="kpi">+18.400</div><p>Alumnos registrados en entrenamientos de inversión.</p></article>
         <article class="card"><div class="kpi">92%</div><p>De satisfacción en experiencia y claridad del sistema.</p></article>
@@ -317,10 +352,10 @@
     </div>
   </section>
 
-  <section class="section" id="problema">
+  <section class="section section-tight" id="problema">
     <div class="container">
       <span class="eyebrow">Problema</span>
-      <h2>Si invertís sin sistema, operás a ciegas.</h2>
+      <h2>Si invertís sin <span class="highlight">sistema</span>, operás a ciegas.</h2>
       <div class="grid g2" style="margin-top:18px;">
         <article class="card"><h3>Información aislada</h3><p>Consumís contenido suelto sin un proceso de decisión replicable.</p></article>
         <article class="card"><h3>Errores por impulso</h3><p>Entradas tardías, salidas anticipadas y exposición sin gestión de riesgo.</p></article>
@@ -329,10 +364,10 @@
     </div>
   </section>
 
-  <section class="section" id="solucion">
+  <section class="section section-wide" id="solucion">
     <div class="container">
       <span class="eyebrow">Solución</span>
-      <h2>Un sistema guiado para analizar, ejecutar y mejorar.</h2>
+      <h2>Un sistema guiado para <span class="highlight">analizar</span>, ejecutar y mejorar.</h2>
       <div class="card" style="margin-top:18px;">
         <p>De Cero a Inversor te da un marco operativo paso a paso: lectura de contexto, selección de activos, timing, gestión del capital y seguimiento. Todo en una secuencia aplicable para que tomes decisiones con criterio técnico.</p>
       </div>
@@ -340,10 +375,10 @@
     </div>
   </section>
 
-  <section class="section" id="beneficios">
+  <section class="section section-tight" id="beneficios">
     <div class="container">
       <span class="eyebrow">Beneficios</span>
-      <h2>Qué conseguís al aplicar la metodología.</h2>
+      <h2>Qué conseguís al aplicar la <span class="highlight">metodología</span>.</h2>
       <div class="card" style="margin-top:18px;">
         <ul>
           <li>Estructura clara para decidir sin depender de “tips”.</li>
@@ -355,10 +390,10 @@
     </div>
   </section>
 
-  <section class="section" id="contenido">
+  <section class="section section-wide" id="contenido">
     <div class="container">
       <span class="eyebrow">Contenido del curso</span>
-      <h2>Módulos incluidos en la ruta.</h2>
+      <h2>Módulos <span class="highlight">incluidos</span> en la ruta.</h2>
       <div class="grid g3" style="margin-top:18px;">
         <article class="card"><h3>Módulo 1</h3><p>Fundamentos del mercado y mentalidad inversora.</p></article>
         <article class="card"><h3>Módulo 2</h3><p>Lectura de contexto macro y selección de activos.</p></article>
@@ -371,10 +406,10 @@
     </div>
   </section>
 
-  <section class="section" id="testimonios">
+  <section class="section section-tight" id="testimonios">
     <div class="container">
       <span class="eyebrow">Testimonios</span>
-      <h2>Experiencias de alumnos.</h2>
+      <h2>Experiencias de <span class="highlight">alumnos</span>.</h2>
       <div class="grid g3" style="margin-top:18px;">
         <article class="card"><p>“Ahora sé exactamente por qué entro y por qué salgo. Dejé de improvisar.”</p><small>— Mariana G.</small></article>
         <article class="card"><p>“Pasé de mirar gráficos sin entender a tener un plan semanal ejecutable.”</p><small>— Federico R.</small></article>
@@ -384,10 +419,10 @@
     </div>
   </section>
 
-  <section class="section" id="resultados">
+  <section class="section section-light section-wide" id="resultados">
     <div class="container">
       <span class="eyebrow">Resultados</span>
-      <h2>Evolución medible en tus decisiones financieras.</h2>
+      <h2>Evolución <span class="highlight">medible</span> en tus decisiones financieras.</h2>
       <div class="grid g2" style="margin-top:18px;">
         <article class="card"><div class="kpi">3x</div><p>Más consistencia en ejecución tras 8 semanas.</p></article>
         <article class="card"><div class="kpi">-47%</div><p>Reducción promedio de errores por impulso.</p></article>
@@ -396,20 +431,20 @@
     </div>
   </section>
 
-  <section class="section" id="garantia">
+  <section class="section section-tight" id="garantia">
     <div class="container">
       <span class="eyebrow">Garantía</span>
-      <h2>Tu inversión está respaldada.</h2>
+      <h2>Tu inversión está <span class="highlight">respaldada</span>.</h2>
       <div class="card" style="margin-top:18px;">
         <p>Tenés garantía de 7 días desde tu inscripción. Si el programa no es para vos, solicitás la devolución dentro del plazo y listo.</p>
       </div>
     </div>
   </section>
 
-  <section class="section" id="bonus">
+  <section class="section section-wide" id="bonus">
     <div class="container">
       <span class="eyebrow">Bonus</span>
-      <h2>Extras para acelerar tus resultados.</h2>
+      <h2>Extras para <span class="highlight">acelerar</span> tus resultados.</h2>
       <div class="grid g3" style="margin-top:18px;">
         <article class="card"><h3>Checklist operativo</h3><p>Control previo para cada entrada al mercado.</p></article>
         <article class="card"><h3>Plantilla de cartera</h3><p>Documento listo para seguimiento semanal.</p></article>
@@ -419,35 +454,35 @@
     </div>
   </section>
 
-  <section class="section" id="oferta">
+  <section class="section section-tight" id="oferta">
     <div class="container offer-wrap">
       <div class="card">
         <span class="eyebrow">Oferta</span>
-        <h2>Acceso completo a De Cero a Inversor.</h2>
+        <h2>Acceso <span class="highlight">completo</span> a De Cero a Inversor.</h2>
         <p>Incluye todos los módulos, materiales de trabajo y soporte de implementación.</p>
         <p><span class="strike">USD 397</span></p>
         <div class="price">USD 147</div>
         <p>Cupos limitados para esta cohorte.</p>
-        <button>RESERVAR MI LUGAR</button>
+        <button class="btn-primary">RESERVAR MI LUGAR</button>
       </div>
       <div class="card placeholder-block" style="min-height:260px;">MATERIAL VISUAL OFERTA</div>
       <!-- PLACEHOLDER MOCKUP -->
     </div>
   </section>
 
-  <section class="section" id="cta-final">
+  <section class="section section-wide" id="cta-final">
     <div class="container">
       <span class="eyebrow">CTA final</span>
-      <h2>Tomá control de tu forma de invertir desde hoy.</h2>
+      <h2>Tomá <span class="highlight">control</span> de tu forma de invertir desde hoy.</h2>
       <p>Completá el registro y recibí acceso inmediato a la ruta.</p>
-      <button>QUIERO EMPEZAR AHORA</button>
+      <button class="btn-primary">QUIERO EMPEZAR AHORA</button>
     </div>
   </section>
 
-  <section class="section" id="faq">
+  <section class="section section-tight" id="faq">
     <div class="container">
       <span class="eyebrow">FAQ</span>
-      <h2>Preguntas frecuentes.</h2>
+      <h2>Preguntas <span class="highlight">frecuentes</span>.</h2>
       <div class="grid" style="margin-top:18px; gap:12px;">
         <details><summary>¿Necesito experiencia previa?</summary><p>No. El programa inicia desde fundamentos y escala a ejecución práctica.</p></details>
         <details><summary>¿Cuánto tiempo necesito por semana?</summary><p>Con 3 a 5 horas semanales podés completar e implementar el sistema.</p></details>
@@ -460,8 +495,8 @@
   <div class="container footer">© 2026 De Cero a Inversor. Todos los derechos reservados.</div>
 
   <div class="final-cta">
-    <a href="#top" class="ghost">Ver inicio</a>
-    <a href="#oferta" class="solid">Inscribirme</a>
+    <a href="#top" class="ghost btn-secondary">Ver inicio</a>
+    <a href="#oferta" class="solid btn-primary">Inscribirme</a>
   </div>
 </body>
 </html>
