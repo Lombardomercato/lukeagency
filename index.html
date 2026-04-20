@@ -4,12 +4,13 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>De 0 a Inversor · Registro</title>
+<link rel="icon" type="image/webp" href="assets/favicon/favicon-v.webp" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #0A0F1C;
+    --bg: #02060c;
     --bg-2: #0F1724;
     --line: #1b2637;
     --line-2: #24324a;
@@ -74,7 +75,7 @@
     position: relative; overflow: hidden;
     background:
       linear-gradient(180deg, rgba(10,15,28,.55) 0%, rgba(10,15,28,.35) 40%, rgba(10,15,28,.85) 100%),
-      url('assets/ramiro-hero.jpg') center right / cover no-repeat,
+      url('assets/hero/herp-nuevo.webp') center right / cover no-repeat,
       var(--bg);
     border-bottom: 1px solid var(--line);
     padding: 60px 0 80px;
@@ -157,7 +158,7 @@
     margin-bottom: 6px;
   }
   .field input{
-    width: 100%; background: #0A0F1C; border: 1px solid var(--line-2); color: var(--text);
+    width: 100%; background: var(--bg); border: 1px solid var(--line-2); color: var(--text);
     padding: 14px 14px; border-radius: 6px; font: inherit; font-size: 15px;
     transition: border-color .15s, box-shadow .15s;
   }
@@ -204,6 +205,9 @@
     .hero-promise{ display: none; }
     .full-copy{ display: block; }
   }
+  @media (min-width: 961px){
+    .hero-logo-wrap{ padding-left: 18px; }
+  }
 
   /* ======== MOBILE-ONLY photo block ======== */
   .mobile-photo{
@@ -212,7 +216,7 @@
     width: 100%;
     margin-top: 0;
     aspect-ratio: 4/3;
-    background: url('assets/ramiro-hero.jpg') center 15% / cover no-repeat, #0A0F1C;
+    background: url('assets/hero/herp-nuevo.webp') center 15% / cover no-repeat, var(--bg);
     overflow: hidden;
   }
   .mobile-photo .mobile-logo{
@@ -348,7 +352,8 @@
   .about-portrait{
     position: relative; aspect-ratio: 4/5; border-radius: 8px;
     background:
-      repeating-linear-gradient(45deg, rgba(255,255,255,.025) 0 2px, transparent 2px 16px),
+      linear-gradient(180deg, rgba(6,10,20,.08), rgba(6,10,20,.68)),
+      url('assets/images/ramiro.webp') center 25% / cover no-repeat,
       linear-gradient(160deg, #162033, #0b121f);
     border: 1px solid var(--line-2);
     display: flex; align-items: flex-end; padding: 20px; overflow: hidden;
@@ -422,6 +427,42 @@
     flex-wrap: wrap;
   }
   .ticker .up{ color: var(--green); }
+
+
+  /* ========= Sticky CTA (scroll conversion, all devices) ========= */
+  .sticky-cta{
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 40;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(2,6,12,.92);
+    border-top: 1px solid var(--line-2);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    opacity: 0;
+    transform: translateY(12px);
+    pointer-events: none;
+    transition: opacity .18s ease, transform .18s ease;
+    will-change: opacity, transform;
+  }
+  .sticky-cta.is-visible{
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .sticky-cta .btn{
+    margin: 0 auto;
+    max-width: 560px;
+    width: min(100%, 560px);
+  }
+  body.sticky-visible{ padding-bottom: 94px; }
+  @media (max-width: 960px){
+    body.sticky-visible{ padding-bottom: 102px; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .sticky-cta{ transition: none; }
+  }
+
 </style>
 </head>
 <body>
@@ -465,7 +506,7 @@
 <!-- ============ NAV ============ -->
 <nav class="nav">
   <a href="#" aria-label="De Cero a Inversor" style="display:inline-flex;">
-    <img class="brand-logo nav-size" src="assets/logo-dci-final-transparent.png" alt="De Cero a Inversor" />
+    <img class="brand-logo nav-size" src="assets/logo/logo-sin-texto.webp" alt="De Cero a Inversor" />
   </a>
   <div class="right">
     <span class="dot"></span>
@@ -495,7 +536,7 @@
   <div class="wrap hero-grid">
     <div>
       <div class="hero-logo-wrap" style="margin-bottom: 14px;">
-        <img class="brand-logo hero-size" src="assets/logo-dci-final-transparent.png" alt="De Cero a Inversor" />
+        <img class="brand-logo hero-size" src="assets/logo/logo-inversor.webp" alt="De Cero a Inversor" />
       </div>
 
       <!-- MOBILE promise (compact so form fits above fold) -->
@@ -505,7 +546,7 @@
 
       <!-- MOBILE-ONLY photo block (hidden on desktop, where photo is the hero BG) -->
       <div class="mobile-photo" aria-hidden="true">
-        <img class="mobile-logo" src="assets/logo-dci-final-transparent.png" alt="De Cero a Inversor" />
+        <img class="mobile-logo" src="assets/logo/logo-inversor.webp" alt="De Cero a Inversor" />
       </div>
 
       <!-- MOBILE-ONLY title below photo -->
@@ -942,6 +983,44 @@
   if(document.readyState !== 'loading') attachForm(document.getElementById('lead-form'));
   else document.addEventListener('DOMContentLoaded', function(){ attachForm(document.getElementById('lead-form')); });
 
+
+
+  // ====== 8. Sticky CTA: mostrar solo cuando el botón del hero sale de vista ======
+  (function setupStickyCTA(){
+    var sticky = document.querySelector('.sticky-cta');
+    var heroBtn = document.getElementById('lead-submit');
+    if(!sticky || !heroBtn) return;
+
+    function setVisible(show){
+      sticky.classList.toggle('is-visible', !!show);
+      document.body.classList.toggle('sticky-visible', !!show);
+    }
+
+    // Al cargar: evitar parpadeos
+    setVisible(false);
+
+    if('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(entries){
+        var e = entries && entries[0];
+        if(!e) return;
+        // Si el botón del hero está visible, ocultamos el fijo (sin duplicar CTA)
+        setVisible(!e.isIntersecting);
+      }, { threshold: 0.05 });
+      io.observe(heroBtn);
+      return;
+    }
+
+    // Fallback liviano sin observer
+    function onScroll(){
+      var r = heroBtn.getBoundingClientRect();
+      var inView = r.bottom > 0 && r.top < window.innerHeight;
+      setVisible(!inView);
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('resize', onScroll);
+    onScroll();
+  })();
+
   // ====== 7. CTAs que apuntan a #form: foco en email ======
   document.querySelectorAll('a[href="#form"]').forEach(function(a){
     a.addEventListener('click', function(){
@@ -953,6 +1032,15 @@
   });
 })();
 </script>
+
+<!-- ============ STICKY CTA (MOBILE) ============ -->
+<div class="sticky-cta" aria-label="Acción rápida">
+  <a href="#form" class="btn" aria-label="Inscribirme gratis">
+    SÍ, QUIERO ACCESO GRATIS
+    <svg class="arrow" viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#06221a" stroke-width="2.4" stroke-linecap="square"/></svg>
+  </a>
+</div>
+
 </body>
 </html>
 
