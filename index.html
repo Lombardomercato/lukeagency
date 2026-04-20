@@ -74,7 +74,7 @@
     position: relative; overflow: hidden;
     background:
       linear-gradient(180deg, rgba(10,15,28,.55) 0%, rgba(10,15,28,.35) 40%, rgba(10,15,28,.85) 100%),
-      url('assets/ramiro-hero.jpg') center right / cover no-repeat,
+      url('assets/hero/herp-nuevo.webp') center right / cover no-repeat,
       var(--bg);
     border-bottom: 1px solid var(--line);
     padding: 60px 0 80px;
@@ -212,7 +212,7 @@
     width: 100%;
     margin-top: 0;
     aspect-ratio: 4/3;
-    background: url('assets/ramiro-hero.jpg') center 15% / cover no-repeat, #0A0F1C;
+    background: url('assets/hero/herp-nuevo.webp') center 15% / cover no-repeat, #0A0F1C;
     overflow: hidden;
   }
   .mobile-photo .mobile-logo{
@@ -348,7 +348,8 @@
   .about-portrait{
     position: relative; aspect-ratio: 4/5; border-radius: 8px;
     background:
-      repeating-linear-gradient(45deg, rgba(255,255,255,.025) 0 2px, transparent 2px 16px),
+      linear-gradient(180deg, rgba(6,10,20,.08), rgba(6,10,20,.68)),
+      url('assets/images/ramiro.webp') center 25% / cover no-repeat,
       linear-gradient(160deg, #162033, #0b121f);
     border: 1px solid var(--line-2);
     display: flex; align-items: flex-end; padding: 20px; overflow: hidden;
@@ -465,7 +466,7 @@
 <!-- ============ NAV ============ -->
 <nav class="nav">
   <a href="#" aria-label="De Cero a Inversor" style="display:inline-flex;">
-    <img class="brand-logo nav-size" src="assets/logo-dci-final-transparent.png" alt="De Cero a Inversor" />
+    <img class="brand-logo nav-size" src="assets/logo/logo-sin-texto.webp" alt="De Cero a Inversor" />
   </a>
   <div class="right">
     <span class="dot"></span>
@@ -495,7 +496,7 @@
   <div class="wrap hero-grid">
     <div>
       <div class="hero-logo-wrap" style="margin-bottom: 14px;">
-        <img class="brand-logo hero-size" src="assets/logo-dci-final-transparent.png" alt="De Cero a Inversor" />
+        <img class="brand-logo hero-size" src="assets/logo/logo-inversor.webp" alt="De Cero a Inversor" />
       </div>
 
       <!-- MOBILE promise (compact so form fits above fold) -->
@@ -505,7 +506,7 @@
 
       <!-- MOBILE-ONLY photo block (hidden on desktop, where photo is the hero BG) -->
       <div class="mobile-photo" aria-hidden="true">
-        <img class="mobile-logo" src="assets/logo-dci-final-transparent.png" alt="De Cero a Inversor" />
+        <img class="mobile-logo" src="assets/logo/logo-inversor.webp" alt="De Cero a Inversor" />
       </div>
 
       <!-- MOBILE-ONLY title below photo -->
