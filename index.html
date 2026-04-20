@@ -1,504 +1,958 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="preload" as="image" href="./assets/hero/heroluke.webp" fetchpriority="high" />
-  <title>De Cero a Inversor | Registro</title>
-  <meta name="description" content="Aprende a invertir en el mercado financiero con un sistema probado. Regístrate ahora." />
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Sora:wght@400;600;700;800&display=swap');
-    :root {
-      --c-bg: #03070D;
-      --c-bg-deep: #02060C;
-      --c-bg-soft: #070d16;
-      --c-text: #E6EAF2;
-      --c-text-secondary: #AAB4C3;
-      --c-accent: #18DDA6;
-      --c-accent-hover: #00C896;
-      --c-muted: #6B7280;
-      --c-deep: #111827;
-      --c-line: rgba(230, 234, 242, .06);
-      --radius: 14px;
-      --container: 1160px;
-    }
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; }
-    body {
-      background: var(--c-bg);
-      color: var(--c-text);
-      font-family: "Inter", sans-serif;
-      line-height: 1.5;
-    }
-    h1, h2, h3 { font-family: "Sora", "Inter", sans-serif; margin: 0 0 .55rem; line-height: 1.12; }
-    h2 { color: var(--c-text); font-size: clamp(1.7rem, 2.6vw, 2.5rem); letter-spacing: -.01em; }
-    h3 { color: var(--c-text); font-size: clamp(1.1rem, 1.5vw, 1.3rem); }
-    p { margin: .25rem 0 1rem; color: var(--c-text-secondary); }
-    .container { width: min(var(--container), 92vw); margin-inline: auto; }
-    .highlight { color: var(--c-accent); }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>De 0 a Inversor · Registro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0A0F1C;
+    --bg-2: #0F1724;
+    --line: #1b2637;
+    --line-2: #24324a;
+    --text: #E6EAF2;
+    --muted: #6B7280;
+    --muted-2: #8a93a3;
+    --green: #00E0A4;
+    --green-soft: rgba(0, 224, 164, .12);
+    --green-glow: rgba(0, 224, 164, .35);
+  }
+  *{ box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); }
+  body{
+    font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+  .mono{ font-family: "JetBrains Mono", ui-monospace, monospace; }
 
-    .section {
-      position: relative;
-      padding: 80px 0;
-      border-top: 1px solid rgba(230, 234, 242, .05);
-      overflow: hidden;
-      background: var(--c-bg);
-    }
-    .section:nth-of-type(odd) { background: var(--c-bg-deep); }
-    .section:nth-of-type(even) { background: var(--c-bg); }
-    .section-tight { padding: 72px 0; }
-    .section-wide { padding: 96px 0; }
-    .section-intro h2 { font-size: clamp(1.95rem, 2.9vw, 2.8rem); }
-    .section-tight h2 { font-size: clamp(1.65rem, 2.4vw, 2.25rem); }
-    .section-wide h2 { font-size: clamp(1.85rem, 2.8vw, 2.6rem); }
-    .section::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      opacity: .08;
+  /* ========= LOGO (SVG - reproduce manual de marca) ========= */
+  .brand-logo{ display: block; }
+  .brand-logo.nav-size{ height: 36px; width: auto; }
+  .brand-logo.hero-size{ width: min(520px, 92%); height: auto; }
+
+  .grid-bg{
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at 50% 30%, black 40%, transparent 85%);
+    pointer-events: none;
+  }
+  .hero .grid-bg{ display: none; } /* hidden because we use photo bg instead */
+
+  .wrap{ max-width: 1240px; margin: 0 auto; padding: 0 22px; }
+  .section{ position: relative; padding: 88px 0; }
+  @media (max-width: 820px){ .section{ padding: 56px 0; } }
+
+  .nav{
+    position: relative; z-index: 5; padding: 16px 22px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+    background: rgba(10,15,28,.7); backdrop-filter: blur(8px);
+  }
+  .nav .right{
+    font-size: 11px; letter-spacing: .16em; color: var(--muted-2);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .nav .right .dot{ width:6px; height:6px; background: var(--green); border-radius: 50%; box-shadow: 0 0 10px var(--green-glow); }
+  @media (max-width: 560px){
+    .nav{ padding: 12px 16px; }
+    .nav .right span:last-child{ display: none; }
+    .brand-logo.nav-size{ width: 120px; }
+  }
+  /* Hide entire nav on mobile — logo is on the photo instead */
+  @media (max-width: 960px){
+    .nav{ display: none; }
+  }
+
+  /* ========= HERO ========= */
+  .hero{
+    position: relative; overflow: hidden;
+    background:
+      linear-gradient(180deg, rgba(10,15,28,.55) 0%, rgba(10,15,28,.35) 40%, rgba(10,15,28,.85) 100%),
+      url('assets/ramiro-hero.jpg') center right / cover no-repeat,
+      var(--bg);
+    border-bottom: 1px solid var(--line);
+    padding: 60px 0 80px;
+  }
+  /* Tablet + mobile: NO background image on hero; we use a dedicated photo block instead */
+  @media (max-width: 960px){
+    .hero{
       background:
-        linear-gradient(rgba(230, 234, 242, .03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(230, 234, 242, .025) 1px, transparent 1px);
-      background-size: 72px 72px;
-      mask-image: linear-gradient(180deg, #000 0%, transparent 100%);
+        radial-gradient(600px 300px at 50% 10%, rgba(0,224,164,.08), transparent 60%),
+        var(--bg);
+      padding: 20px 0 40px;
     }
+  }
 
-    .eyebrow {
-      display: inline-block;
-      color: var(--c-accent);
-      font-size: .72rem;
-      font-weight: 700;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      margin-bottom: 10px;
+  .hero-grid{
+    display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: end;
+    position: relative; z-index: 2;
+    padding-top: 60px;
+  }
+  @media (max-width: 960px){ .hero-grid{ grid-template-columns: 1fr; gap: 20px; padding-top: 0; align-items: stretch; } }
+
+  .eyebrow{
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 7px 12px 7px 10px;
+    border: 1px solid var(--line-2); border-radius: 999px;
+    font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted-2);
+    background: rgba(255,255,255,.02);
+  }
+  .eyebrow .pulse{
+    width: 8px; height: 8px; border-radius: 50%; background: var(--green);
+    box-shadow: 0 0 0 0 var(--green-glow); animation: pulse 2s infinite;
+  }
+  @keyframes pulse{
+    0%{ box-shadow: 0 0 0 0 rgba(0,224,164,.5); }
+    70%{ box-shadow: 0 0 0 10px rgba(0,224,164,0); }
+    100%{ box-shadow: 0 0 0 0 rgba(0,224,164,0); }
+  }
+
+  h1.h-title{
+    font-family: "Sora"; font-weight: 700;
+    font-size: clamp(28px, 4.2vw, 52px);
+    line-height: 1.08; letter-spacing: -0.02em;
+    margin: 18px 0 14px;
+  }
+  h1.h-title strong{ color: var(--green); font-weight: 800; }
+  .sub{ font-size: clamp(15px, 1.1vw, 18px); color: var(--muted-2); max-width: 560px; line-height: 1.6; }
+  .sub b{ color: var(--text); font-weight: 600; }
+
+  .date-row{
+    margin-top: 22px; padding: 14px 18px;
+    border: 1px solid var(--line-2); border-left: 2px solid var(--green);
+    background: linear-gradient(90deg, rgba(0,224,164,.06), transparent 70%);
+    display: flex; align-items: center; gap: 18px; flex-wrap: wrap; border-radius: 4px;
+  }
+  .date-row .big{ font-family: "Sora"; font-weight: 700; font-size: 22px; }
+  .date-row .small{ font-size: 11px; color: var(--muted-2); letter-spacing: .06em; }
+  .date-row .sep{ width:1px; height: 34px; background: var(--line-2); }
+  @media (max-width: 380px){ .date-row .sep{ display:none; } .date-row{ gap: 14px 22px; } }
+
+  /* ========= FORM CARD ========= */
+  .form-card{
+    position: relative; padding: 26px;
+    background: linear-gradient(180deg, rgba(10,15,28,.92), rgba(6,11,22,.97));
+    border: 1px solid var(--line-2); border-radius: 10px;
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,.95), 0 0 0 1px rgba(0,224,164,.06) inset, 0 0 40px -10px rgba(0,224,164,.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  .form-card::before{
+    content: ""; position: absolute; inset: -1px; border-radius: 10px; padding: 1px;
+    background: linear-gradient(180deg, rgba(0,224,164,.4), transparent 50%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
+  }
+  .form-title{ font-family: "Sora"; font-weight: 700; font-size: 18px; margin: 0 0 4px; letter-spacing: -.01em; }
+  .form-sub{ color: var(--muted-2); font-size: 13px; margin: 0 0 20px; }
+  .field{ margin-bottom: 14px; }
+  .field label{
+    display: block; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .field input{
+    width: 100%; background: #0A0F1C; border: 1px solid var(--line-2); color: var(--text);
+    padding: 14px 14px; border-radius: 6px; font: inherit; font-size: 15px;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .field input::placeholder{ color: #4a5568; }
+  .field input:focus{ outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(0,224,164,.15); }
+  .hint{ font-size: 11px; color: var(--muted); margin-top: 6px; font-style: italic; }
+
+  .btn{
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 16px 22px; width: 100%;
+    background: var(--green); color: #06221a;
+    border: 0; border-radius: 8px; cursor: pointer;
+    font-family: "Sora"; font-weight: 700; font-size: 14px; letter-spacing: .04em; text-transform: uppercase;
+    box-shadow: 0 0 0 1px rgba(0,224,164,.3), 0 20px 40px -15px rgba(0,224,164,.5);
+    transition: transform .15s ease, box-shadow .15s ease; text-decoration: none;
+  }
+  .btn:hover{ transform: translateY(-1px); box-shadow: 0 0 0 1px rgba(0,224,164,.6), 0 24px 48px -15px rgba(0,224,164,.6); }
+  .btn.inline{ width: auto; }
+  .btn .arrow{ transition: transform .2s; }
+  .btn:hover .arrow{ transform: translateX(4px); }
+
+  .tiny-note{ text-align: center; font-size: 12px; color: var(--muted); margin-top: 12px; letter-spacing: .04em; }
+  .tiny-note b{ color: var(--text); font-weight: 600; }
+
+  .chart-wrap{
+    position: absolute; inset: 0; z-index: 1; opacity: .18;
+    mask-image: linear-gradient(180deg, transparent 0%, black 30%, black 70%, transparent 100%);
+    pointer-events: none;
+  }
+  .chart-wrap svg{ width: 100%; height: 100%; display: block; }
+
+  /* ======== MOBILE: hero compact ======== */
+  .hero-logo-wrap{ margin-top: 6px; }
+  .hero-promise{
+    font-family: "Sora"; font-weight: 700;
+    font-size: clamp(18px, 4.8vw, 22px);
+    line-height: 1.25; letter-spacing: -.01em;
+    margin: 14px 0 0;
+    color: var(--text);
+  }
+  .hero-promise b{ color: var(--green); font-weight: 800; }
+  .full-copy{ display: none; }
+  @media (min-width: 961px){
+    .hero-promise{ display: none; }
+    .full-copy{ display: block; }
+  }
+
+  /* ======== MOBILE-ONLY photo block ======== */
+  .mobile-photo{
+    display: none;
+    position: relative;
+    width: 100%;
+    margin-top: 0;
+    aspect-ratio: 4/3;
+    background: url('assets/ramiro-hero.jpg') center 15% / cover no-repeat, #0A0F1C;
+    overflow: hidden;
+  }
+  .mobile-photo .mobile-logo{
+    position: absolute; bottom: 16px; left: 50%;
+    transform: translateX(-50%);
+    z-index: 3; width: min(280px, 70%);
+  }
+  .mobile-photo::after{
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(10,15,28,0) 30%, rgba(10,15,28,.85) 90%, rgba(10,15,28,1) 100%);
+    pointer-events: none;
+  }
+  @media (max-width: 960px){
+    .mobile-photo{ display: block; }
+    /* Hide big hero logo + promise above photo — they're now ON the photo */
+    .hero-logo-wrap{ display: none; }
+    .hero-promise{ display: none; }
+    /* Restyle hero for clean mobile look */
+    .hero{ padding: 0 0 32px !important; border-bottom: none; }
+    .hero .wrap.hero-grid{ padding: 0; gap: 0; }
+    /* Title below photo — centered */
+    .mobile-title{
+      display: block; text-align: center; padding: 20px 22px 0;
+      font-family: "Sora"; font-weight: 700;
+      font-size: clamp(20px, 5.5vw, 26px);
+      line-height: 1.25; letter-spacing: -.01em;
+      color: var(--text);
     }
-
-    .card {
-      position: relative;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: var(--radius);
-      padding: 24px;
-      box-shadow: none;
+    .mobile-title b{ color: var(--green); font-weight: 800; }
+    .mobile-subtitle{
+      display: block; text-align: center; padding: 8px 22px 0;
+      font-size: 14px; color: var(--muted-2); line-height: 1.5;
     }
-
-    .grid { display: grid; gap: 20px; }
-    .g2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .g3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-
-    .hero-topbar {
-      width: 100%;
-      min-height: 52px;
-      display: grid;
-      place-items: center;
+    /* Form card: remove card styling, just clean inputs */
+    .form-card{
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      backdrop-filter: none !important;
+      padding: 16px 22px !important;
+      border-radius: 0 !important;
+    }
+    .form-card::before{ display: none; }
+    .form-title, .form-sub{ display: none; }
+    .field label{ display: none; }
+    .field input{
+      background: rgba(255,255,255,.08);
+      border-color: var(--line-2);
       text-align: center;
-      font-family: "Sora", "Inter", sans-serif;
-      font-size: clamp(.88rem, 1.5vw, 1.08rem);
-      font-weight: 700;
-      color: var(--c-text);
-      background: #07121C;
-      border-bottom: 1px solid rgba(230, 234, 242, .06);
-      letter-spacing: .01em;
+      padding: 16px;
     }
+    .tiny-note{ font-size: 11px; }
+  }
+  .mobile-title{ display: none; }
+  .mobile-subtitle{ display: none; }
+  @media (max-width: 960px){
+    .mobile-title{ display: block !important; }
+    .mobile-subtitle{ display: block !important; }
+    .form-card > div:first-child{ display: none !important; } /* hide "Reservá tu lugar" + "EN VIVO" header row */
+  }
 
-    .hero {
-      position: relative;
-      width: 100%;
-      min-height: 92vh;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-      border-top: 0;
-      padding: 0;
-      isolation: isolate;
-      background:
-        linear-gradient(
-          90deg,
-          rgba(3,7,13,0.92) 0%,
-          rgba(3,7,13,0.78) 30%,
-          rgba(3,7,13,0.45) 52%,
-          rgba(3,7,13,0.16) 72%,
-          rgba(3,7,13,0.00) 88%
-        ),
-        url('./assets/hero/heroluke.webp');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: 78% center;
-    }
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(2, 6, 12, 0) 0%, rgba(2, 6, 12, .04) 100%);
-      pointer-events: none;
-      z-index: 1;
-    }
-    .hero-wrap {
-      position: relative;
-      width: 100%;
-      min-height: 92vh;
-      display: flex;
-      align-items: center;
-      z-index: 2;
-    }
-    .hero-copy {
-      position: relative;
-      z-index: 2;
-      max-width: 600px;
-      padding-left: 56px;
-      padding-right: 24px;
-      padding-top: 48px;
-      padding-bottom: 48px;
-      background: none;
-    }
-    .hero-copy::before { content: none; }
+  /* ========= Section titles ========= */
+  .sec-eyebrow{
+    display: inline-block; color: var(--green); font-size: 11px; letter-spacing: .28em;
+    text-transform: uppercase; font-weight: 600; margin-bottom: 12px;
+  }
+  .sec-title{
+    font-family: "Sora"; font-weight: 700;
+    font-size: clamp(26px, 3.4vw, 42px); line-height: 1.1; letter-spacing: -.01em;
+    margin: 0 0 16px;
+  }
+  .sec-title .accent{ color: var(--green); }
+  .sec-lead{ color: var(--muted-2); font-size: clamp(15px, 1vw, 17px); max-width: 720px; }
 
-    .logo-box { position: relative; z-index: 1; width: min(280px, 100%); margin-bottom: 18px; }
-    .logo-box img { width: 100%; height: auto; display: block; }
+  .for-you{ background: var(--bg); border-bottom: 1px solid var(--line); position: relative; }
+  .for-you-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 36px; }
+  @media (max-width: 900px){ .for-you-grid{ grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px){ .for-you-grid{ grid-template-columns: 1fr; } }
 
-    .hero h1 {
-      position: relative;
-      z-index: 1;
-      font-size: clamp(2rem, 3.2vw, 3.4rem);
-      max-width: 16ch;
-      margin-bottom: 14px;
-      letter-spacing: -.02em;
-      color: #f2f6ff;
-    }
-    .hero p { position: relative; z-index: 1; max-width: 50ch; margin-bottom: 20px; }
-    .hero strong { color: #ffffff; }
-    .hero-note { position: relative; z-index: 1; color: var(--c-text-secondary); max-width: 42ch; margin-top: 14px; margin-bottom: 0; font-size: .95rem; line-height: 1.45; }
+  .for-card{
+    position: relative; padding: 22px 20px; background: var(--bg-2);
+    border: 1px solid var(--line-2); border-radius: 6px;
+    transition: border-color .15s, transform .2s;
+  }
+  .for-card:hover{ border-color: var(--green); transform: translateY(-2px); }
+  .for-card .num{ font-family: "JetBrains Mono"; font-size: 11px; color: var(--green); letter-spacing: .1em; margin-bottom: 12px; }
+  .for-card .mark{
+    width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--green); color: var(--green);
+    display: inline-flex; align-items: center; justify-content: center; margin-bottom: 12px;
+    background: var(--green-soft);
+  }
+  .for-card p{ margin: 0; font-size: 15px; line-height: 1.5; color: #cbd3e0; }
 
-    .date-block {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin: 18px 0 18px;
-      color: var(--c-text);
-    }
-    .date-icon {
-      width: 38px;
-      height: 38px;
-      border: 1px solid rgba(24, 221, 166, .4);
-      border-radius: 10px;
-      display: grid;
-      place-items: center;
-      color: var(--c-accent);
-      font-size: 1rem;
-      background: rgba(24, 221, 166, .08);
-      flex-shrink: 0;
-    }
-    .date-content { line-height: 1.2; }
-    .date-content strong { display: block; font-size: 1.1rem; letter-spacing: .01em; }
-    .date-content span { color: var(--c-text-secondary); font-size: .96rem; }
+  .center-cta{ text-align: center; margin-top: 36px; }
 
-    .form-box form { position: relative; z-index: 1; display: grid; gap: 12px; margin-top: 6px; max-width: 470px; }
-    input, select, button {
-      width: 100%;
-      border-radius: 12px;
-      border: 1px solid rgba(230, 234, 242, .16);
-      background: rgba(3, 7, 13, .9);
-      color: var(--c-text);
-      padding: 13px 14px;
-      font: inherit;
-    }
-    input::placeholder { color: #aab4c3; }
-    input:focus, select:focus {
-      outline: none;
-      border-color: rgba(24, 221, 166, .8);
-      box-shadow: 0 0 0 3px rgba(24, 221, 166, .16);
-    }
-    button,
-    .btn-primary {
-      font-family: "Inter", sans-serif;
-      background: var(--c-accent);
-      color: #031018;
-      border: 0;
-      font-weight: 800;
-      cursor: pointer;
-      box-shadow: none;
-      transition: background .2s ease;
-    }
-    button:hover,
-    .btn-primary:hover { background: var(--c-accent-hover); }
-    .btn-secondary {
-      background: transparent;
-      border: 1px solid var(--c-accent);
-      color: var(--c-text);
-    }
+  .details{ background: linear-gradient(180deg, var(--bg), #080c16); border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
+  .details-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 42px; }
+  @media (max-width: 900px){ .details-grid{ grid-template-columns: 1fr; } }
+  .detail-card{ padding: 30px 24px; border: 1px solid var(--line-2); background: var(--bg-2); border-radius: 8px; position: relative; }
+  .detail-card .ico{
+    width: 44px; height: 44px; border-radius: 10px;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--green-soft); color: var(--green); margin-bottom: 16px;
+    border: 1px solid rgba(0,224,164,.25);
+  }
+  .detail-card h3{ font-family: "Sora"; font-weight: 700; font-size: 20px; margin: 0 0 8px; letter-spacing: .02em; }
+  .detail-card h3 .tick{ color: var(--green); }
+  .detail-card p{ color: var(--muted-2); font-size: 15px; line-height: 1.6; margin: 0; }
 
-    .hero-media { display: none; }
-    .kpi { color: var(--c-accent); font-size: 1.9rem; font-weight: 800; margin-bottom: 6px; }
+  .compare{ background: var(--bg); border-bottom: 1px solid var(--line); }
+  .compare-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 42px; }
+  @media (max-width: 800px){ .compare-grid{ grid-template-columns: 1fr; } }
+  .compare-col{ padding: 28px 24px; border: 1px solid var(--line-2); border-radius: 8px; background: var(--bg-2); }
+  .compare-col.good{ border-color: rgba(0,224,164,.35); background: linear-gradient(180deg, rgba(0,224,164,.05), var(--bg-2) 60%); }
+  .compare-col .head{ font-family: "Sora"; font-weight: 700; font-size: 18px; margin-bottom: 18px; display:flex; align-items:center; gap: 10px; }
+  .compare-col.good .head{ color: var(--green); }
+  .compare-col.bad .head{ color: #9aa3b3; }
+  .compare-col ul{ list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+  .compare-col li{ display: flex; gap: 12px; align-items: flex-start; font-size: 15px; line-height: 1.5; }
+  .compare-col .i{
+    flex: 0 0 20px; width: 20px; height: 20px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center; margin-top: 2px;
+    font-size: 12px; font-weight: 700;
+  }
+  .compare-col.good .i{ background: var(--green); color: #06221a; }
+  .compare-col.bad .i{ background: #2a1a1a; color: #ef6868; border:1px solid #402121; }
+  .compare-col.bad li{ color: #98a0ad; }
 
-    ul { margin: 0; padding-left: 20px; }
-    li { margin: .42rem 0; color: var(--c-text-secondary); }
+  .about{ background: linear-gradient(180deg, #060a14, var(--bg)); border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
+  .about-grid{ display: grid; grid-template-columns: .85fr 1.15fr; gap: 48px; align-items: center; }
+  @media (max-width: 900px){ .about-grid{ grid-template-columns: 1fr; gap: 28px; } }
+  .about-portrait{
+    position: relative; aspect-ratio: 4/5; border-radius: 8px;
+    background:
+      repeating-linear-gradient(45deg, rgba(255,255,255,.025) 0 2px, transparent 2px 16px),
+      linear-gradient(160deg, #162033, #0b121f);
+    border: 1px solid var(--line-2);
+    display: flex; align-items: flex-end; padding: 20px; overflow: hidden;
+  }
+  .about-portrait::after{
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(300px 200px at 30% 30%, rgba(0,224,164,.18), transparent 70%);
+    pointer-events: none;
+  }
+  .portrait-label{
+    position: relative; z-index: 2;
+    font-family: "JetBrains Mono"; font-size: 11px; letter-spacing: .18em;
+    color: var(--muted-2); text-transform: uppercase;
+  }
+  .portrait-label b{ color: var(--green); font-weight: 500; }
 
-    .offer-wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: 20px; }
-    .strike { color: #8d98a8; text-decoration: line-through; }
-    .price { color: var(--c-accent); font-size: 2.3rem; font-weight: 900; margin: .3rem 0 0; }
+  .about p{ color: #b7c0cf; font-size: 16px; line-height: 1.7; margin: 0 0 14px; }
+  .about p b{ color: var(--text); font-weight: 600; }
+  .stat-row{
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 22px 0;
+    border-top: 1px solid var(--line-2); border-bottom: 1px solid var(--line-2);
+    padding: 20px 0;
+  }
+  .stat .n{ font-family: "Sora"; font-weight: 700; font-size: clamp(22px, 2.4vw, 30px); color: var(--green); letter-spacing: -.01em;}
+  .stat .l{ font-size: 11px; color: var(--muted-2); letter-spacing: .06em; text-transform: uppercase; }
 
-    details { border: 1px solid var(--c-line); border-radius: 12px; background: rgba(255,255,255,0.02); padding: 14px; }
-    summary { cursor: pointer; font-weight: 700; }
+  .next{ background: var(--bg); border-bottom: 1px solid var(--line); position: relative; }
+  .mision-card{
+    margin-top: 36px; padding: clamp(24px, 5vw, 44px); border-radius: 10px;
+    background: linear-gradient(180deg, rgba(0,224,164,.06), rgba(10,15,28,0) 60%), var(--bg-2);
+    border: 1px solid var(--line-2); position: relative; overflow: hidden;
+  }
+  .mision-card::before{
+    content: ""; position: absolute; right: -120px; top: -120px; width: 380px; height: 380px;
+    background: radial-gradient(closest-side, rgba(0,224,164,.18), transparent);
+    pointer-events: none;
+  }
+  .mision-tag{
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: "JetBrains Mono"; font-size: 11px; color: var(--green); letter-spacing: .2em;
+    text-transform: uppercase; padding: 6px 10px; border: 1px dashed rgba(0,224,164,.4); border-radius: 4px;
+  }
+  .mision-title{ font-family: "Sora"; font-weight: 700; font-size: clamp(20px, 2.2vw, 28px); margin: 14px 0; }
+  .mision-list{ list-style: none; margin: 18px 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 20px; }
+  @media (max-width: 700px){ .mision-list{ grid-template-columns: 1fr; } }
+  .mision-list li{ display: flex; gap: 12px; align-items: flex-start; font-size: 15px; color: #c7cfdb; }
+  .mision-list .chk{
+    flex: 0 0 22px; width: 22px; height: 22px; border-radius: 5px;
+    background: var(--green); color: #06221a; font-weight: 800;
+    display: inline-flex; align-items: center; justify-content: center; font-size: 12px;
+  }
 
-    .final-cta {
-      position: sticky;
-      bottom: 14px;
-      z-index: 12;
-      margin: 0 auto;
-      width: min(460px, 92vw);
-      border: 1px solid rgba(230, 234, 242, .12);
-      border-radius: 999px;
-      background: rgba(3, 7, 13, .9);
-      display: flex;
-      gap: 8px;
-      padding: 8px;
-    }
-    .final-cta a {
-      text-decoration: none;
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-weight: 700;
-      text-align: center;
-      flex: 1;
-    }
-    .final-cta .ghost {
-      color: var(--c-text);
-      border: 1px solid var(--c-accent);
-      background: transparent;
-    }
-    .final-cta .solid { background: var(--c-accent); color: #031018; }
+  .final{
+    background: radial-gradient(800px 400px at 50% 50%, rgba(0,224,164,.08), transparent 60%), var(--bg);
+    text-align: center; border-bottom: 1px solid var(--line);
+  }
+  .final .sec-title{ max-width: 900px; margin-left: auto; margin-right: auto; }
+  .final .btn{ max-width: 460px; margin: 24px auto 0; }
 
-    .section-light {
-      background: #F5F7FA !important;
-      color: #0A0F1C;
-    }
-    .section-light::before { display: none; }
-    .section-light h2,
-    .section-light h3,
-    .section-light p,
-    .section-light li,
-    .section-light .eyebrow,
-    .section-light .kpi { color: #0A0F1C; }
-    .section-light .highlight,
-    .section-light .kpi { color: var(--c-accent); }
-    .section-light .card {
-      background: rgba(10, 15, 28, 0.03);
-      border: 1px solid rgba(10, 15, 28, 0.1);
-    }
+  footer{
+    padding: 28px 22px; color: var(--muted);
+    display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap;
+    font-size: 11px; letter-spacing: .06em;
+    border-top: 1px solid var(--line);
+  }
+  footer .left{ opacity: .8; }
+  footer .brand{ color: var(--green); letter-spacing: .18em; font-weight: 600; }
 
-    .footer { padding: 44px 0 86px; font-size: .9rem; color: #8d99aa; text-align: center; }
-
-    @media (max-width: 960px) {
-      .hero { min-height: auto; }
-      .g3, .g2, .offer-wrap { grid-template-columns: 1fr; }
-      .section { padding: 68px 0; }
-    }
-    @media (max-width: 768px) {
-      .hero {
-        min-height: auto;
-        padding: 88px 0 56px;
-        background-position: 74% center;
-        background-size: cover;
-      }
-      .hero-wrap { min-height: auto; }
-      .hero-copy {
-        max-width: 100%;
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-top: 0;
-        padding-bottom: 0;
-      }
-    }
-  </style>
+  .ticker{
+    display:flex; gap: 16px; align-items:center; color: var(--muted-2); font-family: "JetBrains Mono"; font-size: 12px;
+    flex-wrap: wrap;
+  }
+  .ticker .up{ color: var(--green); }
+</style>
 </head>
 <body>
-  <div class="hero-topbar">Ruta Inversor: El comienzo de tu educación financiera</div>
-  <section class="section hero" id="top">
-    <div class="container hero-wrap">
-      <div class="hero-copy form-box">
-        <div class="logo-box">
-          <img src="assets/logo-de-cero-a-inversor.svg" alt="De Cero a Inversor" />
-        </div>
-        <h1>Conocé el método para <strong>proteger y hacer crecer tu dinero</strong> en 2026.</h1>
-        <p>Entrenamiento práctico para invertir con criterio, reducir errores y construir una estrategia financiera sólida en el mercado argentino.</p>
-        <div class="date-block" aria-label="Fecha del evento">
-          <div class="date-icon">📅</div>
-          <div class="date-content">
-            <strong>22 DE FEBRERO</strong>
-            <span>a las 20:05 PM Argentina</span>
+
+<!-- ============ Reusable Logo SVG definitions ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="logo-dci" viewBox="0 0 900 220">
+      <!-- "DE CERO A" text in green (no pill, matches manual) -->
+      <g transform="translate(4 0)">
+        <text x="0" y="36"
+              font-family="Sora, Arial Black, sans-serif" font-weight="700"
+              font-size="34" letter-spacing="1" fill="#E6EAF2">DE CERO</text>
+      </g>
+
+      <!-- Green arrow up-right. Composed of:
+           1) A thick diagonal bar (rotated rectangle)
+           2) A horizontal bar at the top of the tip
+           3) A vertical bar at the right of the tip -->
+      <g fill="#00E0A4">
+        <!-- Diagonal shaft: rectangle from (230,70) to (302,-2), width 14 -->
+        <polygon points="228,80 238,90 312,16 302,6"/>
+        <!-- Horizontal top bar of arrowhead -->
+        <rect x="274" y="6" width="38" height="14"/>
+        <!-- Vertical right bar of arrowhead -->
+        <rect x="298" y="6" width="14" height="38"/>
+      </g>
+
+      <!-- "INVERSOR" wordmark, clean, no overlap -->
+      <g transform="translate(0 60)">
+        <text x="0" y="130"
+              font-family="Sora, Arial Black, sans-serif"
+              font-weight="900" font-size="140" letter-spacing="-4"
+              textLength="880" lengthAdjust="spacingAndGlyphs"
+              fill="#E6EAF2">INVERSOR</text>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <a href="#" aria-label="De Cero a Inversor" style="display:inline-flex;">
+    <img class="brand-logo nav-size" src="assets/logo-dci-final-transparent.png" alt="De Cero a Inversor" />
+  </a>
+  <div class="right">
+    <span class="dot"></span>
+    <span>EVENTO ONLINE · 2026</span>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="grid-bg"></div>
+  <div class="chart-wrap" aria-hidden="true">
+    <svg viewBox="0 0 1440 500" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="gArea" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stop-color="#00E0A4" stop-opacity=".25"/>
+          <stop offset="100%" stop-color="#00E0A4" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <path d="M0 380 L80 360 L160 370 L240 330 L320 345 L400 300 L480 320 L560 270 L640 280 L720 220 L800 240 L880 190 L960 210 L1040 150 L1120 170 L1200 110 L1280 130 L1360 70 L1440 90 L1440 500 L0 500 Z" fill="url(#gArea)"/>
+      <path d="M0 380 L80 360 L160 370 L240 330 L320 345 L400 300 L480 320 L560 270 L640 280 L720 220 L800 240 L880 190 L960 210 L1040 150 L1120 170 L1200 110 L1280 130 L1360 70 L1440 90" fill="none" stroke="#00E0A4" stroke-width="1.3" stroke-opacity=".9"/>
+      <g fill="#00E0A4">
+        <circle cx="720" cy="220" r="3"/><circle cx="1040" cy="150" r="3"/><circle cx="1360" cy="70" r="4"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-logo-wrap" style="margin-bottom: 14px;">
+        <img class="brand-logo hero-size" src="assets/logo-dci-final-transparent.png" alt="De Cero a Inversor" />
+      </div>
+
+      <!-- MOBILE promise (compact so form fits above fold) -->
+      <p class="hero-promise">
+        Conocé el Método para <b>Proteger y Hacer Crecer Tu Dinero</b> este 2026.
+      </p>
+
+      <!-- MOBILE-ONLY photo block (hidden on desktop, where photo is the hero BG) -->
+      <div class="mobile-photo" aria-hidden="true">
+        <img class="mobile-logo" src="assets/logo-dci-final-transparent.png" alt="De Cero a Inversor" />
+      </div>
+
+      <!-- MOBILE-ONLY title below photo -->
+      <div class="mobile-title">
+        Conocé el Método para <b>Proteger y Hacer Crecer Tu Dinero</b> Este 2026 Invirtiendo en el Mercado Argentino.
+      </div>
+      <div class="mobile-subtitle">
+        Sin improvisar ni poner en riesgo tus ahorros
+      </div>
+
+      <!-- DESKTOP full copy -->
+      <div class="full-copy">
+
+        <h1 class="h-title">
+          Conocé el Método para <strong>Proteger y Hacer&nbsp;Crecer Tu Dinero</strong> este 2026 invirtiendo en el mercado argentino.
+        </h1>
+        <p class="sub"><b>Sin improvisar</b> ni poner en riesgo tus ahorros. Una clase online, completamente virtual, pensada para que arranques con un método claro.</p>
+
+        <div class="date-row">
+          <div>
+            <div class="small mono">FECHA</div>
+            <div class="big">22 · FEB</div>
+          </div>
+          <div class="sep"></div>
+          <div>
+            <div class="small mono">HORA</div>
+            <div class="big">20:05 <span style="font-size:13px; color: var(--muted-2); font-family: Inter; font-weight: 500;">ARG</span></div>
           </div>
         </div>
-        <form>
-          <input type="email" placeholder="* Escribí un correo que sí leas" required />
-          <button type="submit">SÍ, QUIERO ACCESO GRATIS</button>
-        </form>
-        <p class="hero-note">100% online y sin costo. Comenzá el 2026 protegiendo tu dinero y tus ahorros.</p>
-      </div>
 
-      <div class="hero-media" aria-hidden="true"></div>
-    </div>
-  </section>
 
-  <section class="section section-intro" id="autoridad">
-    <div class="container">
-      <span class="eyebrow">Prueba / Autoridad</span>
-      <h2>Números que <span class="highlight">respaldan</span> el método.</h2>
-      <div class="grid g3" style="margin-top:18px;">
-        <article class="card"><div class="kpi">+18.400</div><p>Alumnos registrados en entrenamientos de inversión.</p></article>
-        <article class="card"><div class="kpi">92%</div><p>De satisfacción en experiencia y claridad del sistema.</p></article>
-        <article class="card"><div class="kpi">+7 años</div><p>Aplicando estrategias sobre mercado financiero real.</p></article>
       </div>
     </div>
-  </section>
 
-  <section class="section section-tight" id="problema">
-    <div class="container">
-      <span class="eyebrow">Problema</span>
-      <h2>Si invertís sin <span class="highlight">sistema</span>, operás a ciegas.</h2>
-      <div class="grid g2" style="margin-top:18px;">
-        <article class="card"><h3>Información aislada</h3><p>Consumís contenido suelto sin un proceso de decisión replicable.</p></article>
-        <article class="card"><h3>Errores por impulso</h3><p>Entradas tardías, salidas anticipadas y exposición sin gestión de riesgo.</p></article>
+    <!-- FORM -->
+    <aside class="form-card" id="form">
+      <div style="display:flex; justify-content: space-between; align-items:center; margin-bottom: 6px;">
+        <h3 class="form-title">Reservá tu lugar gratis</h3>
+
       </div>
-      <!-- PLACEHOLDER FONDO SECCION -->
-    </div>
-  </section>
+      <p class="form-sub">22 · FEB · 20:05 ARG</p>
+      <style>
+        .form-error{
+          margin-top: 10px; padding: 10px 12px; background: rgba(239,68,68,.1);
+          border: 1px solid rgba(239,68,68,.35); color: #fca5a5;
+          border-radius: 4px; font-size: 12px;
+        }
+        #lead-submit[disabled]{ pointer-events: none; }
+      </style>
 
-  <section class="section section-wide" id="solucion">
-    <div class="container">
-      <span class="eyebrow">Solución</span>
-      <h2>Un sistema guiado para <span class="highlight">analizar</span>, ejecutar y mejorar.</h2>
-      <div class="card" style="margin-top:18px;">
-        <p>De Cero a Inversor te da un marco operativo paso a paso: lectura de contexto, selección de activos, timing, gestión del capital y seguimiento. Todo en una secuencia aplicable para que tomes decisiones con criterio técnico.</p>
+      <form id="lead-form" novalidate>
+        <div class="field">
+          <label>Correo electrónico</label>
+          <input id="lead-email" type="email" name="email" placeholder="nombre@correo.com" required autocomplete="email" />
+          <div class="hint">*Escribí un correo que sí leas.</div>
+        </div>
+
+        <input type="hidden" name="utm_source" />
+        <input type="hidden" name="utm_campaign" />
+        <input type="hidden" name="utm_medium" />
+        <input type="hidden" name="utm_term" />
+        <input type="hidden" name="utm_content" />
+        <input type="hidden" name="utm_url" />
+        <input type="hidden" name="referrer" />
+        <input type="hidden" name="fbclid" />
+        <input type="hidden" name="gclid" />
+
+        <button class="btn" id="lead-submit" type="submit">
+          <span class="btn-label">SÍ, QUIERO ACCESO GRATIS</span>
+          <svg class="arrow" viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#06221a" stroke-width="2.4" stroke-linecap="square"/></svg>
+        </button>
+        <div class="form-error" id="lead-error" style="display:none;"></div>
+        <div class="tiny-note"><b>100% online</b> · Sin costo</div>
+      </form>
+    </aside>
+
+    <!-- Date row shown under form on mobile only -->
+    <div class="date-row" style="margin-top: 4px; display: none;" id="mobile-date-row">
+      <div>
+        <div class="small mono">FECHA</div>
+        <div class="big">22 · FEB</div>
       </div>
-      <!-- PLACEHOLDER IMAGEN APOYO -->
+      <div class="sep"></div>
+      <div>
+        <div class="small mono">HORA</div>
+        <div class="big">20:05 <span style="font-size:12px; color: var(--muted-2); font-family: Inter; font-weight: 500;">ARG</span></div>
+      </div>
     </div>
-  </section>
+  </div>
+</header>
 
-  <section class="section section-tight" id="beneficios">
-    <div class="container">
-      <span class="eyebrow">Beneficios</span>
-      <h2>Qué conseguís al aplicar la <span class="highlight">metodología</span>.</h2>
-      <div class="card" style="margin-top:18px;">
+<style>
+  @media (max-width: 960px){
+    #mobile-date-row{ display: flex !important; }
+  }
+</style>
+
+<!-- ============ ESTO ES PARA VOS ============ -->
+<section class="section for-you">
+  <div class="grid-bg" style="opacity:.4;"></div>
+  <div class="wrap" style="position: relative;">
+    <div style="text-align:center;">
+
+      <h2 class="sec-title">Esto es para <span class="accent">vos</span> si...</h2>
+
+    </div>
+
+    <div class="for-you-grid">
+      <div class="for-card"><div class="mark">✓</div><p>Tenés <b>dólares ahorrados</b> y no sabés qué hacer con ellos.</p></div>
+      <div class="for-card"><div class="mark">✓</div><p>Estás cansado de que tu dinero esté <b>quieto</b> perdiendo oportunidades.</p></div>
+      <div class="for-card"><div class="mark">✓</div><p>Ya probaste invertir y te fue mal porque lo hiciste <b>solo, sin guía</b>.</p></div>
+      <div class="for-card"><div class="mark">✓</div><p>Tenés miedo de <b>perder los ahorros</b> que te costó años juntar.</p></div>
+      <div class="for-card"><div class="mark">✓</div><p>Querés una <b>jubilación tranquila</b> sin depender del Estado.</p></div>
+      <div class="for-card"><div class="mark">✓</div><p>No entendés nada de inversiones pero <b>estás listo para aprender</b>.</p></div>
+    </div>
+
+    <div class="center-cta">
+      <a href="#form" class="btn inline">
+        QUIERO ACCESO GRATIS
+        <svg class="arrow" viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#06221a" stroke-width="2.4" stroke-linecap="square"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DETALLES ============ -->
+<section class="section details">
+  <div class="wrap">
+    <div style="text-align:center;">
+
+      <h2 class="sec-title">El comienzo de tu <span class="accent">educación financiera</span></h2>
+
+    </div>
+
+    <div class="details-grid">
+      <div class="detail-card">
+        <div class="ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3c3 3.5 3 14 0 18M12 3c-3 3.5-3 14 0 18" stroke="currentColor" stroke-width="1.6"/></svg>
+        </div>
+        <h3><span class="tick">/</span> Dónde</h3>
+        <p>Clase online, completamente virtual. Podés acceder desde cualquier parte del mundo — solo necesitás conexión a internet.</p>
+      </div>
+      <div class="detail-card">
+        <div class="ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"/></svg>
+        </div>
+        <h3><span class="tick">/</span> Cuándo</h3>
+        <p><b style="color:var(--text);">22 de Febrero</b>, aproximadamente 2&nbsp;horas de duración. Arranca a las <b style="color:var(--green);">20:05&nbsp;p.m.</b> (Hora de Argentina).</p>
+      </div>
+      <div class="detail-card">
+        <div class="ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"/></svg>
+        </div>
+        <h3><span class="tick">/</span> Qué</h3>
+        <p>Clase <b>100% gratuita y virtual</b> diseñada para que conozcas el Método para Proteger y Hacer Crecer Tu Dinero este 2026 invirtiendo en el mercado argentino.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPARE ============ -->
+<section class="section compare">
+  <div class="wrap">
+    <div style="text-align:center;">
+
+      <h2 class="sec-title">Antes y <span class="accent">después</span> de la clase</h2>
+    </div>
+
+    <div class="compare-grid">
+      <div class="compare-col good">
+        <div class="head">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="#00E0A4" stroke-width="2.4" stroke-linecap="square"/></svg>
+          Después de esta clase gratuita
+        </div>
         <ul>
-          <li>Estructura clara para decidir sin depender de “tips”.</li>
-          <li>Gestión de riesgo para proteger capital en escenarios volátiles.</li>
-          <li>Plantillas prácticas para seguimiento de operaciones.</li>
-          <li>Criterios objetivos para entrar, mantener o salir de posiciones.</li>
+          <li><span class="i">✓</span><div>Vas a entender <b>FINALMENTE</b> qué hacer con tus ahorros — no más confusión.</div></li>
+          <li><span class="i">✓</span><div>Vas a tener un <b>método claro paso a paso</b> para invertir sin adivinar.</div></li>
+          <li><span class="i">✓</span><div>Vas a saber identificar qué inversiones <b>son para vos</b> y cuáles no.</div></li>
+          <li><span class="i">✓</span><div>Vas a dejar de tener miedo de <b>"meter la pata"</b> y perder todo.</div></li>
+          <li><span class="i">✓</span><div>Vas a sentir <b>TRANQUILIDAD</b> sabiendo que tenés un plan concreto.</div></li>
+        </ul>
+      </div>
+
+      <div class="compare-col bad">
+        <div class="head">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="#ef6868" stroke-width="2.4" stroke-linecap="square"/></svg>
+          Sin esta clase online
+        </div>
+        <ul>
+          <li><span class="i">✕</span><div>Seguir con tu dinero o ahorros quieto <b>perdiendo oportunidades</b> mes a mes.</div></li>
+          <li><span class="i">✕</span><div>Viendo cómo otros sí están creciendo mientras vos <b>postergás</b>.</div></li>
+          <li><span class="i">✕</span><div>Llegando a los 60–70 años sin haber construido una <b>tranquilidad económica</b>.</div></li>
+          <li><span class="i">✕</span><div>Dependiendo de la <b>jubilación del Estado</b> que no te alcanza.</div></li>
         </ul>
       </div>
     </div>
-  </section>
 
-  <section class="section section-wide" id="contenido">
-    <div class="container">
-      <span class="eyebrow">Contenido del curso</span>
-      <h2>Módulos <span class="highlight">incluidos</span> en la ruta.</h2>
-      <div class="grid g3" style="margin-top:18px;">
-        <article class="card"><h3>Módulo 1</h3><p>Fundamentos del mercado y mentalidad inversora.</p></article>
-        <article class="card"><h3>Módulo 2</h3><p>Lectura de contexto macro y selección de activos.</p></article>
-        <article class="card"><h3>Módulo 3</h3><p>Estrategias operativas y gestión del riesgo.</p></article>
-        <article class="card"><h3>Módulo 4</h3><p>Construcción de cartera y rebalanceo inteligente.</p></article>
-        <article class="card"><h3>Módulo 5</h3><p>Seguimiento, métricas y mejora continua.</p></article>
-        <article class="card"><h3>Módulo 6</h3><p>Plan de acción de 30 días para ejecución real.</p></article>
-      </div>
-      <!-- PLACEHOLDER MOCKUP -->
+    <div class="center-cta">
+      <a href="#form" class="btn inline">
+        ¡SÍ! ESTA CLASE ES PARA MÍ
+        <svg class="arrow" viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#06221a" stroke-width="2.4" stroke-linecap="square"/></svg>
+      </a>
     </div>
-  </section>
-
-  <section class="section section-tight" id="testimonios">
-    <div class="container">
-      <span class="eyebrow">Testimonios</span>
-      <h2>Experiencias de <span class="highlight">alumnos</span>.</h2>
-      <div class="grid g3" style="margin-top:18px;">
-        <article class="card"><p>“Ahora sé exactamente por qué entro y por qué salgo. Dejé de improvisar.”</p><small>— Mariana G.</small></article>
-        <article class="card"><p>“Pasé de mirar gráficos sin entender a tener un plan semanal ejecutable.”</p><small>— Federico R.</small></article>
-        <article class="card"><p>“La diferencia fue la gestión del riesgo: menos ansiedad y mejores decisiones.”</p><small>— Lucía P.</small></article>
-      </div>
-      <!-- PLACEHOLDER FOTO PERSONA -->
-    </div>
-  </section>
-
-  <section class="section section-light section-wide" id="resultados">
-    <div class="container">
-      <span class="eyebrow">Resultados</span>
-      <h2>Evolución <span class="highlight">medible</span> en tus decisiones financieras.</h2>
-      <div class="grid g2" style="margin-top:18px;">
-        <article class="card"><div class="kpi">3x</div><p>Más consistencia en ejecución tras 8 semanas.</p></article>
-        <article class="card"><div class="kpi">-47%</div><p>Reducción promedio de errores por impulso.</p></article>
-      </div>
-      <!-- PLACEHOLDER IMAGEN APOYO -->
-    </div>
-  </section>
-
-  <section class="section section-tight" id="garantia">
-    <div class="container">
-      <span class="eyebrow">Garantía</span>
-      <h2>Tu inversión está <span class="highlight">respaldada</span>.</h2>
-      <div class="card" style="margin-top:18px;">
-        <p>Tenés garantía de 7 días desde tu inscripción. Si el programa no es para vos, solicitás la devolución dentro del plazo y listo.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-wide" id="bonus">
-    <div class="container">
-      <span class="eyebrow">Bonus</span>
-      <h2>Extras para <span class="highlight">acelerar</span> tus resultados.</h2>
-      <div class="grid g3" style="margin-top:18px;">
-        <article class="card"><h3>Checklist operativo</h3><p>Control previo para cada entrada al mercado.</p></article>
-        <article class="card"><h3>Plantilla de cartera</h3><p>Documento listo para seguimiento semanal.</p></article>
-        <article class="card"><h3>Clase de actualización</h3><p>Sesión especial con escenario de mercado vigente.</p></article>
-      </div>
-      <!-- PLACEHOLDER IMAGEN APOYO -->
-    </div>
-  </section>
-
-  <section class="section section-tight" id="oferta">
-    <div class="container offer-wrap">
-      <div class="card">
-        <span class="eyebrow">Oferta</span>
-        <h2>Acceso <span class="highlight">completo</span> a De Cero a Inversor.</h2>
-        <p>Incluye todos los módulos, materiales de trabajo y soporte de implementación.</p>
-        <p><span class="strike">USD 397</span></p>
-        <div class="price">USD 147</div>
-        <p>Cupos limitados para esta cohorte.</p>
-        <button class="btn-primary">RESERVAR MI LUGAR</button>
-      </div>
-      <div class="card placeholder-block" style="min-height:260px;">MATERIAL VISUAL OFERTA</div>
-      <!-- PLACEHOLDER MOCKUP -->
-    </div>
-  </section>
-
-  <section class="section section-wide" id="cta-final">
-    <div class="container">
-      <span class="eyebrow">CTA final</span>
-      <h2>Tomá <span class="highlight">control</span> de tu forma de invertir desde hoy.</h2>
-      <p>Completá el registro y recibí acceso inmediato a la ruta.</p>
-      <button class="btn-primary">QUIERO EMPEZAR AHORA</button>
-    </div>
-  </section>
-
-  <section class="section section-tight" id="faq">
-    <div class="container">
-      <span class="eyebrow">FAQ</span>
-      <h2>Preguntas <span class="highlight">frecuentes</span>.</h2>
-      <div class="grid" style="margin-top:18px; gap:12px;">
-        <details><summary>¿Necesito experiencia previa?</summary><p>No. El programa inicia desde fundamentos y escala a ejecución práctica.</p></details>
-        <details><summary>¿Cuánto tiempo necesito por semana?</summary><p>Con 3 a 5 horas semanales podés completar e implementar el sistema.</p></details>
-        <details><summary>¿Es en vivo o grabado?</summary><p>Incluye clases base grabadas y sesiones de actualización.</p></details>
-        <details><summary>¿Cómo accedo al contenido?</summary><p>Recibís acceso por correo al confirmar tu registro.</p></details>
-      </div>
-    </div>
-  </section>
-
-  <div class="container footer">© 2026 De Cero a Inversor. Todos los derechos reservados.</div>
-
-  <div class="final-cta">
-    <a href="#top" class="ghost btn-secondary">Ver inicio</a>
-    <a href="#oferta" class="solid btn-primary">Inscribirme</a>
   </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="section about">
+  <div class="wrap about-grid">
+    <div class="about-portrait" aria-label="Foto de Ramiro Goncalves">
+      <svg viewBox="0 0 200 250" preserveAspectRatio="none" style="position:absolute; inset:0; width:100%; height:100%; opacity:.4;">
+        <path d="M0 200 L30 180 L60 190 L90 150 L120 165 L150 120 L180 135 L200 90" fill="none" stroke="#00E0A4" stroke-width="1.2"/>
+      </svg>
+      <div class="portrait-label">
+        <b>[ FOTO ]</b><br/>
+        Ramiro Goncalves — Lic. en Economía
+      </div>
+    </div>
+
+    <div>
+
+      <h2 class="sec-title">Por qué deberías <span class="accent">escucharme</span></h2>
+      <p><b>Soy Ramiro Goncalves, licenciado en economía, asesor y educador financiero.</b></p>
+      <p>Hace 10 años empecé como asesor financiero y veía siempre lo mismo: personas que ahorraron con esfuerzo pero no sabían qué hacer con su dinero. Que probaron invertir solas y perdieron. Que ahora tienen miedo.</p>
+      <p><b>El problema no era falta de plata. Era falta de educación financiera.</b></p>
+      <p>Por eso me recibí de Licenciado en Economía y fundé <b style="color: var(--green);">RG Inversiones</b>: para que cualquier argentino pueda aprender a invertir con tranquilidad.</p>
+
+      <div class="stat-row">
+        <div class="stat"><div class="n">$50M</div><div class="l">USD gestionados</div></div>
+        <div class="stat"><div class="n">+10.000</div><div class="l">clientes</div></div>
+        <div class="stat"><div class="n">+3.000</div><div class="l">alumnos</div></div>
+      </div>
+
+      <p><b>No te voy a prometer hacerte millonario en 30 días.</b> Te voy a mostrar el método real: estrategia conservadora, paso a paso, sin poner en riesgo tu capital.</p>
+      <p style="color: var(--muted-2);">Invertir bien no es complicado. Solo necesitás que alguien te lo explique sin vueltas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEXT STEP ============ -->
+<section class="section next">
+  <div class="wrap">
+    <div style="text-align:center;">
+
+      <h2 class="sec-title">Y si querés <span class="accent">dar el siguiente paso...</span></h2>
+      <p class="sec-lead" style="margin: 0 auto;">Al finalizar la clase gratuita, voy a abrir las inscripciones a <b style="color: var(--text);">Misión Inversor</b>: mi programa intensivo de 4 días donde te enseño paso a paso a invertir en el mercado argentino.</p>
+    </div>
+
+    <div class="mision-card">
+      <span class="mision-tag">◆ PROGRAMA · 4 DÍAS</span>
+      <div class="mision-title">Misión Inversor — Vas a tener:</div>
+      <ul class="mision-list">
+        <li><span class="chk">1</span><div><b>4 clases en vivo</b> conmigo y mi equipo.</div></li>
+        <li><span class="chk">2</span><div>Sesiones de <b>Q&amp;A</b> para resolver todas tus dudas.</div></li>
+        <li><span class="chk">3</span><div><b>Comunidad privada</b> de WhatsApp con soporte.</div></li>
+        <li><span class="chk">4</span><div>El <b>día 5 tenés tu cuenta abierta</b> y estás invirtiendo.</div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="section final">
+  <div class="wrap">
+
+    <h2 class="sec-title">Pero primero <span class="accent">participá</span> de la clase gratuita.<br/>Ahí vas a decidir si es para vos o no.</h2>
+    <a href="#form" class="btn">
+      QUIERO ACCESO A LA CLASE GRATIS
+      <svg class="arrow" viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#06221a" stroke-width="2.4" stroke-linecap="square"/></svg>
+    </a>
+    <div class="tiny-note" style="margin-top: 16px;">22 de Febrero · 20:05 ARG · <b>100% online y sin costo</b></div>
+  </div>
+</section>
+
+<footer>
+  <div class="left">© 2026 RG Inversiones · Todos los derechos reservados</div>
+  <div class="brand">DE 0 A INVERSOR / 2026</div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  // ====== CONFIG ======
+  var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw-a-3FOJ7sF99HdRRdzlfrjFjNxidAsPPa5yQ3IregycqZ48wpYpmYRZj8_MmmS_0m/exec';
+  var THANK_YOU_URL   = '/gracias';   // 👈 REEMPLAZAR por la URL real cuando esté lista
+  var MAX_RETRIES     = 3;
+  var RETRY_DELAYS    = [700, 1800, 3500]; // ms entre reintentos
+
+  // ====== 1. Capturar UTMs + trackers en los hidden inputs ======
+  // Soporta query string (?utm_x=...) Y hash (#utm_x=...) — el hash sirve
+  // para testear en previews donde no se puede modificar la query string.
+  var qs   = new URLSearchParams(location.search);
+  var hash = new URLSearchParams((location.hash || '').replace(/^#/, ''));
+  function getParam(k){ return qs.get(k) || hash.get(k) || ''; }
+  var trackKeys = ['utm_source','utm_campaign','utm_medium','utm_term','utm_content','fbclid','gclid'];
+  trackKeys.forEach(function(k){
+    var v = getParam(k);
+    // Persistir en sessionStorage así sobrevive a navegación interna
+    if(v) try{ sessionStorage.setItem('trk_'+k, v); }catch(e){}
+    if(!v) { try{ v = sessionStorage.getItem('trk_'+k) || ''; }catch(e){} }
+    document.querySelectorAll('input[name="'+k+'"]').forEach(function(el){ el.value = v; });
+  });
+  document.querySelectorAll('input[name="utm_url"]').forEach(function(el){ el.value = location.href; });
+  document.querySelectorAll('input[name="referrer"]').forEach(function(el){ el.value = document.referrer || ''; });
+
+  // ====== 2. Prefetch página de gracias para redirect instantáneo ======
+  try {
+    var pre = document.createElement('link');
+    pre.rel = 'prefetch'; pre.href = THANK_YOU_URL;
+    document.head.appendChild(pre);
+  } catch(e){}
+
+  // ====== 3. Reintento con backoff ======
+  function sleep(ms){ return new Promise(function(r){ setTimeout(r, ms); }); }
+
+  function sendOnce(payload){
+    return fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'cors',
+      headers: {'Content-Type':'text/plain;charset=utf-8'},
+      body: JSON.stringify(payload),
+      keepalive: true  // sobrevive si el usuario cierra la pestaña
+    }).then(function(res){
+      if(!res.ok) throw new Error('HTTP '+res.status);
+      return res.json();
+    }).then(function(json){
+      if(!json || !json.ok) throw new Error('Apps Script dijo no-ok');
+      return json;
+    });
+  }
+
+  function sendWithRetry(payload){
+    var attempt = 0;
+    function tryOnce(){
+      attempt++;
+      return sendOnce(payload).catch(function(err){
+        if(attempt >= MAX_RETRIES) throw err;
+        return sleep(RETRY_DELAYS[attempt-1] || 3000).then(tryOnce);
+      });
+    }
+    return tryOnce();
+  }
+
+  // ====== 4. Fallback: guardar en localStorage y disparar en próxima visita ======
+  function queueFallback(payload){
+    try {
+      var q = JSON.parse(localStorage.getItem('lead_queue') || '[]');
+      q.push(payload);
+      localStorage.setItem('lead_queue', JSON.stringify(q));
+    } catch(e){}
+  }
+
+  function flushQueue(){
+    var q; try { q = JSON.parse(localStorage.getItem('lead_queue') || '[]'); } catch(e){ return; }
+    if(!q.length) return;
+    localStorage.setItem('lead_queue', '[]');
+    q.forEach(function(p){
+      sendWithRetry(p).catch(function(){ queueFallback(p); });
+    });
+  }
+
+  // Al cargar, intentar vaciar cola pendiente
+  setTimeout(flushQueue, 1500);
+
+  // ====== 5. Beacon como último recurso si el usuario cierra la pestaña ======
+  function sendBeacon(payload){
+    if(!navigator.sendBeacon) return false;
+    try {
+      var blob = new Blob([JSON.stringify(payload)], {type:'text/plain;charset=utf-8'});
+      return navigator.sendBeacon(APPS_SCRIPT_URL, blob);
+    } catch(e){ return false; }
+  }
+
+  // ====== 6. Handler del formulario ======
+  function attachForm(form){
+    if(!form || form.__wired) return;
+    form.__wired = true;
+
+    form.addEventListener('submit', function(ev){
+      ev.preventDefault();
+
+      var emailEl = form.querySelector('input[type="email"]');
+      var btn     = form.querySelector('button[type="submit"]');
+      var label   = btn && btn.querySelector('.btn-label');
+      var errorEl = form.querySelector('.form-error');
+
+      var email = (emailEl && emailEl.value || '').trim();
+      if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+        if(emailEl){ emailEl.focus(); emailEl.style.borderColor = '#ef4444'; }
+        if(errorEl){ errorEl.textContent = 'Ingresá un correo válido.'; errorEl.style.display = 'block'; }
+        return;
+      }
+
+      // Construir payload con todos los campos
+      var payload = {};
+      form.querySelectorAll('input[name]').forEach(function(i){ payload[i.name] = i.value; });
+      payload.email = email;
+      payload.user_agent = navigator.userAgent;
+      payload.submitted_at = new Date().toISOString();
+
+      // UI: bloquear botón + feedback
+      if(btn){
+        btn.disabled = true;
+        btn.style.opacity = '.8';
+        btn.style.cursor = 'wait';
+      }
+      if(label) label.textContent = 'ENVIANDO...';
+      if(errorEl) errorEl.style.display = 'none';
+
+      // Envío principal con retry (3 intentos)
+      sendWithRetry(payload)
+        .then(function(){
+          // ✓ Confirmado: llegó al Sheet
+          if(label) label.textContent = '✓ RESERVADO';
+          if(btn) btn.style.background = '#0aa97e';
+          setTimeout(function(){ location.href = THANK_YOU_URL + location.search; }, 350);
+        })
+        .catch(function(err){
+          // Los 3 intentos fallaron → disparamos beacon como última bala
+          // (el beacon puede llegar aunque fetch falle por CORS/red inestable)
+          sendBeacon(payload);
+          // Y guardamos en localStorage por si el beacon tampoco llega
+          queueFallback(payload);
+          // Redirigimos igual para no romper el flujo del usuario
+          if(label) label.textContent = '✓ RESERVADO';
+          if(btn) btn.style.background = '#0aa97e';
+          setTimeout(function(){ location.href = THANK_YOU_URL + location.search; }, 350);
+        });
+    });
+  }
+
+  // Conectar cuando DOM esté listo
+  if(document.readyState !== 'loading') attachForm(document.getElementById('lead-form'));
+  else document.addEventListener('DOMContentLoaded', function(){ attachForm(document.getElementById('lead-form')); });
+
+  // ====== 7. CTAs que apuntan a #form: foco en email ======
+  document.querySelectorAll('a[href="#form"]').forEach(function(a){
+    a.addEventListener('click', function(){
+      setTimeout(function(){
+        var inp = document.getElementById('lead-email');
+        if(inp) inp.focus({preventScroll:false});
+      }, 400);
+    });
+  });
+})();
+</script>
 </body>
 </html>
+
