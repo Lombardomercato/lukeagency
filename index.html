@@ -4,12 +4,13 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>De 0 a Inversor · Registro</title>
+<link rel="icon" type="image/webp" href="assets/favicon/favicon-v.webp" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #0A0F1C;
+    --bg: #02060c;
     --bg-2: #0F1724;
     --line: #1b2637;
     --line-2: #24324a;
@@ -74,7 +75,7 @@
     position: relative; overflow: hidden;
     background:
       linear-gradient(180deg, rgba(10,15,28,.55) 0%, rgba(10,15,28,.35) 40%, rgba(10,15,28,.85) 100%),
-      url('assets/ramiro-hero.jpg') center right / cover no-repeat,
+      url('assets/hero/herp-nuevo.webp') center right / cover no-repeat,
       var(--bg);
     border-bottom: 1px solid var(--line);
     padding: 60px 0 80px;
@@ -157,7 +158,7 @@
     margin-bottom: 6px;
   }
   .field input{
-    width: 100%; background: #0A0F1C; border: 1px solid var(--line-2); color: var(--text);
+    width: 100%; background: var(--bg); border: 1px solid var(--line-2); color: var(--text);
     padding: 14px 14px; border-radius: 6px; font: inherit; font-size: 15px;
     transition: border-color .15s, box-shadow .15s;
   }
@@ -212,7 +213,7 @@
     width: 100%;
     margin-top: 0;
     aspect-ratio: 4/3;
-    background: url('assets/ramiro-hero.jpg') center 15% / cover no-repeat, #0A0F1C;
+    background: url('assets/hero/herp-nuevo.webp') center 15% / cover no-repeat, var(--bg);
     overflow: hidden;
   }
   .mobile-photo .mobile-logo{
@@ -348,7 +349,8 @@
   .about-portrait{
     position: relative; aspect-ratio: 4/5; border-radius: 8px;
     background:
-      repeating-linear-gradient(45deg, rgba(255,255,255,.025) 0 2px, transparent 2px 16px),
+      linear-gradient(180deg, rgba(6,10,20,.08), rgba(6,10,20,.68)),
+      url('assets/images/ramiro.webp') center 25% / cover no-repeat,
       linear-gradient(160deg, #162033, #0b121f);
     border: 1px solid var(--line-2);
     display: flex; align-items: flex-end; padding: 20px; overflow: hidden;
@@ -465,7 +467,7 @@
 <!-- ============ NAV ============ -->
 <nav class="nav">
   <a href="#" aria-label="De Cero a Inversor" style="display:inline-flex;">
-    <img class="brand-logo nav-size" src="assets/logo-dci-final-transparent.png" alt="De Cero a Inversor" />
+    <img class="brand-logo nav-size" src="assets/logo/logo-sin-texto.webp" alt="De Cero a Inversor" />
   </a>
   <div class="right">
     <span class="dot"></span>
@@ -495,7 +497,7 @@
   <div class="wrap hero-grid">
     <div>
       <div class="hero-logo-wrap" style="margin-bottom: 14px;">
-        <img class="brand-logo hero-size" src="assets/logo-dci-final-transparent.png" alt="De Cero a Inversor" />
+        <img class="brand-logo hero-size" src="assets/logo/logo-inversor.webp" alt="De Cero a Inversor" />
       </div>
 
       <!-- MOBILE promise (compact so form fits above fold) -->
@@ -505,7 +507,7 @@
 
       <!-- MOBILE-ONLY photo block (hidden on desktop, where photo is the hero BG) -->
       <div class="mobile-photo" aria-hidden="true">
-        <img class="mobile-logo" src="assets/logo-dci-final-transparent.png" alt="De Cero a Inversor" />
+        <img class="mobile-logo" src="assets/logo/logo-inversor.webp" alt="De Cero a Inversor" />
       </div>
 
       <!-- MOBILE-ONLY title below photo -->
