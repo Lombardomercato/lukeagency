@@ -429,7 +429,7 @@
   .ticker .up{ color: var(--green); }
 
 
-  /* ========= Sticky CTA (mobile conversion) ========= */
+  /* ========= Sticky CTA (scroll conversion, all devices) ========= */
   .sticky-cta{
     position: fixed;
     left: 0; right: 0; bottom: 0;
@@ -439,16 +439,28 @@
     border-top: 1px solid var(--line-2);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-    display: none;
+    opacity: 0;
+    transform: translateY(12px);
+    pointer-events: none;
+    transition: opacity .18s ease, transform .18s ease;
+    will-change: opacity, transform;
+  }
+  .sticky-cta.is-visible{
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
   }
   .sticky-cta .btn{
     margin: 0 auto;
     max-width: 560px;
     width: min(100%, 560px);
   }
+  body.sticky-visible{ padding-bottom: 94px; }
   @media (max-width: 960px){
-    .sticky-cta{ display: block; }
-    body{ padding-bottom: 94px; }
+    body.sticky-visible{ padding-bottom: 102px; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .sticky-cta{ transition: none; }
   }
 
 </style>
@@ -970,6 +982,44 @@
   // Conectar cuando DOM esté listo
   if(document.readyState !== 'loading') attachForm(document.getElementById('lead-form'));
   else document.addEventListener('DOMContentLoaded', function(){ attachForm(document.getElementById('lead-form')); });
+
+
+
+  // ====== 8. Sticky CTA: mostrar solo cuando el botón del hero sale de vista ======
+  (function setupStickyCTA(){
+    var sticky = document.querySelector('.sticky-cta');
+    var heroBtn = document.getElementById('lead-submit');
+    if(!sticky || !heroBtn) return;
+
+    function setVisible(show){
+      sticky.classList.toggle('is-visible', !!show);
+      document.body.classList.toggle('sticky-visible', !!show);
+    }
+
+    // Al cargar: evitar parpadeos
+    setVisible(false);
+
+    if('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(entries){
+        var e = entries && entries[0];
+        if(!e) return;
+        // Si el botón del hero está visible, ocultamos el fijo (sin duplicar CTA)
+        setVisible(!e.isIntersecting);
+      }, { threshold: 0.05 });
+      io.observe(heroBtn);
+      return;
+    }
+
+    // Fallback liviano sin observer
+    function onScroll(){
+      var r = heroBtn.getBoundingClientRect();
+      var inView = r.bottom > 0 && r.top < window.innerHeight;
+      setVisible(!inView);
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('resize', onScroll);
+    onScroll();
+  })();
 
   // ====== 7. CTAs que apuntan a #form: foco en email ======
   document.querySelectorAll('a[href="#form"]').forEach(function(a){
