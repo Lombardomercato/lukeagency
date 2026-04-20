@@ -1008,10 +1008,10 @@
     });
   });
 
-  // ====== 8. Floating CTA when hero primary CTA leaves viewport ======
-  var heroPrimaryCta = document.getElementById('hero-primary-cta');
+  // ====== 8. Floating CTA when HERO section leaves viewport ======
+  var heroSection = document.querySelector('header.hero');
   var floatingCtaBar = document.getElementById('floating-cta-bar');
-  if(heroPrimaryCta && floatingCtaBar && 'IntersectionObserver' in window){
+  if(heroSection && floatingCtaBar && 'IntersectionObserver' in window){
     var toggleFloatingCta = function(visible){
       if(visible){
         floatingCtaBar.classList.remove('is-visible');
@@ -1024,8 +1024,8 @@
     var io = new IntersectionObserver(function(entries){
       var entry = entries[0];
       toggleFloatingCta(entry.isIntersecting);
-    }, { threshold: 0.05 });
-    io.observe(heroPrimaryCta);
+    }, { threshold: 0.01 });
+    io.observe(heroSection);
   }
 })();
 </script>
