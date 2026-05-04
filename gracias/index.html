@@ -80,57 +80,38 @@
     }
 
     .progress {
-      margin: 30px 0 0;
-      padding: 0;
-      border: 0;
-      background: transparent;
+      margin: 28px 0 0;
+      padding: 16px 14px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.02);
       text-align: left;
     }
 
     .progress-label {
-      margin: 0 0 14px;
+      margin: 0 0 12px;
       color: #ffd1c6;
-      font-size: clamp(13px, 3.5vw, 15px);
-      font-weight: 730;
-      letter-spacing: 0.03em;
+      font-size: clamp(12px, 3.3vw, 14px);
+      font-weight: 690;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
-      text-align: center;
     }
 
     .bar {
       position: relative;
-      height: 44px;
+      height: 12px;
       border-radius: 999px;
-      background: #f2f2f2;
+      background: rgba(255, 255, 255, 0.08);
       overflow: hidden;
-      box-shadow: 0 0 22px rgba(255, 107, 74, 0.45);
     }
 
     .bar span {
       position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
+      display: block;
       width: 87%;
       height: 100%;
-      padding-right: 22px;
       background: linear-gradient(90deg, var(--coral-1), var(--coral-2));
       box-shadow: 0 0 12px var(--coral-glow);
-      border-radius: 999px;
-      color: #ffffff;
-      font-size: clamp(24px, 5vw, 37px);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-    }
-
-    .step {
-      margin: 28px 0 0;
-      font-size: clamp(34px, 7.2vw, 46px);
-      line-height: 1.02;
-      font-weight: 820;
-      letter-spacing: -0.02em;
-      text-transform: uppercase;
-      color: #ffffff;
     }
 
     .main-cta {
@@ -164,15 +145,11 @@
     }
 
     .note {
-      margin: 16px auto 0;
-      max-width: 31ch;
-      color: rgba(225, 236, 233, 0.82);
-      font-size: clamp(14px, 3.8vw, 17px);
-      line-height: 1.4;
-      font-weight: 520;
+      margin: 12px 0 0;
+      color: rgba(225, 236, 233, 0.75);
+      font-size: 12.5px;
+      line-height: 1.45;
     }
-
-    .note strong { color: #ffffff; }
 
     .help {
       margin-top: 44px;
@@ -217,8 +194,7 @@
     @media (min-width: 700px) {
       body { padding: 28px; }
       .panel { padding: 40px 36px 26px; }
-      .progress { margin-top: 34px; }
-      .step { margin-top: 32px; }
+      .progress { margin-top: 32px; padding: 17px 16px 16px; }
       .main-cta { margin-top: 26px; }
       .help { margin-top: 50px; }
     }
@@ -245,11 +221,9 @@
     <section class="progress" aria-label="Progreso de registro">
       <p class="progress-label">87% — FALTA CONFIRMAR TU ACCESO</p>
       <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="87" aria-label="87 por ciento, falta confirmar acceso">
-        <span>87%</span>
+        <span></span>
       </div>
     </section>
-
-    <p class="step">¡FALTA SOLO UN PASO MÁS!</p>
 
     <a class="main-cta" href="https://sndflw.pro/i/nKtWyLecK1Mht8zgVEo2" target="_blank" rel="noopener noreferrer">
       <svg class="wa-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
@@ -258,7 +232,7 @@
       </svg>
       Entrar al grupo de WhatsApp
     </a>
-    <p class="note">¡Entrá al <strong>grupo oficial de WhatsApp</strong> del evento y asegurá tu cupo!</p>
+    <p class="note">Si no entrás al grupo, no vas a recibir el acceso a la clase.</p>
 
     <section class="help" aria-label="Ayuda para ingresar">
       <h2>¿No podés ingresar?</h2>
