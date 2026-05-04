@@ -113,25 +113,17 @@
       letter-spacing: -0.02em;
     }
 
-
-    .progress-note {
-      margin: 14px auto 0;
-      max-width: 44ch;
-      color: rgba(220, 232, 228, 0.82);
-      font-size: clamp(13px, 3.6vw, 15px);
-      line-height: 1.45;
-      text-align: center;
-    }
-
-    .step {
-      margin: 26px 0 0;
-      font-size: clamp(31px, 7vw, 42px);
-      line-height: 1.05;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      text-transform: uppercase;
+    .headline {
+      margin: 32px auto 0;
+      max-width: 33ch;
+      font-size: clamp(21px, 5vw, 31px);
+      line-height: 1.2;
+      font-weight: 600;
+      letter-spacing: -0.01em;
       color: #fff;
     }
+
+    .headline strong { font-weight: 770; }
 
     .main-cta {
       display: inline-flex;
@@ -139,7 +131,7 @@
       justify-content: center;
       align-items: center;
       gap: 10px;
-      margin-top: 22px;
+      margin-top: 28px;
       padding: 14px 16px;
       border-radius: 12px;
       text-decoration: none;
@@ -159,13 +151,14 @@
     .wa-icon { width: 18px; height: 18px; flex: 0 0 18px; }
     .wa-icon path { fill: #010505; }
 
-    .note {
-      margin: 14px auto 0;
-      max-width: 31ch;
-      color: rgba(225, 236, 233, 0.82);
-      font-size: clamp(14px, 3.7vw, 16px);
+    .progress-note {
+      margin: 20px auto 0;
+      max-width: 42ch;
+      color: rgba(220, 232, 228, 0.66);
+      font-size: clamp(12px, 3.3vw, 14px);
       line-height: 1.4;
-      font-weight: 520;
+      text-align: center;
+      text-wrap: balance;
     }
 
     .note strong { color: #fff; }
@@ -211,9 +204,8 @@
     @media (min-width: 700px) {
       body { padding: 24px; }
       .panel { padding: 36px 34px 24px; }
-      .progress { margin-top: 30px; }
-      .main-cta { margin-top: 24px; }
-      .help { margin-top: 44px; }
+      .main-cta { margin-top: 30px; }
+      .progress-note { margin-top: 22px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -234,9 +226,7 @@
       </div>
     </section>
 
-    <p class="progress-note">Por ahí vamos a enviar los enlaces de las clases, materiales de apoyo e información de primera mano de los sorteos.</p>
-
-    <p class="step">¡FALTA SOLO UN PASO MÁS!</p>
+    <h1 class="headline" id="titulo-principal">¡Entrá al <strong>grupo oficial de WhatsApp</strong> del evento y asegurá tu cupo!</h1>
 
     <a class="main-cta" href="https://sndflw.pro/i/nKtWyLecK1Mht8zgVEo2" target="_blank" rel="noopener noreferrer">
       <svg class="wa-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
@@ -247,13 +237,7 @@
     </a>
     <p class="note">¡Entrá al <strong>grupo oficial de WhatsApp</strong> del evento y asegurá tu cupo!</p>
 
-    <section class="help" aria-label="Ayuda para ingresar">
-      <h2>¿No podés ingresar?</h2>
-      <p>Probá utilizando el siguiente botón:</p>
-      <a class="secondary-cta" href="https://chat.whatsapp.com/I8BDXookOl3FRuuWDpKQyo" target="_blank" rel="noopener noreferrer">Unirme al grupo</a>
-    </section>
-
-    <footer>De Cero a Inversor · Ramiro Goncalves — Lic. en Economía</footer>
+    <p class="progress-note">Por ahí vamos a enviar los enlaces de las clases, materiales de apoyo, e información de primera mano de los sorteos.</p>
   </main>
 </body>
 </html>
