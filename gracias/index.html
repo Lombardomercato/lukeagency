@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Importante: falta un paso | De Cero a Inversor</title>
+  <meta name="description" content="Tu inscripción todavía no está completa. Entrá al grupo oficial de WhatsApp para recibir el acceso a la clase." />
+  <style>
+    :root {
+      --bg: #010505;
+      --bg-soft: #071713;
+      --card: rgba(7, 16, 14, 0.88);
+      --line: rgba(0, 224, 164, 0.22);
+      --text: #f4f8f7;
+      --muted: #b7c7c3;
+      --green: #00e0a4;
+      --warn: #ff8a6b;
+      --warn-soft: #ffa78f;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.52);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    body {
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      background:
+        radial-gradient(780px 330px at 8% 0%, rgba(255, 138, 107, 0.11), transparent 66%),
+        radial-gradient(640px 290px at 94% 6%, rgba(0, 224, 164, 0.1), transparent 68%),
+        linear-gradient(180deg, var(--bg-soft), var(--bg));
+    }
+
+    .hero {
+      width: min(100%, 640px);
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px 20px;
+      text-align: center;
+      backdrop-filter: blur(4px);
+    }
+
+    .important {
+      margin: 0;
+      font-size: clamp(29px, 9vw, 52px);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 0 0 18px rgba(255, 138, 107, 0.16);
+    }
+
+    .important-mark {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--warn-soft);
+      font-size: clamp(28px, 8vw, 42px);
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .important-step {
+      display: block;
+      color: #ffffff;
+    }
+
+    .subtitle {
+      margin: 14px auto 0;
+      max-width: 48ch;
+      font-size: clamp(16px, 4.3vw, 20px);
+      color: #e9f1ef;
+      line-height: 1.34;
+      font-weight: 700;
+    }
+
+    .subtitle-note {
+      margin: 8px auto 0;
+      max-width: 50ch;
+      font-size: clamp(14px, 3.8vw, 17px);
+      color: var(--muted);
+      line-height: 1.46;
+    }
+
+    .alert {
+      margin: 20px 0 14px;
+      border: 1px solid rgba(255, 138, 107, 0.36);
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(255, 138, 107, 0.12), rgba(255, 138, 107, 0.04));
+      color: #ffd1c4;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 800;
+      font-size: 12px;
+      padding: 10px 12px;
+      box-shadow: 0 0 24px rgba(255, 138, 107, 0.16);
+    }
+
+    .progress-wrap {
+      margin: 0 0 16px;
+      text-align: left;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .progress-label {
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: #ecd2c9;
+      font-weight: 650;
+    }
+
+    .bar {
+      width: 100%;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.09);
+      overflow: hidden;
+    }
+
+    .bar > span {
+      display: block;
+      width: 87%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--warn), #ffb49f);
+      box-shadow: 0 0 18px rgba(255, 138, 107, 0.35);
+    }
+
+    .step {
+      margin: 0;
+      font-size: clamp(22px, 6.4vw, 30px);
+      font-weight: 820;
+      letter-spacing: -0.01em;
+    }
+
+    .explain {
+      margin: 10px auto 0;
+      max-width: 52ch;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 15px;
+    }
+
+    .cta {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin-top: 24px;
+      padding: 17px 18px;
+      border-radius: 12px;
+      text-decoration: none;
+      background: var(--green);
+      color: #04100d;
+      font-weight: 900;
+      letter-spacing: 0.035em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 0 0 1px rgba(0, 224, 164, 0.34), 0 18px 40px rgba(0, 224, 164, 0.35);
+      transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+    }
+
+    .cta:hover,
+    .cta:focus-visible {
+      transform: scale(1.02);
+      filter: saturate(1.05);
+      box-shadow: 0 0 0 1px rgba(0, 224, 164, 0.52), 0 22px 46px rgba(0, 224, 164, 0.42);
+      outline: none;
+    }
+
+    .note {
+      margin: 11px 0 0;
+      font-size: 12.5px;
+      color: rgba(214, 228, 224, 0.8);
+    }
+
+    footer {
+      margin-top: 18px;
+      color: #8ea19d;
+      font-size: 12px;
+      letter-spacing: 0.01em;
+    }
+
+    @media (min-width: 700px) {
+      body { padding: 28px; }
+      .hero { padding: 34px; }
+      .alert { font-size: 12.5px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="hero" aria-labelledby="alerta-principal">
+    <h1 class="important" id="alerta-principal">
+      <span class="important-mark">⚠️ IMPORTANTE</span>
+      <span class="important-step">FALTA UN PASO MÁS</span>
+    </h1>
+
+    <p class="subtitle">Tu inscripción todavía no está completa.</p>
+    <p class="subtitle-note">Entrá al grupo oficial para recibir el acceso a la clase.</p>
+
+    <div class="alert">⚠️ IMPORTANTE ⚠️</div>
+
+    <section class="progress-wrap" aria-label="Progreso de registro">
+      <p class="progress-label">87% — Falta confirmar tu acceso</p>
+      <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="87" aria-label="87 por ciento, falta confirmar acceso">
+        <span></span>
+      </div>
+    </section>
+
+    <p class="step">Entrá ahora al grupo oficial de WhatsApp</p>
+    <p class="explain">Ahí vamos a enviarte el enlace de la clase, recordatorios y avisos clave previos al inicio.</p>
+
+    <a class="cta" href="https://sndflw.pro/i/nKtWyLecK1Mht8zgVEo2" target="_blank" rel="noopener noreferrer">ENTRAR AL GRUPO DE WHATSAPP</a>
+    <p class="note">⚠️ Si no entrás al grupo, no vas a recibir el acceso a la clase.</p>
+
+    <footer>De Cero a Inversor · Ramiro Goncalves — Lic. en Economía</footer>
+  </main>
+
+  <script>
+    (function () {
+      var cta = document.querySelector('.cta');
+      if (!cta) return;
+      cta.addEventListener('click', function () {
+        try {
+          window.localStorage.setItem('dcai_whatsapp_cta_clicked', '1');
+        } catch (e) {
+          /* no-op */
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
