@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Gracias por inscribirte | De Cero a Inversor</title>
+  <meta name="description" content="Tu inscripción está confirmada. Entrá al grupo oficial de WhatsApp para recibir el link de acceso y recordatorios." />
+  <style>
+    :root {
+      --bg: #010505;
+      --bg-soft: #071713;
+      --card: rgba(6, 16, 14, 0.88);
+      --line: rgba(0, 224, 164, 0.25);
+      --text: #f2f7f6;
+      --muted: #b2c3bf;
+      --green: #00e0a4;
+      --green-deep: #00bb88;
+      --shadow: 0 22px 60px rgba(0, 0, 0, 0.48);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    body {
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      background:
+        radial-gradient(900px 380px at 50% -10%, rgba(0, 224, 164, 0.14), transparent 64%),
+        radial-gradient(560px 250px at 84% 8%, rgba(0, 224, 164, 0.08), transparent 70%),
+        linear-gradient(180deg, var(--bg-soft), var(--bg));
+    }
+
+    .hero {
+      width: min(100%, 620px);
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px 20px;
+      text-align: center;
+      backdrop-filter: blur(4px);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--green);
+      padding: 8px 12px;
+      border: 1px solid rgba(0, 224, 164, 0.35);
+      border-radius: 999px;
+      background: rgba(0, 224, 164, 0.08);
+    }
+
+    h1 {
+      margin: 16px 0 10px;
+      font-size: clamp(30px, 9vw, 44px);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      margin: 0 auto;
+      max-width: 50ch;
+      font-size: clamp(15px, 4.1vw, 18px);
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .progress-wrap {
+      margin: 22px 0 14px;
+      text-align: left;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .progress-label strong {
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    .bar {
+      width: 100%;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+
+    .bar > span {
+      display: block;
+      width: 87%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--green), #7effd6);
+      border-radius: inherit;
+    }
+
+    .step {
+      margin: 0;
+      font-size: clamp(22px, 6.2vw, 28px);
+      font-weight: 750;
+      letter-spacing: -0.01em;
+    }
+
+    .explain {
+      margin: 10px auto 0;
+      max-width: 52ch;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 15px;
+    }
+
+    .cta {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin-top: 22px;
+      padding: 16px 18px;
+      border-radius: 12px;
+      text-decoration: none;
+      background: var(--green);
+      color: #04100d;
+      font-weight: 850;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+      box-shadow: 0 16px 34px rgba(0, 224, 164, 0.24);
+      transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+    }
+
+    .cta:hover,
+    .cta:focus-visible {
+      transform: translateY(-1px);
+      background: #0df7b6;
+      box-shadow: 0 20px 40px rgba(0, 224, 164, 0.32);
+      outline: none;
+    }
+
+    .note {
+      margin: 11px 0 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    footer {
+      margin-top: 18px;
+      color: #8ea19d;
+      font-size: 12px;
+      letter-spacing: 0.01em;
+    }
+
+    @media (min-width: 700px) {
+      body { padding: 28px; }
+      .hero { padding: 34px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="hero" aria-labelledby="gracias-title">
+    <span class="badge">INSCRIPCIÓN CONFIRMADA</span>
+
+    <h1 id="gracias-title">¡Gracias por inscribirte!</h1>
+    <p class="subtitle">Tu lugar para la clase gratuita de De Cero a Inversor ya está reservado.</p>
+
+    <section class="progress-wrap" aria-label="Progreso de registro">
+      <div class="progress-label">
+        <span>Progreso</span>
+        <strong>87% completado</strong>
+      </div>
+      <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="87" aria-label="87 por ciento completado">
+        <span></span>
+      </div>
+    </section>
+
+    <p class="step">Falta solo un paso más</p>
+    <p class="explain">Entrá al grupo oficial de WhatsApp para recibir el link de acceso, recordatorios y materiales de la clase.</p>
+
+    <a class="cta" href="https://sndflw.pro/i/nKtWyLecK1Mht8zgVEo2" target="_blank" rel="noopener noreferrer">ENTRAR AL GRUPO DE WHATSAPP</a>
+    <p class="note">Ahí vamos a enviar el enlace de la clase y avisos importantes.</p>
+
+    <footer>De Cero a Inversor · Ramiro Goncalves — Lic. en Economía</footer>
+  </main>
+
+  <script>
+    (function () {
+      var cta = document.querySelector('.cta');
+      if (!cta) return;
+      cta.addEventListener('click', function () {
+        try {
+          window.localStorage.setItem('dcai_whatsapp_cta_clicked', '1');
+        } catch (e) {
+          /* no-op */
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
