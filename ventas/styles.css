@@ -20,7 +20,7 @@ body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-s
 .small{width:min(760px,92%)}
 .section{padding:64px 0;border-bottom:1px solid rgba(255,255,255,.08)}
 .section-glow{background:radial-gradient(circle at center,rgba(20,196,136,.15) 0,rgba(2,7,7,.4) 42%,rgba(2,7,7,1) 80%)}
-.hero{padding:30px 0 48px;min-height:100vh;display:flex;align-items:center}
+.hero{padding:20px 0 38px;min-height:100vh;display:flex;align-items:center}
 
 h1,h2,h3{margin:0;color:#fff;font-weight:800;letter-spacing:-.02em}
 h1{font-size:clamp(2rem,4.5vw,3.35rem);max-width:20ch;line-height:1.08}
@@ -33,17 +33,19 @@ h3{font-size:1.1rem}
 
 
 .hero-wrap{display:flex;flex-direction:column;gap:34px}
-.hero-layout{display:grid;gap:30px;align-items:center}
+.hero-layout{display:grid;gap:22px;align-items:start}
 .hero-copy{display:flex;flex-direction:column;align-items:flex-start;overflow:hidden;justify-content:flex-end}
-.hero-kicker{margin:0 0 14px;color:var(--muted);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase}
-.hero-title{display:grid;gap:8px;line-height:.86;font-family:"ImpactLocal",Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:clamp(3rem,9.2vw,6.6rem);letter-spacing:.015em;text-transform:uppercase}
+.hero-kicker{margin:0 0 10px;color:var(--muted);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase}
+.hero-title{display:grid;gap:6px;line-height:.84;font-family:"ImpactLocal",Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:clamp(2.65rem,15vw,6.6rem);letter-spacing:.015em;text-transform:uppercase}
 .hero-title .accent{color:var(--green)}
-.hero-desc{margin:22px 0 0;color:var(--muted);max-width:28ch;font-size:1.03rem}
+.hero-desc{margin:16px 0 0;color:var(--muted);max-width:30ch;font-size:1rem}
 .btn-anotarme{margin:0}
-.video-panel{display:flex;flex-direction:column;gap:14px;align-items:stretch;justify-content:center}
-.video-box{position:relative;border:1px solid rgba(171,210,196,.35);background:#000;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;padding:14px}
+.video-panel{display:flex;flex-direction:column;gap:14px;align-items:stretch;justify-content:flex-start}
+.video-box{position:relative;border:1px solid rgba(171,210,196,.35);background:#000;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;padding:8px}
 .video-box iframe{width:100%;height:100%;max-height:100%;border:0}
-.btn-download{margin-top:18px;border-radius:8px;text-align:center;width:max-content;min-width:220px;align-self:flex-end;margin-left:auto;padding:12px 28px;background:transparent;color:#dff6ea;border:1px solid rgba(141,184,168,.55);backdrop-filter:blur(2px)}
+.btn-download{margin-top:18px;border-radius:999px;text-align:center;width:100%;min-width:0;padding:14px 26px;background:linear-gradient(180deg,var(--green),var(--green-2));color:#052511;border:0;font-weight:900;letter-spacing:.02em}
+.btn-mobile{display:block}
+.btn-desktop{display:none}
 
 .outcomes-section{position:relative;overflow:hidden}
 .outcomes-wrap{display:grid;gap:28px;align-items:center}
@@ -89,14 +91,32 @@ details{border:1px solid #ccd8d3;padding:13px 14px;border-radius:12px;background
 summary{cursor:pointer;font-weight:700}
 
 
+@media (max-width:779px){
+  .section{padding:52px 0}
+  .hero{min-height:auto}
+  .hero-wrap{gap:24px}
+  .hero-desc{max-width:32ch}
+  .video-panel{gap:12px}
+  .video-box{padding:6px}
+  .outcome-item p{font-size:1.02rem}
+  .lesson-content h3{font-size:1.55rem}
+  .bonus-grid{grid-template-columns:1fr}
+}
+
 @media (min-width:780px){
   .outcomes-list{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:36px}
 }
+
 @media (min-width:780px){
   .hero{padding:36px 0 56px}
-  .hero-layout{grid-template-columns:minmax(260px,420px) 1fr}
-  .video-box{min-height:0}
+  .hero-layout{grid-template-columns:minmax(260px,420px) minmax(0,420px);justify-content:space-between;align-items:start;gap:40px}
+  .hero-copy,.video-panel{width:100%;max-width:420px}
+  .hero-title{font-size:clamp(4.8rem,8.4vw,7.9rem);gap:2px}
+  .hero-desc{max-width:28ch;font-size:1.03rem;line-height:1.4}
+  .video-box{padding:10px;margin-top:44px}
   .video-panel{padding-top:0}
+  .btn-mobile{display:none}
+  .btn-desktop{display:block;align-self:flex-end;max-width:290px;margin-top:18px}
   .hero-wrap{gap:44px}
 
   .lessons-grid{grid-template-columns:repeat(2,1fr)}
@@ -104,3 +124,4 @@ summary{cursor:pointer;font-weight:700}
   .method-grid .card:last-child{grid-column:2}
   .bonus-grid{grid-template-columns:repeat(3,1fr)}
 }
+
