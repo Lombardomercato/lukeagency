@@ -358,48 +358,59 @@ section{padding:80px 0}
   --bg-card:#0B1220;
   --border:rgba(0,180,216,0.45);
   isolation:isolate;
-  background:linear-gradient(165deg,rgba(11,18,32,.94),rgba(13,20,36,.9));
+  background:
+    radial-gradient(140% 110% at 50% 0%,rgba(51,207,255,.14),transparent 42%),
+    linear-gradient(165deg,rgba(11,18,32,.96),rgba(13,20,36,.92));
   border:1px solid var(--border);
   box-shadow:
-    0 0 0 1px rgba(0,180,216,.16),
-    0 0 24px rgba(0,180,216,.14),
-    inset 0 0 0 1px rgba(51,207,255,.08);
+    0 0 0 1px rgba(0,180,216,.18),
+    0 0 34px rgba(0,180,216,.24),
+    0 0 58px rgba(0,180,216,.12),
+    inset 0 0 0 1px rgba(51,207,255,.12);
 }
 .offer-card--electric::before{
   content:'';
   position:absolute;
-  inset:-1px;
+  inset:-2px;
   border-radius:inherit;
   pointer-events:none;
-  background:linear-gradient(110deg,transparent 8%,rgba(51,207,255,.9) 20%,transparent 34%,rgba(0,180,216,.75) 50%,transparent 66%,rgba(51,207,255,.85) 82%,transparent 94%);
-  background-size:220% 100%;
-  animation:electric-border-shift 4.5s linear infinite;
-  opacity:.62;
   z-index:0;
+  padding:2px;
+  background:
+    repeating-linear-gradient(100deg,
+      rgba(51,207,255,0) 0 10px,
+      rgba(51,207,255,.95) 11px 13px,
+      rgba(0,180,216,0) 15px 22px),
+    linear-gradient(120deg,transparent 4%,rgba(51,207,255,.92) 22%,transparent 38%,rgba(0,180,216,.86) 50%,transparent 64%,rgba(51,207,255,.88) 82%,transparent 96%);
+  background-size:260% 100%,220% 100%;
+  filter:drop-shadow(0 0 4px rgba(51,207,255,.7)) drop-shadow(0 0 10px rgba(0,180,216,.45));
+  animation:electric-border-shift 3.9s linear infinite;
+  opacity:.9;
   -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
   -webkit-mask-composite:xor;
   mask-composite:exclude;
-  padding:1px;
 }
 .offer-card--electric::after{
   content:'';
   position:absolute;
-  inset:-12px;
-  border-radius:24px;
+  inset:-14px;
+  border-radius:26px;
   pointer-events:none;
   z-index:-1;
-  background:radial-gradient(70% 75% at 50% 0%,rgba(51,207,255,.22),rgba(0,180,216,.05) 45%,transparent 78%);
-  opacity:.55;
-  animation:electric-border-breathe 3.8s ease-in-out infinite;
+  background:
+    radial-gradient(60% 60% at 50% 8%,rgba(51,207,255,.34),rgba(0,180,216,.09) 52%,transparent 85%),
+    radial-gradient(80% 70% at 50% 100%,rgba(51,207,255,.26),transparent 72%);
+  opacity:.66;
+  animation:electric-border-breathe 3.4s ease-in-out infinite;
 }
 @keyframes electric-border-shift{
-  0%{background-position:0% 50%;opacity:.45}
-  50%{background-position:100% 50%;opacity:.7}
-  100%{background-position:0% 50%;opacity:.45}
+  0%{background-position:0% 50%,0% 50%;opacity:.72}
+  50%{background-position:100% 50%,100% 50%;opacity:1}
+  100%{background-position:0% 50%,0% 50%;opacity:.72}
 }
 @keyframes electric-border-breathe{
-  0%,100%{opacity:.42}
-  50%{opacity:.68}
+  0%,100%{opacity:.48;transform:scale(1)}
+  50%{opacity:.76;transform:scale(1.01)}
 }
 .offer-card--electric > *{position:relative;z-index:1}
 @media (prefers-reduced-motion: reduce){
