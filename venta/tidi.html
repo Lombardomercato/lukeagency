@@ -343,6 +343,62 @@ section{padding:80px 0}
   max-width:380px;margin-left:auto;margin-right:auto;line-height:1.5;
 }
 
+
+.offer-card--electric{
+  --cyan:#00B4D8;
+  --cyan-soft:#33CFFF;
+  --bg-card:#0B1220;
+  --border:rgba(0,180,216,0.45);
+  isolation:isolate;
+  background:linear-gradient(165deg,rgba(11,18,32,.94),rgba(13,20,36,.9));
+  border:1px solid var(--border);
+  box-shadow:
+    0 0 0 1px rgba(0,180,216,.16),
+    0 0 24px rgba(0,180,216,.14),
+    inset 0 0 0 1px rgba(51,207,255,.08);
+}
+.offer-card--electric::before{
+  content:'';
+  position:absolute;
+  inset:-1px;
+  border-radius:inherit;
+  pointer-events:none;
+  background:linear-gradient(110deg,transparent 8%,rgba(51,207,255,.9) 20%,transparent 34%,rgba(0,180,216,.75) 50%,transparent 66%,rgba(51,207,255,.85) 82%,transparent 94%);
+  background-size:220% 100%;
+  animation:electric-border-shift 4.5s linear infinite;
+  opacity:.62;
+  z-index:0;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  padding:1px;
+}
+.offer-card--electric::after{
+  content:'';
+  position:absolute;
+  inset:-12px;
+  border-radius:24px;
+  pointer-events:none;
+  z-index:-1;
+  background:radial-gradient(70% 75% at 50% 0%,rgba(51,207,255,.22),rgba(0,180,216,.05) 45%,transparent 78%);
+  opacity:.55;
+  animation:electric-border-breathe 3.8s ease-in-out infinite;
+}
+@keyframes electric-border-shift{
+  0%{background-position:0% 50%;opacity:.45}
+  50%{background-position:100% 50%;opacity:.7}
+  100%{background-position:0% 50%;opacity:.45}
+}
+@keyframes electric-border-breathe{
+  0%,100%{opacity:.42}
+  50%{opacity:.68}
+}
+.offer-card--electric > *{position:relative;z-index:1}
+@media (prefers-reduced-motion: reduce){
+  .offer-card--electric::before,
+  .offer-card--electric::after{animation:none}
+}
+
 /* ═══════════════════════════════
    FAQ
 ═══════════════════════════════ */
@@ -605,7 +661,7 @@ footer{
   <div class="container">
     <span class="section-label reveal">Inversión</span>
     <h2 class="section-title reveal">La inversión para ser parte de Misión Inversor es:</h2>
-    <div class="price-card reveal">
+    <div class="price-card offer-card--electric reveal">
       <div class="price-badge">⚡ Becas limitadas</div>
       <div class="price-old">$97 USD</div>
       <div class="price-current"><span>$</span>30</div>
