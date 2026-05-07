@@ -7,6 +7,11 @@
   --muted:#A8B3C7;
   --green:#00B4D8;
   --green-2:#33CFFF;
+  --bg-deep:#030712;
+  --bg-mid:#050816;
+  --bg-soft:#0B1220;
+  --glow-cyan:rgba(0,180,216,0.08);
+  --glow-cyan-soft:rgba(51,207,255,0.05);
 }
 @font-face{
   font-family:"ImpactLocal";
@@ -15,13 +20,53 @@
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
-body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:radial-gradient(circle at 50% 0,#0E1C35 0,#050816 52%,#040611 100%);color:var(--text);line-height:1.5}
+body{position:relative;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:
+  radial-gradient(1200px 700px at 16% -8%,rgba(0,180,216,.06),transparent 55%),
+  radial-gradient(900px 560px at 84% 18%,rgba(51,207,255,.045),transparent 58%),
+  linear-gradient(160deg,var(--bg-deep) 0%,var(--bg-mid) 48%,#050917 100%);color:var(--text);line-height:1.5}
+body::before,
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+}
+body::before{
+  background:
+    radial-gradient(620px 360px at 12% 18%,rgba(0,180,216,.055),transparent 66%),
+    radial-gradient(760px 420px at 88% 40%,rgba(51,207,255,.04),transparent 68%),
+    linear-gradient(155deg,rgba(11,18,32,.36),transparent 42%);
+  filter:blur(8px);
+}
+body::after{
+  background-image:
+    linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.014) 1px,transparent 1px);
+  background-size:120px 120px;
+  opacity:.18;
+}
+
 .wrap{width:min(1120px,92%);margin:0 auto}
 .small{width:min(760px,92%)}
-.section{padding:64px 0;border-bottom:1px solid rgba(255,255,255,0.06)}
-.section-glow{background:radial-gradient(circle at center,rgba(0,180,216,0.14) 0,rgba(5,8,22,.45) 42%,rgba(5,8,22,1) 80%)}
-.hero{padding:20px 0 38px;min-height:100vh;display:flex;align-items:center}
+.section{position:relative;padding:64px 0;border-bottom:1px solid rgba(255,255,255,0.06);background:linear-gradient(180deg,rgba(3,7,18,.08),rgba(3,7,18,0) 62%)}
+.section-glow{background:
+  radial-gradient(1100px 460px at 50% 0,rgba(0,180,216,.09) 0,rgba(5,8,22,.22) 44%,rgba(5,8,22,.88) 78%),
+  linear-gradient(175deg,rgba(11,18,32,.35),rgba(5,8,22,0) 58%)}
+.hero{position:relative;padding:20px 0 38px;min-height:100vh;display:flex;align-items:center;overflow:hidden}
 
+
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:-12% -8% auto;
+  height:68%;
+  background:
+    radial-gradient(640px 260px at 20% 16%,rgba(0,180,216,.085),transparent 72%),
+    radial-gradient(760px 300px at 78% 30%,rgba(51,207,255,.05),transparent 70%);
+  filter:blur(14px);
+  pointer-events:none;
+}
 h1,h2,h3{margin:0;color:#fff;font-weight:800;letter-spacing:-.02em}
 h1{font-size:clamp(2rem,4.5vw,3.35rem);max-width:20ch;line-height:1.08}
 h2{font-size:clamp(1.5rem,3.2vw,2.4rem);text-align:center;max-width:24ch;margin:0 auto 12px}
@@ -92,7 +137,9 @@ h3{font-size:1.1rem}
 .price-note{color:var(--muted);margin:12px auto 18px;max-width:36ch}
 .btn-wide{width:100%}
 
-.section-soft{background:#09101F;color:#FFFFFF}
+.section-soft{background:
+  radial-gradient(900px 420px at 78% 6%,rgba(51,207,255,.06),transparent 62%),
+  linear-gradient(180deg,#09101F 0%,#070D19 100%);color:#FFFFFF}
 .section-soft h2{color:#FFFFFF}
 .faq{width:min(820px,92%)}
 details{border:1px solid rgba(255,255,255,0.08);padding:13px 14px;border-radius:12px;background:#0D1424;margin-bottom:10px}
