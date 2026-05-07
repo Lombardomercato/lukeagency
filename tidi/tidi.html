@@ -55,7 +55,16 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
 
     const manifest = JSON.parse(manifestEl.textContent);
-    let template = JSON.parse(templateEl.textContent);
+    let templateRaw = templateEl.textContent || "";
+    let template = templateRaw;
+    try {
+      template = JSON.parse(templateRaw);
+    } catch (_) {
+      template = templateRaw.trim();
+      if ((template.startsWith('"') && template.endsWith('"')) || (template.startsWith("'") && template.endsWith("'"))) {
+        template = template.slice(1, -1);
+      }
+    }
 
     const uuids = Object.keys(manifest);
     setStatus('Unpacking ' + uuids.length + ' assets...');
