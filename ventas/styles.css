@@ -155,9 +155,21 @@ h3{font-size:1.1rem}
 details{border:1px solid rgba(255,255,255,0.08);padding:13px 14px;border-radius:12px;background:#0D1424;margin-bottom:10px}
 summary{cursor:pointer;font-weight:700}
 
+/* Mobile fine-tuning */
+main{overflow-x:hidden}
+section h2{padding-inline:4px}
+.btn{max-width:100%;text-align:center;white-space:normal}
+.outcome-item,
+.lesson-card,
+.method-grid .card,
+.bonus-card,
+.price-card,
+details{overflow-wrap:anywhere}
+
 @media (max-width:779px){
   .section{padding:52px 0}
   .wrap{width:min(1120px,94%)}
+  h2{font-size:clamp(1.35rem,7vw,1.8rem);line-height:1.15}
   .hero{min-height:auto;padding:20px 0 36px}
   .hero-wrap{gap:22px}
   .hero-layout{gap:20px}
@@ -168,11 +180,36 @@ summary{cursor:pointer;font-weight:700}
   .video-box{padding:4px;width:100%;max-width:100%;margin-inline:auto}
   .btn-mobile{display:none}
   .btn-download{width:100%;min-width:0;margin-top:16px;padding:14px 20px}
+  .btn-desktop{max-width:100%}
+  .outcomes-copy h2{max-width:100%}
+  .outcomes-copy .sub{max-width:100%;font-size:.98rem;line-height:1.45}
   .outcomes-copy .sub{margin:0 0 20px}
-  .outcome-item{padding:14px 0}
+  .outcome-item{padding:14px 12px;grid-template-columns:32px 1fr;gap:10px}
   .outcome-item p{font-size:1rem}
+  .lesson-card{padding:10px}
+  .lesson-content p{max-width:100%}
   .lesson-content h3{font-size:1.55rem}
+  .cards{gap:12px;margin:16px 0 20px}
+  .method-grid .card{padding:15px}
+  .btn{width:100%}
+  .bonus-grid{grid-template-columns:1fr;gap:12px}
+  .bonus-card{padding:14px 12px;font-size:.98rem;line-height:1.35}
+  .price-card{padding:18px 14px}
+  .new-price{font-size:clamp(2.3rem,13vw,3.1rem)}
+  .old-price{font-size:clamp(1.4rem,7vw,1.85rem)}
+  .price-note{font-size:.97rem;line-height:1.45}
+  .faq{width:min(820px,94%)}
+  details{padding:12px}
+  summary{font-size:.98rem}
   .bonus-grid{grid-template-columns:1fr}
+}
+
+@media (max-width:420px){
+  .hero-title{font-size:clamp(2.2rem,14vw,3.1rem)}
+  .hero-desc{font-size:.95rem}
+  .video-box{padding:2px}
+  .outcome-item p{font-size:.95rem}
+  .lesson-content h3{font-size:1.35rem}
 }
 
 
