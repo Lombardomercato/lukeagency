@@ -40,7 +40,7 @@ h3{font-size:1.1rem}
 .hero-title-brand{font-size:.78em;letter-spacing:.08em;line-height:1.02;color:#00B4D8;text-shadow:0 0 28px rgba(0,180,216,.35)}
 .hero-title-small{font-size:.42em;letter-spacing:.06em;line-height:1;color:#fff}
 .hero-title-medium{font-size:.72em;letter-spacing:.04em;line-height:.95}
-.hero-title .accent{color:#fff;font-size:.78em;letter-spacing:.02em}
+.hero-title .accent{color:#fff;font-size:.68em;letter-spacing:.02em}
 .hero-desc{margin:18px 0 0;color:var(--muted);max-width:31ch;font-size:1.02rem;line-height:1.45}
 .btn-anotarme{margin:0}
 .video-panel{display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center}
