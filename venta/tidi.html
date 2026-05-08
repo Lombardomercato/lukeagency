@@ -534,10 +534,12 @@ footer{
   margin:0 auto;
   padding:0 calc(14px + env(safe-area-inset-left,0px)) 0 calc(14px + env(safe-area-inset-right,0px));
   display:flex;
-  align-items:flex-start;
+  align-items:center;
   justify-content:space-between;
   gap:12px;
+  transition:transform .28s ease;
 }
+.bubble-menu.is-compact .bubble-menu-inner{transform:translateX(-18px)}
 .bubble-brand,
 .bubble-toggle,
 .bubble-link{
@@ -585,11 +587,11 @@ footer{
 .bubble-toggle-line::after{bottom:-5px}
 .bubble-links{
   position:absolute;
-  top:52px;
-  right:14px;
+  top:0;
+  left:126px;
   display:flex;
-  flex-direction:column;
-  align-items:flex-end;
+  flex-direction:row;
+  align-items:center;
   gap:8px;
   pointer-events:none;
 }
@@ -614,23 +616,20 @@ footer{
 .bubble-menu.is-open .bubble-link:nth-child(2){transition-delay:.1s}
 .bubble-menu.is-open .bubble-link:nth-child(3){transition-delay:.15s}
 .bubble-menu.is-open .bubble-link:nth-child(4){transition-delay:.2s}
-.bubble-menu.is-open .bubble-link:nth-child(5){transition-delay:.25s}
 .bubble-menu.is-open .bubble-toggle-line{transform:rotate(45deg)}
 .bubble-menu.is-open .bubble-toggle-line::before{top:0;transform:rotate(90deg)}
 .bubble-menu.is-open .bubble-toggle-line::after{bottom:0;opacity:0}
 @media(min-width:980px){
-  .bubble-menu-inner{align-items:center}
+  .bubble-menu.is-compact .bubble-menu-inner{transform:translateX(-28px)}
   .bubble-links{
-    right:50%;
-    top:56px;
-    transform:translateX(50%);
-    flex-direction:row;
-    justify-content:center;
-    align-items:center;
+    top:0;
+    left:126px;
+    transform:none;
+    justify-content:flex-start;
     flex-wrap:wrap;
-    gap:12px;
+    gap:10px;
   }
-  .bubble-link{min-width:120px}
+  .bubble-link{min-width:108px}
 }
 @media(max-width:560px){
   body{padding-top:calc(64px + env(safe-area-inset-top,0px))}
@@ -652,7 +651,6 @@ footer{
       <span class="bubble-toggle-line" aria-hidden="true"></span>
     </button>
     <nav class="bubble-links" id="bubbleLinks" aria-label="Navegación principal">
-      <a class="bubble-link" href="#top">Inicio</a>
       <a class="bubble-link" href="#incluye">Qué incluye</a>
       <a class="bubble-link" href="#bonus">Bonus</a>
       <a class="bubble-link" href="#precio">Precio</a>
@@ -993,6 +991,9 @@ function toggleFaq(btn) {
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') setExpanded(false);
   });
+  window.addEventListener('scroll', () => {
+    menu.classList.toggle('is-compact', window.scrollY > 120);
+  }, { passive: true });
 })();
 </script>
 </body>
