@@ -520,26 +520,25 @@ footer{
 /* ── Bubble Menu (TIDI) ── */
 .bubble-menu{
   position:fixed;
-  top:calc(10px + env(safe-area-inset-top,0px));
+  top:10px;
   left:0;
-  right:0;
-  width:100vw;
-  max-width:100%;
+  width:100%;
   z-index:1200;
   pointer-events:none;
-  overflow-x:clip;
 }
 .bubble-menu-inner{
-  width:min(100%,1100px);
+  max-width:1100px;
   margin:0 auto;
-  padding:0 calc(14px + env(safe-area-inset-left,0px)) 0 calc(14px + env(safe-area-inset-right,0px));
+  padding:0 14px;
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:12px;
   transition:transform .28s ease;
 }
-.bubble-menu.is-compact .bubble-menu-inner{transform:translateX(-18px)}
+.bubble-menu.is-compact .bubble-menu-inner{transform:translateX(-30px)}
+.bubble-menu.is-mobile-scrolled .bubble-brand{display:none}
+.bubble-link--inicio{display:none}
 .bubble-brand,
 .bubble-toggle,
 .bubble-link{
@@ -620,7 +619,7 @@ footer{
 .bubble-menu.is-open .bubble-toggle-line::before{top:0;transform:rotate(90deg)}
 .bubble-menu.is-open .bubble-toggle-line::after{bottom:0;opacity:0}
 @media(min-width:980px){
-  .bubble-menu.is-compact .bubble-menu-inner{transform:translateX(-28px)}
+  .bubble-menu.is-compact .bubble-menu-inner{transform:translateX(-44px)}
   .bubble-links{
     top:0;
     left:126px;
@@ -632,11 +631,21 @@ footer{
   .bubble-link{min-width:108px}
 }
 @media(max-width:560px){
-  body{padding-top:calc(64px + env(safe-area-inset-top,0px))}
+  body{padding-top:64px}
+  .bubble-menu-inner{transition:none;transform:none !important}
+  .bubble-menu.is-compact .bubble-menu-inner{transform:none}
+  .bubble-menu.is-mobile-scrolled .bubble-links{display:none}
   .bubble-brand{padding:8px 12px;min-height:40px}
   .bubble-brand img{width:78px}
   .bubble-toggle{width:40px;height:40px}
-  .bubble-links{width:min(320px,calc(100vw - 28px));max-width:calc(100vw - 28px)}
+  .bubble-link--inicio{display:inline-flex}
+  .bubble-links{
+    top:46px;
+    left:14px;
+    max-width:calc(100vw - 28px);
+    flex-direction:column;
+    align-items:flex-start;
+  }
   .bubble-link{width:100%}
 }
 </style>
@@ -651,6 +660,7 @@ footer{
       <span class="bubble-toggle-line" aria-hidden="true"></span>
     </button>
     <nav class="bubble-links" id="bubbleLinks" aria-label="Navegación principal">
+      <a class="bubble-link bubble-link--inicio" href="#top">Inicio</a>
       <a class="bubble-link" href="#incluye">Qué incluye</a>
       <a class="bubble-link" href="#bonus">Bonus</a>
       <a class="bubble-link" href="#precio">Precio</a>
@@ -970,6 +980,7 @@ function toggleFaq(btn) {
   if (!menu || !toggle || !linksWrap) return;
 
   const links = linksWrap.querySelectorAll('.bubble-link');
+  const mobileMQ = window.matchMedia('(max-width: 560px)');
 
   function setExpanded(isOpen){
     menu.classList.toggle('is-open', isOpen);
@@ -981,6 +992,7 @@ function toggleFaq(btn) {
   }
 
   setExpanded(false);
+  if (mobileMQ.matches) setExpanded(true);
   toggle.addEventListener('click', () => {
     const open = toggle.getAttribute('aria-expanded') === 'true';
     setExpanded(!open);
@@ -991,9 +1003,22 @@ function toggleFaq(btn) {
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') setExpanded(false);
   });
-  window.addEventListener('scroll', () => {
+  function syncMenuByViewport(){
+    if (mobileMQ.matches) {
+      const isDown = window.scrollY > 40;
+      menu.classList.toggle('is-mobile-scrolled', isDown);
+      menu.classList.remove('is-compact');
+      if (isDown) setExpanded(false);
+      if (!isDown) setExpanded(true);
+      return;
+    }
+    menu.classList.remove('is-mobile-scrolled');
     menu.classList.toggle('is-compact', window.scrollY > 120);
-  }, { passive: true });
+  }
+
+  window.addEventListener('scroll', syncMenuByViewport, { passive: true });
+  window.addEventListener('resize', syncMenuByViewport);
+  syncMenuByViewport();
 })();
 </script>
 </body>
