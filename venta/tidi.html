@@ -225,18 +225,12 @@ section{padding:80px 0}
 .bonus{text-align:center}
 .bonus-carousel{
   margin-top:40px;
-  overflow-x:auto;
-  padding:8px 4px 16px;
-  scroll-snap-type:x mandatory;
-  -webkit-overflow-scrolling:touch;
-  scrollbar-width:thin;
-  scrollbar-color:rgba(0,180,216,.35) transparent;
+  overflow:visible;
+  padding:8px 0 0;
 }
-.bonus-carousel::-webkit-scrollbar{height:8px}
-.bonus-carousel::-webkit-scrollbar-thumb{background:rgba(0,180,216,.28);border-radius:999px}
 .bonus-track{
   display:grid;
-  grid-template-columns:repeat(9,minmax(260px,1fr));
+  grid-template-columns:repeat(3,minmax(0,1fr));
   gap:16px;
 }
 .bonus-card{
@@ -284,20 +278,16 @@ section{padding:80px 0}
 }
 .bonus-num{font-family:'Sora',sans-serif;font-size:.8rem;font-weight:700;color:rgba(51,207,255,.75)}
 .bonus-card h4{font-size:1.04rem;font-weight:600;margin-bottom:10px;color:#fff;line-height:1.35}
-.bonus-card p{color:#A8B3C7;font-size:.9rem;line-height:1.56}
+.bonus-card p{color:#A8B3C7;font-size:.9rem;line-height:1.56;overflow-wrap:anywhere}
 .bonus-photo-placeholder{
   width:100%;
-  height:120px;
+  aspect-ratio:1/1;
   border:1px dashed rgba(51,207,255,.35);
   border-radius:12px;
   background:linear-gradient(180deg,rgba(51,207,255,.06),rgba(51,207,255,.02));
   margin-bottom:14px;
 }
 @media(max-width:899px){
-  .bonus-carousel{
-    overflow:visible;
-    padding:8px 0 0;
-  }
   .bonus-track{
     grid-template-columns:1fr;
     gap:14px;
@@ -312,7 +302,6 @@ section{padding:80px 0}
 }
 
 @media(min-width:900px){
-  .bonus-carousel{overflow:visible;padding:8px 0 0}
   .bonus-track{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
 
@@ -330,7 +319,7 @@ section{padding:80px 0}
 .price-card{
   max-width:480px;margin:36px auto 0;
   background:rgba(0,180,216,.04);
-  border:2px solid rgba(0,180,216,.3);
+  border:1px solid rgba(0,180,216,.3);
   border-radius:20px;padding:48px 36px 44px;
   position:relative;overflow:hidden;
 }
@@ -789,7 +778,7 @@ footer{
 
 // Bonus spotlight (lightweight, desktop only)
 (function(){
-  if (window.matchMedia('(max-width: 768px)').matches) return;
+  if (window.matchMedia('(max-width: 899px)').matches) return;
   const cards = document.querySelectorAll('.bonus-card');
   cards.forEach((card) => {
     card.addEventListener('mousemove', (e) => {
