@@ -34,8 +34,8 @@ h1,h2,h3,h4{font-family:'Sora',sans-serif;font-weight:700;line-height:1.2}
 
 /* ── Layout ── */
 .container{width:100%;max-width:960px;margin:0 auto;padding:0 24px}
-section{padding:80px 0}
-@media(min-width:768px){section{padding:100px 0}}
+section{padding:52px 0}
+@media(min-width:768px){section{padding:72px 0}}
 
 /* ── Section titles ── */
 .section-label{
@@ -459,7 +459,7 @@ section{padding:80px 0}
    CTA FINAL
 ═══════════════════════════════ */
 .cta-final{
-  text-align:center;padding:80px 0 100px;
+  text-align:center;padding:64px 0 82px;
   background:radial-gradient(ellipse 60% 50% at 50% 100%,rgba(0,180,216,.06),transparent);
 }
 .cta-final h2{font-size:clamp(1.4rem,3.5vw,2rem);margin-bottom:12px}
@@ -493,6 +493,18 @@ footer{
   text-align:center;padding:40px 24px;
   border-top:1px solid rgba(0,180,216,.08);
   color:#8A8FA8;font-size:.78rem;
+}
+
+
+@media(max-width:767px){
+  .container{padding:0 18px}
+  .section-title{margin-bottom:12px}
+  .section-subtitle{font-size:1rem}
+  .benefits-grid,.clases-grid,.results-list,.bonus-carousel,.faq-list{margin-top:28px}
+  .price-card{padding:34px 20px 30px}
+  .faq-q{padding:16px 18px}
+  .faq-a-inner{padding:0 18px 16px}
+  .cta-final{padding:56px 0 72px}
 }
 
 /* ── Responsive helpers ── */
