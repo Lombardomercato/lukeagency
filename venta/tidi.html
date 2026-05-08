@@ -402,37 +402,22 @@ section{padding:80px 0}
 .offer-card--electric::after{
   content:'';
   position:absolute;
-  inset:-2px;
-  border-radius:inherit;
+  inset:-5px;
   pointer-events:none;
   z-index:0;
-  border:2px solid transparent;
+  border-radius:24px;
   background:
-    linear-gradient(rgba(6,12,24,.01),rgba(6,12,24,.01)) padding-box,
-    conic-gradient(from var(--electric-rot,0deg),
-      rgba(51,207,255,.14) 0deg,
-      rgba(51,207,255,.9) 48deg,
-      rgba(0,180,216,.2) 96deg,
-      rgba(51,207,255,.95) 156deg,
-      rgba(0,180,216,.2) 222deg,
-      rgba(51,207,255,.88) 286deg,
-      rgba(51,207,255,.16) 360deg) border-box;
-  box-shadow:
-    0 0 6px rgba(51,207,255,.72),
-    0 0 14px rgba(0,180,216,.44);
-  animation:electric-border-rotate 4.4s linear infinite,electric-border-flicker 2.8s ease-in-out infinite;
-}
-@property --electric-rot{
-  syntax:"<angle>";
-  inherits:false;
-  initial-value:0deg;
-}
-@keyframes electric-border-rotate{
-  to{--electric-rot:360deg}
+    repeating-linear-gradient(87deg,rgba(120,236,255,.95) 0 7px,rgba(120,236,255,.25) 7px 13px,transparent 13px 17px) top/100% 2px no-repeat,
+    repeating-linear-gradient(93deg,rgba(120,236,255,.95) 0 6px,rgba(120,236,255,.25) 6px 11px,transparent 11px 16px) bottom/100% 2px no-repeat,
+    repeating-linear-gradient(177deg,rgba(120,236,255,.95) 0 6px,rgba(120,236,255,.22) 6px 11px,transparent 11px 16px) left/2px 100% no-repeat,
+    repeating-linear-gradient(183deg,rgba(120,236,255,.95) 0 7px,rgba(120,236,255,.22) 7px 12px,transparent 12px 17px) right/2px 100% no-repeat;
+  filter:drop-shadow(0 0 4px rgba(110,231,255,.9)) drop-shadow(0 0 12px rgba(0,180,216,.62));
+  animation:electric-border-flicker 2.2s steps(2,end) infinite;
 }
 @keyframes electric-border-flicker{
-  0%,100%{opacity:.72}
-  50%{opacity:1}
+  0%,100%{opacity:.9}
+  35%{opacity:.55}
+  65%{opacity:1}
 }
 @keyframes electric-border-breathe{
   0%,100%{opacity:.48;transform:scale(1)}
@@ -441,7 +426,7 @@ section{padding:80px 0}
 .offer-card--electric > *{position:relative;z-index:1}
 @media (prefers-reduced-motion: reduce){
   .offer-card--electric::before,
-  .offer-card--electric::after{animation:none}
+  .offer-card--electric::after{animation:none;opacity:.85}
 }
 
 /* ═══════════════════════════════
