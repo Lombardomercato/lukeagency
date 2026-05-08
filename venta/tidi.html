@@ -115,38 +115,20 @@ section{padding:80px 0}
   padding:6px 10px;border-radius:100px;
 }
 .hero-cta-group{display:flex;justify-content:center}
-
-/* Video placeholder */
+.hero-media{display:flex;flex-direction:column;align-items:center;gap:18px}
 .video-wrap{
-  max-width:680px;margin:0 auto;border-radius:14px;overflow:hidden;
+  width:100%;max-width:680px;margin:0 auto;border-radius:14px;overflow:hidden;
   border:1px solid rgba(0,180,216,.2);
-  background:linear-gradient(135deg,rgba(0,180,216,.05),rgba(0,180,216,.02));
-  aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;
-  position:relative;cursor:pointer;
+  box-shadow:0 12px 36px rgba(0,0,0,.32);
 }
-.video-wrap:hover .play-circle{transform:scale(1.08);box-shadow:0 0 40px rgba(0,180,216,.4)}
-.play-circle{
-  width:72px;height:72px;border-radius:50%;
-  background:rgba(0,180,216,.9);display:flex;align-items:center;justify-content:center;
-  transition:transform .3s,box-shadow .3s;box-shadow:0 0 24px rgba(0,180,216,.3);
-}
-.play-triangle{
-  width:0;height:0;border-style:solid;
-  border-width:12px 0 12px 22px;
-  border-color:transparent transparent transparent #fff;
-  margin-left:4px;
-}
-.video-label{
-  position:absolute;bottom:16px;left:50%;transform:translateX(-50%);
-  color:#8A8FA8;font-size:.75rem;font-family:'Inter',sans-serif;
-  letter-spacing:.06em;text-transform:uppercase;
-}
+.video-wrap iframe{display:block;width:100%;aspect-ratio:16/9;border:0}
 @media(min-width:920px){
   .hero{padding:20px 0 28px}
   .hero-layout{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:30px}
   .hero-copy{text-align:left}
   .hero h1,.hero-sub{margin-left:0;margin-right:0}
-  .hero-points,.hero-cta-group{justify-content:flex-start}
+  .hero-points{justify-content:flex-start}
+  .hero-media{align-items:flex-start}
 }
 
 /* ═══════════════════════════════
@@ -540,17 +522,16 @@ footer{
           <li>Enfoque 100% práctico</li>
           <li>Acceso inmediato</li>
         </ul>
+      </div>
+      <div class="hero-media">
+        <div class="video-wrap reveal">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/9Nlkk4RD5FU?si=xIw5KHE2s3tgLwCB" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
         <div class="hero-cta-group reveal">
           <a href="https://pay.hotmart.com/B99716351M?off=2gziue0m&checkoutMode=10&offDiscount=PMOTGF" class="cta-btn" target="_blank" rel="noopener">
             QUIERO MI BECA
           </a>
         </div>
-      </div>
-      <div class="video-wrap reveal">
-        <div class="play-circle">
-          <div class="play-triangle"></div>
-        </div>
-        <span class="video-label">Video de presentación</span>
       </div>
     </div>
   </div>
