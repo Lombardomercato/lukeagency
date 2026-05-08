@@ -511,12 +511,147 @@ footer{
 .hide-mobile{display:none}
 @media(min-width:768px){.hide-mobile{display:block}}
 .text-center{text-align:center}
+
+/* ── Bubble Menu (TIDI) ── */
+.bubble-menu{
+  position:fixed;
+  top:16px;
+  left:0;
+  width:100%;
+  z-index:1200;
+  pointer-events:none;
+}
+.bubble-menu-inner{
+  max-width:1100px;
+  margin:0 auto;
+  padding:0 16px;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+}
+.bubble-brand,
+.bubble-toggle,
+.bubble-link{
+  pointer-events:auto;
+  background:rgba(255,255,255,.96);
+  color:#0A0F1C;
+  border:1px solid rgba(255,255,255,.75);
+  border-radius:999px;
+  box-shadow:0 10px 30px rgba(0,0,0,.24);
+}
+.bubble-brand{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:11px 20px;
+  min-height:54px;
+}
+.bubble-brand img{
+  width:108px;
+  height:auto;
+}
+.bubble-toggle{
+  width:54px;
+  height:54px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:transform .32s ease,box-shadow .32s ease,background-color .32s ease;
+}
+.bubble-toggle:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,180,216,.3)}
+.bubble-toggle:focus-visible,.bubble-link:focus-visible{
+  outline:2px solid #00B4D8;
+  outline-offset:2px;
+}
+.bubble-toggle-line{
+  width:20px;height:2px;border-radius:10px;background:#0A0F1C;position:relative;
+  transition:transform .32s ease,opacity .22s ease;
+}
+.bubble-toggle-line::before,.bubble-toggle-line::after{
+  content:'';position:absolute;left:0;width:20px;height:2px;border-radius:10px;background:#0A0F1C;
+  transition:transform .32s ease,top .32s ease,bottom .32s ease;
+}
+.bubble-toggle-line::before{top:-6px}
+.bubble-toggle-line::after{bottom:-6px}
+.bubble-links{
+  position:absolute;
+  top:68px;
+  right:16px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:10px;
+  pointer-events:none;
+}
+.bubble-link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:48px;
+  padding:12px 22px;
+  font-family:'Sora',sans-serif;
+  font-size:.96rem;
+  font-weight:600;
+  letter-spacing:.01em;
+  opacity:0;
+  transform:translateY(-10px) scale(.95);
+  transition:opacity .36s ease,transform .36s ease,color .25s ease;
+}
+.bubble-link:hover{color:#00B4D8}
+.bubble-menu.is-open .bubble-links{pointer-events:auto}
+.bubble-menu.is-open .bubble-link{opacity:1;transform:translateY(0) scale(1)}
+.bubble-menu.is-open .bubble-link:nth-child(1){transition-delay:.05s}
+.bubble-menu.is-open .bubble-link:nth-child(2){transition-delay:.1s}
+.bubble-menu.is-open .bubble-link:nth-child(3){transition-delay:.15s}
+.bubble-menu.is-open .bubble-link:nth-child(4){transition-delay:.2s}
+.bubble-menu.is-open .bubble-link:nth-child(5){transition-delay:.25s}
+.bubble-menu.is-open .bubble-toggle-line{transform:rotate(45deg)}
+.bubble-menu.is-open .bubble-toggle-line::before{top:0;transform:rotate(90deg)}
+.bubble-menu.is-open .bubble-toggle-line::after{bottom:0;opacity:0}
+@media(min-width:980px){
+  .bubble-menu-inner{align-items:center}
+  .bubble-links{
+    right:50%;
+    top:72px;
+    transform:translateX(50%);
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .bubble-link{min-width:150px}
+}
+@media(max-width:560px){
+  .bubble-brand{padding:10px 16px;min-height:50px}
+  .bubble-brand img{width:96px}
+  .bubble-toggle{width:50px;height:50px}
+}
 </style>
 </head>
 <body>
+<div class="bubble-menu" id="bubbleMenu">
+  <div class="bubble-menu-inner">
+    <a class="bubble-brand" href="#top" aria-label="Ir al inicio de TIDI">
+      <img src="Logo-Final.png" alt="Logo oficial TIDI" loading="eager" decoding="async">
+    </a>
+    <button class="bubble-toggle" type="button" id="bubbleToggle" aria-expanded="false" aria-controls="bubbleLinks" aria-label="Abrir menú">
+      <span class="bubble-toggle-line" aria-hidden="true"></span>
+    </button>
+    <nav class="bubble-links" id="bubbleLinks" aria-label="Navegación principal">
+      <a class="bubble-link" href="#top">Inicio</a>
+      <a class="bubble-link" href="#incluye">Qué incluye</a>
+      <a class="bubble-link" href="#bonus">Bonus</a>
+      <a class="bubble-link" href="#precio">Precio</a>
+      <a class="bubble-link" href="#faq">FAQ</a>
+    </nav>
+  </div>
+</div>
 
 <!-- ════════════ HERO ════════════ -->
-<section class="hero">
+<section class="hero" id="top">
   <div class="container">
     <div class="hero-layout">
       <div class="hero-copy">
@@ -542,7 +677,7 @@ footer{
 </section>
 
 <!-- ════════════ QUÉ VAS A CONSEGUIR ════════════ -->
-<section class="benefits" id="beneficios">
+<section class="benefits" id="incluye">
   <div class="container">
     <div class="text-center">
       <span class="section-label reveal">Resultados</span>
@@ -817,6 +952,37 @@ function toggleFaq(btn) {
   document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
   if (!wasOpen) item.classList.add('open');
 }
+
+// Bubble menu
+(function(){
+  const menu = document.getElementById('bubbleMenu');
+  const toggle = document.getElementById('bubbleToggle');
+  const linksWrap = document.getElementById('bubbleLinks');
+  if (!menu || !toggle || !linksWrap) return;
+
+  const links = linksWrap.querySelectorAll('.bubble-link');
+
+  function setExpanded(isOpen){
+    menu.classList.toggle('is-open', isOpen);
+    toggle.setAttribute('aria-expanded', String(isOpen));
+    toggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+    links.forEach((link) => {
+      link.tabIndex = isOpen ? 0 : -1;
+    });
+  }
+
+  setExpanded(false);
+  toggle.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    setExpanded(!open);
+  });
+  links.forEach((link) => {
+    link.addEventListener('click', () => setExpanded(false));
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') setExpanded(false);
+  });
+})();
 </script>
 </body>
 </html>
