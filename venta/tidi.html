@@ -634,25 +634,36 @@ footer{
   body{padding-top:64px}
   .bubble-menu-inner{transition:none;transform:none !important}
   .bubble-menu.is-compact .bubble-menu-inner{transform:none}
-  .bubble-menu.is-mobile-scrolled .bubble-links{display:none}
-  .bubble-menu.is-mobile-scrolled .bubble-brand{display:none}
   .bubble-brand{padding:8px 12px;min-height:40px}
   .bubble-brand img{width:78px}
   .bubble-toggle{
     width:40px;height:40px;
-    position:absolute;
+    position:fixed;
     right:14px;
-    top:0;
+    top:10px;
   }
   .bubble-link--inicio{display:inline-flex}
   .bubble-links{
-    top:46px;
+    top:56px;
     left:14px;
     max-width:calc(100vw - 28px);
+    width:calc(100vw - 28px);
     flex-direction:column;
-    align-items:flex-start;
+    align-items:stretch;
+    gap:10px;
   }
-  .bubble-link{width:100%}
+  .bubble-link{
+    width:100%;
+    min-height:44px;
+    justify-content:flex-start;
+    padding:10px 18px;
+    border-radius:16px;
+    background:rgba(8,20,44,.96);
+    border-color:rgba(64,110,188,.5);
+  }
+  .bubble-menu.is-open .bubble-links{
+    pointer-events:auto;
+  }
 }
 </style>
 </head>
@@ -1010,10 +1021,8 @@ function toggleFaq(btn) {
   });
   function syncMenuByViewport(){
     if (mobileMQ.matches) {
-      const isDown = window.scrollY > 40;
-      menu.classList.toggle('is-mobile-scrolled', isDown);
+      menu.classList.remove('is-mobile-scrolled');
       menu.classList.remove('is-compact');
-      if (isDown) setExpanded(false);
       return;
     }
     menu.classList.remove('is-mobile-scrolled');
