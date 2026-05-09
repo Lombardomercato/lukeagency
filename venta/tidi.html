@@ -368,6 +368,7 @@ section{padding:52px 0}
 
 
 .offer-card--electric{
+  overflow:visible;
   --cyan:#00B4D8;
   --cyan-soft:#33CFFF;
   --bg-card:#0B1220;
@@ -401,7 +402,7 @@ section{padding:52px 0}
   position:absolute;
   inset:-5px;
   pointer-events:none;
-  z-index:0;
+  z-index:2;
   border-radius:24px;
   background:
     repeating-linear-gradient(87deg,rgba(120,236,255,.95) 0 7px,rgba(120,236,255,.25) 7px 13px,transparent 13px 17px) top/100% 2px no-repeat,
@@ -409,12 +410,16 @@ section{padding:52px 0}
     repeating-linear-gradient(177deg,rgba(120,236,255,.95) 0 6px,rgba(120,236,255,.22) 6px 11px,transparent 11px 16px) left/2px 100% no-repeat,
     repeating-linear-gradient(183deg,rgba(120,236,255,.95) 0 7px,rgba(120,236,255,.22) 7px 12px,transparent 12px 17px) right/2px 100% no-repeat;
   filter:drop-shadow(0 0 4px rgba(110,231,255,.9)) drop-shadow(0 0 12px rgba(0,180,216,.62));
-  animation:electric-border-flicker 2.2s steps(2,end) infinite;
+  animation:electric-border-flicker 2.2s steps(2,end) infinite, electric-border-flow 1.8s linear infinite;
 }
 @keyframes electric-border-flicker{
   0%,100%{opacity:.9}
   35%{opacity:.55}
   65%{opacity:1}
+}
+@keyframes electric-border-flow{
+  0%{background-position:0 0,0 100%,0 0,100% 0}
+  100%{background-position:34px 0,-34px 100%,0 34px,100% -34px}
 }
 @keyframes electric-border-breathe{
   0%,100%{opacity:.48;transform:scale(1)}
