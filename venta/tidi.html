@@ -187,13 +187,15 @@ section{padding:52px 0}
   .phone-screen{border-radius:31px}
 }
 @media(min-width:920px){
+  .hero{--hero-phone-width:min(44vw,520px)}
   .hero{padding:20px 0 28px}
   .hero-layout{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:30px}
   .hero-copy{text-align:left}
   .hero h1,.hero-sub{margin-left:0;margin-right:0}
   .hero-points{justify-content:flex-start}
   .hero-media{align-items:center}
-  .hero-phone-mockup{width:min(44vw,520px);max-width:none}
+  .hero-phone-mockup{width:var(--hero-phone-width);max-width:none;margin-left:auto;margin-right:auto}
+  .hero-cta-group{width:var(--hero-phone-width);max-width:none;margin-left:auto;margin-right:auto;justify-content:center}
 }
 
 /* ═══════════════════════════════
@@ -339,14 +341,17 @@ section{padding:52px 0}
 .bonus-meta{display:flex;align-items:center;gap:10px;margin-bottom:14px}
 .bonus-badge{
   display:inline-flex;align-items:center;justify-content:center;
-  background:rgba(0,180,216,.12);
-  border:1px solid rgba(0,180,216,.28);
-  color:#33CFFF;font-size:.68rem;font-weight:700;
-  padding:4px 10px;border-radius:999px;
+  width:38px;height:28px;
+  background:rgba(0,180,216,.14);
+  border:1px solid rgba(0,180,216,.34);
+  color:#33CFFF;font-size:.76rem;font-weight:700;
+  padding:0;border-radius:999px;
   font-family:'Sora',sans-serif;letter-spacing:.08em;text-transform:uppercase;
+  white-space:nowrap;
+  flex-shrink:0;
 }
-.bonus-num{font-family:'Sora',sans-serif;font-size:.8rem;font-weight:700;color:rgba(51,207,255,.75)}
-.bonus-card h4{font-size:1.04rem;font-weight:600;margin-bottom:10px;color:#fff;line-height:1.35}
+.bonus-card h4{font-size:1.04rem;font-weight:600;margin:0 0 10px;color:#fff;line-height:1.35}
+.bonus-meta h4{flex:1;margin:0;font-size:.95rem;letter-spacing:.025em;line-height:1.28}
 .bonus-card p{color:#A8B3C7;font-size:.9rem;line-height:1.56;overflow-wrap:anywhere}
 .bonus-photo-placeholder{
   width:100%;
@@ -448,48 +453,36 @@ section{padding:52px 0}
 .offer-card--electric::before{
   content:'';
   position:absolute;
-  inset:-14px;
-  border-radius:26px;
+  inset:-18px;
+  border-radius:30px;
   pointer-events:none;
   z-index:-1;
   background:
-    radial-gradient(60% 60% at 50% 8%,rgba(51,207,255,.34),rgba(0,180,216,.09) 52%,transparent 85%),
-    radial-gradient(80% 70% at 50% 100%,rgba(51,207,255,.26),transparent 72%);
-  opacity:.66;
-  animation:electric-border-breathe 3.4s ease-in-out infinite;
+    radial-gradient(70% 64% at 50% 8%,rgba(89,235,255,.22),rgba(0,180,216,.08) 55%,transparent 86%),
+    radial-gradient(86% 72% at 50% 100%,rgba(51,207,255,.18),transparent 74%);
+  filter:blur(3px);
+  opacity:.76;
+  animation:electric-glow-pulse 1.15s steps(2,end) infinite;
 }
 .offer-card--electric::after{
   content:'';
+  display:none;
+}
+@keyframes electric-glow-pulse{
+  0%,100%{opacity:.5;transform:scale(1)}
+  50%{opacity:.86;transform:scale(1.012)}
+}
+.electric-border-canvas{
   position:absolute;
-  inset:-5px;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
   pointer-events:none;
-  z-index:2;
-  border-radius:24px;
-  background:
-    repeating-linear-gradient(87deg,rgba(120,236,255,.95) 0 7px,rgba(120,236,255,.25) 7px 13px,transparent 13px 17px) top/100% 2px no-repeat,
-    repeating-linear-gradient(93deg,rgba(120,236,255,.95) 0 6px,rgba(120,236,255,.25) 6px 11px,transparent 11px 16px) bottom/100% 2px no-repeat,
-    repeating-linear-gradient(177deg,rgba(120,236,255,.95) 0 6px,rgba(120,236,255,.22) 6px 11px,transparent 11px 16px) left/2px 100% no-repeat,
-    repeating-linear-gradient(183deg,rgba(120,236,255,.95) 0 7px,rgba(120,236,255,.22) 7px 12px,transparent 12px 17px) right/2px 100% no-repeat;
-  filter:drop-shadow(0 0 4px rgba(110,231,255,.9)) drop-shadow(0 0 12px rgba(0,180,216,.62));
-  animation:electric-border-flicker 2.2s steps(2,end) infinite, electric-border-flow 1.8s linear infinite;
+  z-index:0;
 }
-@keyframes electric-border-flicker{
-  0%,100%{opacity:.9}
-  35%{opacity:.55}
-  65%{opacity:1}
-}
-@keyframes electric-border-flow{
-  0%{background-position:0 0,0 100%,0 0,100% 0}
-  100%{background-position:34px 0,-34px 100%,0 34px,100% -34px}
-}
-@keyframes electric-border-breathe{
-  0%,100%{opacity:.48;transform:scale(1)}
-  50%{opacity:.76;transform:scale(1.01)}
-}
-.offer-card--electric > *{position:relative;z-index:1}
+.offer-card--electric > :not(.electric-border-canvas){position:relative;z-index:1}
 @media (prefers-reduced-motion: reduce){
-  .offer-card--electric::before,
-  .offer-card--electric::after{animation:none;opacity:.85}
+  .offer-card--electric::before{animation:none;opacity:.85}
 }
 
 /* ═══════════════════════════════
@@ -910,7 +903,7 @@ footer{
       </div>
     </div>
     <a href="https://pay.hotmart.com/B99716351M?off=2gziue0m&checkoutMode=10&offDiscount=PMOTGF" class="cta-btn reveal" target="_blank" rel="noopener">
-      QUIERO SER PARTE DE MISIÓN INVERSOR
+      QUIERO SER PARTE DEL TALLER INTENSIVO DE INVERSIONES
     </a>
   </div>
 </section>
@@ -923,15 +916,15 @@ footer{
     <div class="divider reveal"></div>
     <div class="bonus-carousel reveal">
       <div class="bonus-track">
-        <article class="bonus-card reveal reveal-delay-1"><div class="bonus-meta"><span class="bonus-badge">BONO</span><span class="bonus-num">01</span></div><img class="bonus-photo-placeholder" src="Grabación de clase.png" loading="lazy" alt="Grabación de las clases del taller"><h4>Grabación de las clases</h4><p>Accedé a las clases grabadas para volver a verlas cuando quieras, a tu propio ritmo.</p></article>
-        <article class="bonus-card reveal reveal-delay-2"><div class="bonus-meta"><span class="bonus-badge">BONO</span><span class="bonus-num">02</span></div><img class="bonus-photo-placeholder" src="Comunidad whatsapp.png" loading="lazy" alt="Comunidad privada de WhatsApp del taller"><h4>Comunidad de WhatsApp</h4><p>Grupo privado para acompañarte durante el taller, resolver dudas y compartir avances.</p></article>
-        <article class="bonus-card reveal reveal-delay-3"><div class="bonus-meta"><span class="bonus-badge">BONO</span><span class="bonus-num">03</span></div><img class="bonus-photo-placeholder" src="Material de apoyo.png" loading="lazy" alt="Material de apoyo para seguir las clases"><h4>Material de apoyo</h4><p>Recursos simples para seguir cada clase y aplicar lo aprendido con más claridad.</p></article>
-        <article class="bonus-card reveal reveal-delay-4"><div class="bonus-meta"><span class="bonus-badge">BONO</span><span class="bonus-num">04</span></div><img class="bonus-photo-placeholder" src="Clases de refuerzo.png" loading="lazy" alt="Clases de refuerzo para repasar conceptos"><h4>Clases de refuerzo</h4><p>Espacios extra para repasar conceptos clave y ordenar dudas importantes.</p></article>
-        <article class="bonus-card reveal reveal-delay-5"><div class="bonus-meta"><span class="bonus-badge">BONO</span><span class="bonus-num">05</span></div><img class="bonus-photo-placeholder" src="4 sesiones vip.png" loading="lazy" alt="4 sesiones VIP de preguntas y respuestas"><h4>4 sesiones VIP de Q&amp;A</h4><p>Encuentros de preguntas y respuestas para profundizar los temas principales del taller.</p></article>
-        <article class="bonus-card reveal reveal-delay-1"><div class="bonus-meta"><span class="bonus-badge">BONO</span><span class="bonus-num">06</span></div><img class="bonus-photo-placeholder" src="Clase Extra.png" loading="lazy" alt="Clase extra de revisión de cartera personalizada"><h4>Clase extra: revisión de cartera personalizada</h4><p>Una instancia especial para entender cómo analizar una cartera y mejorar decisiones.</p></article>
-        <article class="bonus-card reveal reveal-delay-2"><div class="bonus-meta"><span class="bonus-badge">BONO</span><span class="bonus-num">07</span></div><img class="bonus-photo-placeholder" src="Soporte en vivo.png" loading="lazy" alt="Soporte en vivo durante cada clase"><h4>Soporte en vivo durante cada clase</h4><p>Acompañamiento durante las clases para que no te quedes trabado con conceptos clave.</p></article>
-        <article class="bonus-card reveal reveal-delay-3"><div class="bonus-meta"><span class="bonus-badge">BONO</span><span class="bonus-num">08</span></div><img class="bonus-photo-placeholder" src="Comunidad.png" loading="lazy" alt="Micro comunidades de Inversores Conscientes"><h4>Micro comunidades “Inversores Conscientes”</h4><p>Espacios reducidos para compartir el proceso con personas que están en el mismo camino.</p></article>
-        <article class="bonus-card reveal reveal-delay-4"><div class="bonus-meta"><span class="bonus-badge">BONO</span><span class="bonus-num">09</span></div><img class="bonus-photo-placeholder" src="checklist.png" loading="lazy" alt="Checklist anti-pérdidas para decisiones de inversión"><h4>Checklist anti-pérdidas</h4><p>Una guía práctica para evitar errores comunes antes de tomar decisiones de inversión.</p></article>
+        <article class="bonus-card reveal reveal-delay-1"><div class="bonus-meta"><span class="bonus-badge">01</span><h4>GRABACIÓN DE LAS CLASES</h4></div><img class="bonus-photo-placeholder" src="Grabación de clase.png" loading="lazy" alt="Grabación de las clases del taller"><p>Accedé a las clases grabadas para volver a verlas cuando quieras, a tu propio ritmo.</p></article>
+        <article class="bonus-card reveal reveal-delay-2"><div class="bonus-meta"><span class="bonus-badge">02</span><h4>COMUNIDAD DE WHATSAPP</h4></div><img class="bonus-photo-placeholder" src="Comunidad whatsapp.png" loading="lazy" alt="Comunidad privada de WhatsApp del taller"><p>Grupo privado para acompañarte durante el taller, resolver dudas y compartir avances.</p></article>
+        <article class="bonus-card reveal reveal-delay-3"><div class="bonus-meta"><span class="bonus-badge">03</span><h4>MATERIAL DE APOYO</h4></div><img class="bonus-photo-placeholder" src="Material de apoyo.png" loading="lazy" alt="Material de apoyo para seguir las clases"><p>Recursos simples para seguir cada clase y aplicar lo aprendido con más claridad.</p></article>
+        <article class="bonus-card reveal reveal-delay-4"><div class="bonus-meta"><span class="bonus-badge">04</span><h4>CLASES DE REFUERZO</h4></div><img class="bonus-photo-placeholder" src="Clases de refuerzo.png" loading="lazy" alt="Clases de refuerzo para repasar conceptos"><p>Espacios extra para repasar conceptos clave y ordenar dudas importantes.</p></article>
+        <article class="bonus-card reveal reveal-delay-5"><div class="bonus-meta"><span class="bonus-badge">05</span><h4>4 SESIONES VIP DE Q&amp;A</h4></div><img class="bonus-photo-placeholder" src="4 sesiones vip.png" loading="lazy" alt="4 sesiones VIP de preguntas y respuestas"><p>Encuentros de preguntas y respuestas para profundizar los temas principales del taller.</p></article>
+        <article class="bonus-card reveal reveal-delay-1"><div class="bonus-meta"><span class="bonus-badge">06</span><h4>CLASE EXTRA: REVISIÓN DE CARTERA PERSONALIZADA</h4></div><img class="bonus-photo-placeholder" src="Clase Extra.png" loading="lazy" alt="Clase extra de revisión de cartera personalizada"><p>Una instancia especial para entender cómo analizar una cartera y mejorar decisiones.</p></article>
+        <article class="bonus-card reveal reveal-delay-2"><div class="bonus-meta"><span class="bonus-badge">07</span><h4>SOPORTE EN VIVO DURANTE CADA CLASE</h4></div><img class="bonus-photo-placeholder" src="Soporte en vivo.png" loading="lazy" alt="Soporte en vivo durante cada clase"><p>Acompañamiento durante las clases para que no te quedes trabado con conceptos clave.</p></article>
+        <article class="bonus-card reveal reveal-delay-3"><div class="bonus-meta"><span class="bonus-badge">08</span><h4>MICRO COMUNIDADES “INVERSORES CONSCIENTES”</h4></div><img class="bonus-photo-placeholder" src="Comunidad.png" loading="lazy" alt="Micro comunidades de Inversores Conscientes"><p>Espacios reducidos para compartir el proceso con personas que están en el mismo camino.</p></article>
+        <article class="bonus-card reveal reveal-delay-4"><div class="bonus-meta"><span class="bonus-badge">09</span><h4>CHECKLIST ANTI-PÉRDIDAS</h4></div><img class="bonus-photo-placeholder" src="checklist.png" loading="lazy" alt="Checklist anti-pérdidas para decisiones de inversión"><p>Una guía práctica para evitar errores comunes antes de tomar decisiones de inversión.</p></article>
       </div>
     </div>
   </div>
@@ -941,7 +934,7 @@ footer{
 <section class="precio" id="precio">
   <div class="container">
     <span class="section-label reveal">Inversión</span>
-    <h2 class="section-title reveal">La inversión para ser parte de Misión Inversor es:</h2>
+    <h2 class="section-title reveal">La inversión para ser parte del Taller Intensivo de Inversiones es:</h2>
     <div class="price-card offer-card--electric reveal">
       <div class="price-badge">⚡ Becas limitadas</div>
       <div class="price-old">$97 USD</div>
@@ -1051,6 +1044,237 @@ footer{
       card.style.setProperty('--glow-y', y + '%');
     });
   });
+})();
+
+// Electric price border: one lightweight canvas, paused off-screen.
+(function(){
+  const card = document.querySelector('.offer-card--electric');
+  if (!card) return;
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const canvas = document.createElement('canvas');
+  canvas.className = 'electric-border-canvas';
+  canvas.setAttribute('aria-hidden', 'true');
+  card.prepend(canvas);
+
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  const color = '#78ecff';
+  const offset = 44;
+  const borderOutset = 12;
+  const radius = 22;
+  let width = 0;
+  let height = 0;
+  let dpr = 1;
+  let raf = 0;
+  let visible = false;
+  let lastFrame = 0;
+
+  function rand(x){
+    return Math.sin(x * 12.9898) * 43758.5453 % 1;
+  }
+
+  function noise(x, y){
+    const i = Math.floor(x);
+    const j = Math.floor(y);
+    const fx = x - i;
+    const fy = y - j;
+    const a = rand(i + j * 57);
+    const b = rand(i + 1 + j * 57);
+    const c = rand(i + (j + 1) * 57);
+    const d = rand(i + 1 + (j + 1) * 57);
+    const ux = fx * fx * (3 - 2 * fx);
+    const uy = fy * fy * (3 - 2 * fy);
+    return a * (1 - ux) * (1 - uy) + b * ux * (1 - uy) + c * (1 - ux) * uy + d * ux * uy;
+  }
+
+  function layeredNoise(x, time, seed){
+    let value = 0;
+    let amp = 1;
+    let freq = 1;
+    for (let i = 0; i < 4; i++) {
+      value += (noise(x * freq + seed * 31, time * freq) - 0.5) * amp;
+      freq *= 1.75;
+      amp *= 0.56;
+    }
+    return value;
+  }
+
+  function corner(cx, cy, r, start, length, p){
+    const angle = start + p * length;
+    return { x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle) };
+  }
+
+  function roundedRectPoint(t, left, top, rectWidth, rectHeight, r){
+    const straightWidth = rectWidth - 2 * r;
+    const straightHeight = rectHeight - 2 * r;
+    const arc = Math.PI * r / 2;
+    const perimeter = 2 * straightWidth + 2 * straightHeight + 4 * arc;
+    const distance = t * perimeter;
+    let acc = 0;
+
+    if (distance <= acc + straightWidth) {
+      return { x: left + r + (distance - acc) / straightWidth * straightWidth, y: top };
+    }
+    acc += straightWidth;
+    if (distance <= acc + arc) return corner(left + rectWidth - r, top + r, r, -Math.PI / 2, Math.PI / 2, (distance - acc) / arc);
+    acc += arc;
+    if (distance <= acc + straightHeight) return { x: left + rectWidth, y: top + r + (distance - acc) / straightHeight * straightHeight };
+    acc += straightHeight;
+    if (distance <= acc + arc) return corner(left + rectWidth - r, top + rectHeight - r, r, 0, Math.PI / 2, (distance - acc) / arc);
+    acc += arc;
+    if (distance <= acc + straightWidth) return { x: left + rectWidth - r - (distance - acc) / straightWidth * straightWidth, y: top + rectHeight };
+    acc += straightWidth;
+    if (distance <= acc + arc) return corner(left + r, top + rectHeight - r, r, Math.PI / 2, Math.PI / 2, (distance - acc) / arc);
+    acc += arc;
+    if (distance <= acc + straightHeight) return { x: left, y: top + rectHeight - r - (distance - acc) / straightHeight * straightHeight };
+    acc += straightHeight;
+    return corner(left + r, top + r, r, Math.PI, Math.PI / 2, (distance - acc) / arc);
+  }
+
+  function roundedRectNormal(point, left, top, rectWidth, rectHeight, r){
+    const right = left + rectWidth;
+    const bottom = top + rectHeight;
+    const epsilon = 0.1;
+
+    const inLeft = point.x < left + r;
+    const inRight = point.x > right - r;
+    const inTop = point.y < top + r;
+    const inBottom = point.y > bottom - r;
+
+    if ((inLeft || inRight) && (inTop || inBottom)) {
+      const cx = inLeft ? left + r : right - r;
+      const cy = inTop ? top + r : bottom - r;
+      const nx = point.x - cx;
+      const ny = point.y - cy;
+      const length = Math.hypot(nx, ny) || 1;
+      return { x: nx / length, y: ny / length };
+    }
+
+    if (Math.abs(point.y - top) < epsilon) return { x: 0, y: -1 };
+    if (Math.abs(point.x - right) < epsilon) return { x: 1, y: 0 };
+    if (Math.abs(point.y - bottom) < epsilon) return { x: 0, y: 1 };
+    if (Math.abs(point.x - left) < epsilon) return { x: -1, y: 0 };
+
+    return { x: 0, y: 0 };
+  }
+
+  function resize(){
+    const rect = card.getBoundingClientRect();
+    width = Math.max(1, Math.round(rect.width + offset * 2));
+    height = Math.max(1, Math.round(rect.height + offset * 2));
+    dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    canvas.width = Math.round(width * dpr);
+    canvas.height = Math.round(height * dpr);
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
+  }
+
+  function draw(now){
+    const time = now * 0.001;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, width, height);
+
+    const left = offset - borderOutset;
+    const top = offset - borderOutset;
+    const rectWidth = width - offset * 2 + borderOutset * 2;
+    const rectHeight = height - offset * 2 + borderOutset * 2;
+    const electricRadius = radius + borderOutset;
+    const perimeter = 2 * (rectWidth + rectHeight) + 2 * Math.PI * electricRadius;
+    const samples = Math.max(120, Math.floor(perimeter / 4));
+    const chaos = reduceMotion ? 0 : 7.5;
+
+    const points = [];
+    const seamOffset = 0.19;
+    for (let i = 0; i <= samples; i++) {
+      const progress = (i / samples + seamOffset) % 1;
+      const p = roundedRectPoint(progress, left, top, rectWidth, rectHeight, electricRadius);
+      const normal = roundedRectNormal(p, left, top, rectWidth, rectHeight, electricRadius);
+      const jitter = layeredNoise(progress * 10, time * 2.1, 1) * chaos;
+      const ripple = Math.sin(progress * Math.PI * 42 + time * 7) * 0.75;
+      points.push({
+        x: p.x + normal.x * (jitter + ripple),
+        y: p.y + normal.y * (jitter + ripple)
+      });
+    }
+
+    ctx.beginPath();
+    points.forEach((point, index) => {
+      if (index === 0) {
+        ctx.moveTo(point.x, point.y);
+        return;
+      }
+      const previous = points[index - 1];
+      ctx.quadraticCurveTo(previous.x, previous.y, (previous.x + point.x) / 2, (previous.y + point.y) / 2);
+    });
+    const last = points[points.length - 1];
+    const first = points[0];
+    ctx.quadraticCurveTo(last.x, last.y, (last.x + first.x) / 2, (last.y + first.y) / 2);
+    ctx.quadraticCurveTo(first.x, first.y, first.x, first.y);
+
+    ctx.globalAlpha = 0.38;
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 3.4;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.shadowColor = color;
+    ctx.shadowBlur = 18;
+    ctx.stroke();
+
+    ctx.globalAlpha = 1;
+    ctx.lineWidth = 0.95;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.shadowBlur = 7;
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+  }
+
+  function loop(now){
+    if (!visible) return;
+    if (!lastFrame || now - lastFrame > 33) {
+      draw(now);
+      lastFrame = now;
+    }
+    raf = requestAnimationFrame(loop);
+  }
+
+  function start(){
+    if (raf || reduceMotion) return;
+    visible = true;
+    raf = requestAnimationFrame(loop);
+  }
+
+  function stop(){
+    visible = false;
+    if (raf) cancelAnimationFrame(raf);
+    raf = 0;
+  }
+
+  resize();
+  draw(0);
+
+  if ('ResizeObserver' in window) {
+    new ResizeObserver(() => {
+      resize();
+      draw(performance.now());
+    }).observe(card);
+  } else {
+    window.addEventListener('resize', () => {
+      resize();
+      draw(performance.now());
+    }, { passive: true });
+  }
+
+  if ('IntersectionObserver' in window && !reduceMotion) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => entry.isIntersecting ? start() : stop());
+    }, { threshold: 0.15 });
+    observer.observe(card);
+  } else if (!reduceMotion) {
+    start();
+  }
 })();
 
 // FAQ accordion
