@@ -603,6 +603,7 @@ footer{
   pointer-events:none;
 }
 .bubble-menu-inner{
+  position:relative;
   max-width:1100px;
   margin:0 auto;
   padding:0 14px;
@@ -663,7 +664,8 @@ footer{
 .bubble-links{
   position:absolute;
   top:0;
-  left:154px;
+  left:auto;
+  right:54px;
   display:flex;
   flex-direction:row;
   align-items:center;
@@ -699,9 +701,10 @@ footer{
   .bubble-menu.is-compact .bubble-menu-inner{transform:translateX(-44px)}
   .bubble-links{
     top:0;
-    left:154px;
+    left:auto;
+    right:54px;
     transform:none;
-    justify-content:flex-start;
+    justify-content:flex-end;
     flex-wrap:wrap;
     gap:10px;
   }
@@ -709,7 +712,7 @@ footer{
 }
 @media(min-width:561px) and (max-width:979px){
   .bubble-link--inicio{display:none}
-  .bubble-links{left:154px}
+  .bubble-links{left:auto;right:54px}
 }
 @media(max-width:560px){
   body{padding-top:64px}
