@@ -48,6 +48,7 @@ section{padding:52px 0}
 }
 .section-title{font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:16px}
 .section-subtitle{color:#8A8FA8;font-size:1.05rem;max-width:640px}
+.section-subtitle--center{margin:0 auto}
 
 /* ── CTA Button ── */
 .cta-btn{
@@ -348,7 +349,7 @@ section{padding:52px 0}
   transform:translateY(-2px);
 }
 .bonus-card:hover::after{opacity:1}
-.bonus-meta{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.bonus-meta{display:flex;align-items:flex-start;gap:10px;margin-bottom:14px;min-height:74px}
 .bonus-badge{
   display:inline-flex;align-items:center;justify-content:center;
   width:38px;height:28px;
@@ -365,6 +366,7 @@ section{padding:52px 0}
 .bonus-card p{color:#A8B3C7;font-size:.9rem;line-height:1.56;overflow-wrap:anywhere}
 .bonus-photo-placeholder{
   width:100%;
+  height:auto;
   aspect-ratio:1/1;
   border-radius:12px;
   margin-bottom:14px;
@@ -382,6 +384,7 @@ section{padding:52px 0}
     border-radius:16px;
   }
   .bonus-card h4{font-size:1rem}
+  .bonus-meta{min-height:0}
   .bonus-card p{font-size:.95rem;line-height:1.5}
 }
 
@@ -441,6 +444,7 @@ section{padding:52px 0}
   color:#8A8FA8;font-size:.88rem;margin-top:20px;
   max-width:380px;margin-left:auto;margin-right:auto;line-height:1.5;
 }
+.price-cta{width:100%}
 
 
 .offer-card--electric{
@@ -509,11 +513,15 @@ section{padding:52px 0}
 }
 .faq-item.open{border-color:rgba(0,180,216,.3)}
 .faq-q{
+  width:100%;
+  border:0;
+  color:#fff;
   display:flex;align-items:center;justify-content:space-between;gap:16px;
   padding:20px 24px;cursor:pointer;
   font-family:'Sora',sans-serif;font-weight:600;font-size:.95rem;
   background:rgba(0,180,216,.03);transition:background .3s;
   -webkit-user-select:none;user-select:none;
+  text-align:left;
 }
 .faq-q:hover{background:rgba(0,180,216,.06)}
 .faq-chevron{
@@ -808,7 +816,7 @@ footer{
     <div class="text-center">
       <span class="section-label reveal">Resultados</span>
       <h2 class="section-title reveal">¿Qué vas a conseguir en estos 4 días?</h2>
-      <p class="section-subtitle reveal" style="margin:0 auto">Al finalizar esta capacitación, tendrás todas las herramientas para:</p>
+      <p class="section-subtitle section-subtitle--center reveal">Al finalizar esta capacitación, tendrás todas las herramientas para:</p>
     </div>
     <div class="benefits-grid">
       <!-- 1 -->
@@ -940,15 +948,15 @@ footer{
     <div class="divider reveal"></div>
     <div class="bonus-carousel reveal">
       <div class="bonus-track">
-        <article class="bonus-card reveal reveal-delay-1"><div class="bonus-meta"><span class="bonus-badge">01</span><h4>GRABACIÓN DE LAS CLASES</h4></div><img class="bonus-photo-placeholder" src="Grabación de clase.png" loading="lazy" alt="Grabación de las clases del taller"><p>Accedé a las clases grabadas para volver a verlas cuando quieras, a tu propio ritmo.</p></article>
-        <article class="bonus-card reveal reveal-delay-2"><div class="bonus-meta"><span class="bonus-badge">02</span><h4>COMUNIDAD DE WHATSAPP</h4></div><img class="bonus-photo-placeholder" src="Comunidad whatsapp.png" loading="lazy" alt="Comunidad privada de WhatsApp del taller"><p>Grupo privado para acompañarte durante el taller, resolver dudas y compartir avances.</p></article>
-        <article class="bonus-card reveal reveal-delay-3"><div class="bonus-meta"><span class="bonus-badge">03</span><h4>MATERIAL DE APOYO</h4></div><img class="bonus-photo-placeholder" src="Material de apoyo.png" loading="lazy" alt="Material de apoyo para seguir las clases"><p>Recursos simples para seguir cada clase y aplicar lo aprendido con más claridad.</p></article>
-        <article class="bonus-card reveal reveal-delay-4"><div class="bonus-meta"><span class="bonus-badge">04</span><h4>CLASES DE REFUERZO</h4></div><img class="bonus-photo-placeholder" src="Clases de refuerzo.png" loading="lazy" alt="Clases de refuerzo para repasar conceptos"><p>Espacios extra para repasar conceptos clave y ordenar dudas importantes.</p></article>
-        <article class="bonus-card reveal reveal-delay-5"><div class="bonus-meta"><span class="bonus-badge">05</span><h4>4 SESIONES VIP DE Q&amp;A</h4></div><img class="bonus-photo-placeholder" src="4 sesiones vip.png" loading="lazy" alt="4 sesiones VIP de preguntas y respuestas"><p>Encuentros de preguntas y respuestas para profundizar los temas principales del taller.</p></article>
-        <article class="bonus-card reveal reveal-delay-1"><div class="bonus-meta"><span class="bonus-badge">06</span><h4>CLASE EXTRA: REVISIÓN DE CARTERA PERSONALIZADA</h4></div><img class="bonus-photo-placeholder" src="Clase Extra.png" loading="lazy" alt="Clase extra de revisión de cartera personalizada"><p>Una instancia especial para entender cómo analizar una cartera y mejorar decisiones.</p></article>
-        <article class="bonus-card reveal reveal-delay-2"><div class="bonus-meta"><span class="bonus-badge">07</span><h4>SOPORTE EN VIVO DURANTE CADA CLASE</h4></div><img class="bonus-photo-placeholder" src="Soporte en vivo.png" loading="lazy" alt="Soporte en vivo durante cada clase"><p>Acompañamiento durante las clases para que no te quedes trabado con conceptos clave.</p></article>
-        <article class="bonus-card reveal reveal-delay-3"><div class="bonus-meta"><span class="bonus-badge">08</span><h4>MICRO COMUNIDADES “INVERSORES CONSCIENTES”</h4></div><img class="bonus-photo-placeholder" src="Comunidad.png" loading="lazy" alt="Micro comunidades de Inversores Conscientes"><p>Espacios reducidos para compartir el proceso con personas que están en el mismo camino.</p></article>
-        <article class="bonus-card reveal reveal-delay-4"><div class="bonus-meta"><span class="bonus-badge">09</span><h4>CHECKLIST ANTI-PÉRDIDAS</h4></div><img class="bonus-photo-placeholder" src="checklist.png" loading="lazy" alt="Checklist anti-pérdidas para decisiones de inversión"><p>Una guía práctica para evitar errores comunes antes de tomar decisiones de inversión.</p></article>
+        <article class="bonus-card reveal reveal-delay-1"><div class="bonus-meta"><span class="bonus-badge">01</span><h4>GRABACIÓN DE LAS CLASES</h4></div><img class="bonus-photo-placeholder" src="Grabación de clase.png" width="1254" height="1254" loading="lazy" alt="Grabación de las clases del taller"><p>Accedé a las clases grabadas para volver a verlas cuando quieras, a tu propio ritmo.</p></article>
+        <article class="bonus-card reveal reveal-delay-2"><div class="bonus-meta"><span class="bonus-badge">02</span><h4>COMUNIDAD DE WHATSAPP</h4></div><img class="bonus-photo-placeholder" src="Comunidad whatsapp.png" width="1254" height="1254" loading="lazy" alt="Comunidad privada de WhatsApp del taller"><p>Grupo privado para acompañarte durante el taller, resolver dudas y compartir avances.</p></article>
+        <article class="bonus-card reveal reveal-delay-3"><div class="bonus-meta"><span class="bonus-badge">03</span><h4>MATERIAL DE APOYO</h4></div><img class="bonus-photo-placeholder" src="Material de apoyo.png" width="1254" height="1254" loading="lazy" alt="Material de apoyo para seguir las clases"><p>Recursos simples para seguir cada clase y aplicar lo aprendido con más claridad.</p></article>
+        <article class="bonus-card reveal reveal-delay-4"><div class="bonus-meta"><span class="bonus-badge">04</span><h4>CLASES DE REFUERZO</h4></div><img class="bonus-photo-placeholder" src="Clases de refuerzo.png" width="1254" height="1254" loading="lazy" alt="Clases de refuerzo para repasar conceptos"><p>Espacios extra para repasar conceptos clave y ordenar dudas importantes.</p></article>
+        <article class="bonus-card reveal reveal-delay-5"><div class="bonus-meta"><span class="bonus-badge">05</span><h4>4 SESIONES VIP DE Q&amp;A</h4></div><img class="bonus-photo-placeholder" src="4 sesiones vip.png" width="1254" height="1254" loading="lazy" alt="4 sesiones VIP de preguntas y respuestas"><p>Encuentros de preguntas y respuestas para profundizar los temas principales del taller.</p></article>
+        <article class="bonus-card reveal reveal-delay-1"><div class="bonus-meta"><span class="bonus-badge">06</span><h4>CLASE EXTRA: REVISIÓN DE CARTERA PERSONALIZADA</h4></div><img class="bonus-photo-placeholder" src="Clase Extra.png" width="1254" height="1254" loading="lazy" alt="Clase extra de revisión de cartera personalizada"><p>Una instancia especial para entender cómo analizar una cartera y mejorar decisiones.</p></article>
+        <article class="bonus-card reveal reveal-delay-2"><div class="bonus-meta"><span class="bonus-badge">07</span><h4>SOPORTE EN VIVO DURANTE CADA CLASE</h4></div><img class="bonus-photo-placeholder" src="Soporte en vivo.png" width="1254" height="1254" loading="lazy" alt="Soporte en vivo durante cada clase"><p>Acompañamiento durante las clases para que no te quedes trabado con conceptos clave.</p></article>
+        <article class="bonus-card reveal reveal-delay-3"><div class="bonus-meta"><span class="bonus-badge">08</span><h4>MICRO COMUNIDADES “INVERSORES CONSCIENTES”</h4></div><img class="bonus-photo-placeholder" src="Comunidad.png" width="1254" height="1254" loading="lazy" alt="Micro comunidades de Inversores Conscientes"><p>Espacios reducidos para compartir el proceso con personas que están en el mismo camino.</p></article>
+        <article class="bonus-card reveal reveal-delay-4"><div class="bonus-meta"><span class="bonus-badge">09</span><h4>CHECKLIST ANTI-PÉRDIDAS</h4></div><img class="bonus-photo-placeholder" src="checklist.png" width="1254" height="1254" loading="lazy" alt="Checklist anti-pérdidas para decisiones de inversión"><p>Una guía práctica para evitar errores comunes antes de tomar decisiones de inversión.</p></article>
       </div>
     </div>
   </div>
@@ -964,7 +972,7 @@ footer{
       <div class="price-old">$97 USD</div>
       <div class="price-current"><span>$</span>30</div>
       <div class="price-currency">USD</div>
-      <a href="https://pay.hotmart.com/B99716351M?off=2gziue0m&checkoutMode=10&offDiscount=PMOTGF" class="cta-btn" target="_blank" rel="noopener" style="width:100%">
+      <a href="https://pay.hotmart.com/B99716351M?off=2gziue0m&checkoutMode=10&offDiscount=PMOTGF" class="cta-btn price-cta" target="_blank" rel="noopener">
         QUIERO MI BECA
       </a>
       <p class="price-note">¡Las becas se están agotando! Este es tu momento para acceder a una capacitación de nivel premium a un precio increíble.</p>
@@ -983,35 +991,35 @@ footer{
     <div class="faq-list">
       <!-- Q1 -->
       <div class="faq-item reveal reveal-delay-1">
-        <div class="faq-q" onclick="toggleFaq(this)">
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-1">
           <span>¿No tengo tiempo para asistir a las clases en vivo?</span>
           <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </div>
-        <div class="faq-a"><div class="faq-a-inner">No te preocupes. Si no puedes asistir en vivo, tendrás acceso a las grabaciones de todas las clases para verlas a tu propio ritmo.</div></div>
+        </button>
+        <div class="faq-a" id="faq-a-1"><div class="faq-a-inner">No te preocupes. Si no puedes asistir en vivo, tendrás acceso a las grabaciones de todas las clases para verlas a tu propio ritmo.</div></div>
       </div>
       <!-- Q2 -->
       <div class="faq-item reveal reveal-delay-2">
-        <div class="faq-q" onclick="toggleFaq(this)">
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-2">
           <span>¿Esta capacitación es para principiantes?</span>
           <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </div>
-        <div class="faq-a"><div class="faq-a-inner">¡Sí! Este curso está diseñado tanto para principiantes como para aquellos con experiencia en inversiones que buscan un plan claro.</div></div>
+        </button>
+        <div class="faq-a" id="faq-a-2"><div class="faq-a-inner">¡Sí! Este curso está diseñado tanto para principiantes como para aquellos con experiencia en inversiones que buscan un plan claro.</div></div>
       </div>
       <!-- Q3 -->
       <div class="faq-item reveal reveal-delay-3">
-        <div class="faq-q" onclick="toggleFaq(this)">
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-3">
           <span>¿Vamos a estar en un grupo de WhatsApp?</span>
           <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </div>
-        <div class="faq-a"><div class="faq-a-inner">Sí, tendrás acceso a nuestro grupo de WhatsApp donde podrás interactuar con compañeros y recibir apoyo del equipo durante toda la capacitación.</div></div>
+        </button>
+        <div class="faq-a" id="faq-a-3"><div class="faq-a-inner">Sí, tendrás acceso a nuestro grupo de WhatsApp donde podrás interactuar con compañeros y recibir apoyo del equipo durante toda la capacitación.</div></div>
       </div>
       <!-- Q4 -->
       <div class="faq-item reveal reveal-delay-4">
-        <div class="faq-q" onclick="toggleFaq(this)">
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-4">
           <span>¿Puedo ver las clases desde cualquier lugar?</span>
           <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </div>
-        <div class="faq-a"><div class="faq-a-inner">¡Por supuesto! Las clases son 100% online, accesibles desde cualquier lugar con conexión a internet.</div></div>
+        </button>
+        <div class="faq-a" id="faq-a-4"><div class="faq-a-inner">¡Por supuesto! Las clases son 100% online, accesibles desde cualquier lugar con conexión a internet.</div></div>
       </div>
     </div>
   </div>
@@ -1305,10 +1313,20 @@ footer{
 function toggleFaq(btn) {
   const item = btn.parentElement;
   const wasOpen = item.classList.contains('open');
-  // close all
-  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-  if (!wasOpen) item.classList.add('open');
+  document.querySelectorAll('.faq-item').forEach((faqItem) => {
+    faqItem.classList.remove('open');
+    const faqButton = faqItem.querySelector('.faq-q');
+    if (faqButton) faqButton.setAttribute('aria-expanded', 'false');
+  });
+  if (!wasOpen) {
+    item.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+  }
 }
+
+document.querySelectorAll('.faq-q').forEach((btn) => {
+  btn.addEventListener('click', () => toggleFaq(btn));
+});
 
 // Bubble menu
 (function(){
