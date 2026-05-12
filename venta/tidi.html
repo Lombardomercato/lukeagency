@@ -662,14 +662,13 @@ footer{
 .bubble-toggle-line::before{top:-5px}
 .bubble-toggle-line::after{bottom:-5px}
 .bubble-links{
-  position:absolute;
-  top:0;
-  left:auto;
-  right:54px;
+  position:static;
   display:flex;
   flex-direction:row;
   align-items:center;
+  justify-content:flex-end;
   gap:8px;
+  margin-left:auto;
   pointer-events:none;
 }
 .bubble-link{
@@ -700,9 +699,6 @@ footer{
   .bubble-link--inicio{display:none}
   .bubble-menu.is-compact .bubble-menu-inner{transform:translateX(-44px)}
   .bubble-links{
-    top:0;
-    left:auto;
-    right:54px;
     transform:none;
     justify-content:flex-end;
     flex-wrap:wrap;
@@ -712,7 +708,7 @@ footer{
 }
 @media(min-width:561px) and (max-width:979px){
   .bubble-link--inicio{display:none}
-  .bubble-links{left:auto;right:54px}
+  .bubble-links{position:static;margin-left:auto}
 }
 @media(max-width:560px){
   body{padding-top:64px}
@@ -728,8 +724,11 @@ footer{
   }
   .bubble-link--inicio{display:inline-flex}
   .bubble-links{
+    position:absolute;
     top:56px;
     left:14px;
+    right:auto;
+    margin-left:0;
     max-width:calc(100vw - 28px);
     width:calc(100vw - 28px);
     flex-direction:column;
